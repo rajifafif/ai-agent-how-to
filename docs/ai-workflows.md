@@ -18,6 +18,7 @@ prompts during daily work.
 | User asks for | Follow |
 | --- | --- |
 | “make this project AI Agent Ready”, “setup agent docs” | `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
+| “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `prompts/PLANNING_LOOP_PROMPT.md` |
 | “implement”, “build”, “add feature”, “change behavior” | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` |
 | “fix bug”, “debug”, “error”, “regression” | `prompts/BUGFIX_PROMPT.md` |
 | “check current changes”, “verify”, “review diff”, “did this pass?” | `prompts/VERIFY_CHANGES_PROMPT.md` |
@@ -51,16 +52,19 @@ Expected agent behavior:
 
 ## Persistent Plans and Handoffs
 
-For non-trivial feature or bugfix work, use repository files as durable task
-memory:
+For non-trivial feature or bugfix work, use repository files as durable task memory:
 
 - Store implementation or investigation plans under `docs/plans/`.
 - Use `templates/IMPLEMENTATION_PLAN.template.md` when available.
+- Read `docs/planning-loop-guide.md` when available.
 - Store unfinished-work handoffs under `docs/handoffs/`.
 - Use `templates/HANDOFF.template.md` when available.
 - Update plans and handoffs as work changes.
 
 Do not rely on chat history as the only record of current status.
+
+When a user asks for a larger task, plan first. Do not immediately implement all phases
+unless the user explicitly asks and the plan has no unresolved approval points.
 
 ## Commit Intent Rules
 
@@ -76,6 +80,14 @@ If there are ambiguous unrelated changes, stop and ask before staging.
 ## Daily Short Prompts
 
 Developers can use short prompts after `AGENTS.md` is installed.
+
+```text
+Read AGENTS.md first. Plan this task before implementation: [task].
+```
+
+```text
+Read AGENTS.md first. Continue from docs/plans/[plan file]. Implement Phase 1 only.
+```
 
 ```text
 Read AGENTS.md first. Implement: [feature].
@@ -115,7 +127,7 @@ For portable agent behavior across tools:
 2. Add a workflow router section to `AGENTS.md`.
 3. Point the router to this file and the detailed prompt files.
 4. Ask developers to start normal tasks with `Read AGENTS.md first` when their tool does
-   not automatically read it.
+not automatically read it.
 
 Some agents automatically read `AGENTS.md` or similar repository instruction files.
 Others need to be told explicitly. The repository should support both.

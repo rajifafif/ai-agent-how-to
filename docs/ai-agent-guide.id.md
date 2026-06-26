@@ -15,7 +15,7 @@ lebih cepat tanpa merusak codebase.
 4. AI harus membuat plan sebelum perubahan besar atau berisiko.
 5. AI harus menjalankan check yang relevan sebelum bilang selesai.
 6. Human wajib review security, auth, permissions, database migrations, payments, data
-   deletion, dan production config.
+deletion, dan production config.
 7. Setiap project sebaiknya punya file `AGENTS.md` di root repository.
 
 ## Apa Itu “AI Agent Ready”
@@ -444,4 +444,4 @@ AI agent tidak boleh:
 3. Setiap project wajib maintain AGENTS.md.
 4. Setiap project baru sebaiknya dibuat AI Agent Ready dari hari pertama.
 5. Setiap perubahan AI yang berisiko wajib direview dua kali: sekali oleh AI review
-   mode, sekali oleh human.
+mode, sekali oleh human.

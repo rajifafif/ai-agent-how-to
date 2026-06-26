@@ -15,7 +15,7 @@ the codebase.
 4. AI must plan before large or risky changes.
 5. AI must run relevant checks before saying done.
 6. Human must review security, auth, permissions, database migrations, payments, data
-   deletion, and production config.
+deletion, and production config.
 7. Every project should have an `AGENTS.md` file at the repository root.
 
 ## What “AI Agent Ready” Means

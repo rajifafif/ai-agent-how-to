@@ -22,7 +22,7 @@ Rules:
 2. Restate the requested behavior and acceptance criteria in your own words.
 3. Identify affected layers and likely files before editing.
 4. Identify security, migration, compatibility, and testing risks.
-5. For non-trivial work, create or update a persistent implementation plan in `docs/plans/` using `templates/IMPLEMENTATION_PLAN.template.md` before editing.
+5. For non-trivial work, read `docs/planning-loop-guide.md` if it exists, then create or update a persistent implementation plan in `docs/plans/` using `templates/IMPLEMENTATION_PLAN.template.md` before editing.
 6. Show a concise implementation plan before editing even if a separate plan file is not needed.
 7. Keep the persistent plan updated as tasks are completed, blocked, or changed.
 8. Follow existing project patterns.

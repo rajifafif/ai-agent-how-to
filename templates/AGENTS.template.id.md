@@ -121,10 +121,11 @@ workflow yang tepat. Developer tidak perlu paste prompt panjang jika intent suda
 Jika repository ini punya `docs/ai-workflows.md`, baca file itu untuk workflow routing
 dan short-prompt behavior.
 
-| User meminta | Ikuti |
+| User asks for | Follow |
 | --- | --- |
-| Membuat project AI Agent Ready | `docs/ai-agent-guide.md` dan `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` jika ada |
-| Implement, build, add, atau mengubah behavior | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` jika ada |
+| Make project AI Agent Ready | `docs/ai-agent-guide.md` dan `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` jika ada |
+| Plan larger work, pecah task jadi phases | `prompts/PLANNING_LOOP_PROMPT.md` dan `docs/planning-loop-guide.md` jika ada |
+| Implement, build, add, atau change behavior | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` jika ada |
 | Fix bug, debug, error, regression | `prompts/BUGFIX_PROMPT.md` jika ada |
 | Check current changes, verify, review diff | `prompts/VERIFY_CHANGES_PROMPT.md` jika ada |
 | Security review, auth/permission review | `prompts/SECURITY_REVIEW_PROMPT.md` jika ada |
@@ -145,9 +146,9 @@ Aturan intent commit:
 
 - “prepare commit” berarti prepare-only mode. Jangan commit.
 - “commit rules” berarti jalankan safety check commit. Jangan commit kecuali commit juga
-  diminta eksplisit.
+diminta eksplisit.
 - “make commits”, “create commits”, atau “commit this” berarti commit-authorized mode
-  setelah verification dan safety checks.
+setelah verification dan safety checks.
 - Izin commit tidak berarti izin push.
 - Jangan pakai `git add .` secara blind. Stage file eksplisit saja.
 
@@ -156,22 +157,23 @@ Untuk feature work:
 1. Baca file ini.
 2. Inspect pattern yang sudah ada.
 3. Restate behavior dan acceptance criteria.
-4. Untuk pekerjaan non-trivial, create atau update persistent plan di
-   `docs/plans/` memakai `templates/IMPLEMENTATION_PLAN.template.md`.
+4. Untuk pekerjaan non-trivial, baca `docs/planning-loop-guide.md` jika ada, lalu
+create atau update persistent plan di `docs/plans/` memakai
+`templates/IMPLEMENTATION_PLAN.template.md`.
 5. Tanya klarifikasi jika requirement kurang jelas.
 6. Implement perubahan kecil dan fokus.
 7. Update plan saat pekerjaan selesai, blocked, atau berubah.
 8. Tambahkan atau update test jika praktis.
 9. Jalankan test/lint/typecheck/build yang relevan.
 10. Jika unfinished, create atau update handoff di `docs/handoffs/` memakai
-    `templates/HANDOFF.template.md`.
+`templates/HANDOFF.template.md`.
 11. Rangkum file yang berubah, command yang dijalankan, risiko, dan commit status.
 
 Untuk debugging:
 
 1. Reproduce atau inspect issue.
 2. Untuk bug non-trivial, create atau update persistent investigation plan di
-   `docs/plans/`.
+`docs/plans/`.
 3. Identifikasi root cause sebelum mengubah code.
 4. Buat fix minimal yang aman.
 5. Tambahkan regression test jika memungkinkan.

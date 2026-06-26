@@ -37,7 +37,7 @@ Human review is mandatory for changes involving:
 1. Inspect the diff before reading the implementation explanation.
 2. Identify new or changed trust boundaries.
 3. Trace user input to storage, rendering, logs, network calls, commands, and file
-   paths.
+paths.
 4. Confirm authorization happens server-side, not only in the UI.
 5. Check tenant or organization scoping on every data access path.
 6. Look for secrets in code, tests, logs, and documentation.
@@ -46,7 +46,8 @@ Human review is mandatory for changes involving:
 
 ## AI Review Is Not Enough
 
-An AI security review is an additional evaluator. It does not replace:
+An AI security review is an additional evaluator, not a replacement for security testing
+or mandatory human approval. It does not replace:
 
 - human approval
 - threat modeling for critical systems
@@ -58,12 +59,12 @@ An AI security review is an additional evaluator. It does not replace:
 ## Stack Reminders
 
 - Native PHP 5.6 / PHP 7.4: string-built SQL, direct superglobals, unsafe includes, weak
-  sessions, missing escaping, old runtime limitations.
+sessions, missing escaping, old runtime limitations.
 - jQuery: `.html()` XSS, DOM XSS, inline handlers, trusting API responses, client-only
-  permissions.
+permissions.
 - Laravel: policies, gates, middleware, form request authorization, mass assignment, raw
-  SQL, CSRF, storage visibility, tenant-scoped route model binding.
+SQL, CSRF, storage visibility, tenant-scoped route model binding.
 - Go: ignored errors, timeouts, SQL construction, command execution, path handling,
-  goroutine leaks, race conditions, unsafe logs.
+goroutine leaks, race conditions, unsafe logs.
 - React: unsafe HTML rendering, token storage, frontend environment variables,
-  client-only authorization, redirects, dependency risks.
+client-only authorization, redirects, dependency risks.

@@ -6,12 +6,12 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
 
 1. Prepare context
    - Make sure the project has `AGENTS.md`, setup notes, architecture notes, and testing
-     notes.
+notes.
    - If a fact is not known, write “Needs confirmation”.
 
 2. Define the task
    - State the requested behavior, acceptance criteria, constraints, and out-of-scope
-     items.
+items.
 
 3. Inspect before planning
    - The agent should inspect real files before proposing design.
@@ -21,6 +21,7 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
    - Keep the plan short and practical.
    - For non-trivial feature or bugfix work, persist it under `docs/plans/` using
      `templates/IMPLEMENTATION_PLAN.template.md`.
+   - Follow `docs/planning-loop-guide.md` when the task should be split into phases.
    - Include affected files, risks, tests, documentation impact, and human approval
      points.
    - Update the plan as tasks are completed, blocked, or changed.
@@ -37,7 +38,7 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
 
 7. Perform independent review
    - Ask a separate review pass to inspect correctness, scope, maintainability, and
-     missing tests.
+missing tests.
 
 8. Perform security review
    - Treat security review as a separate step from implementation.
@@ -49,7 +50,7 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
 
 10. Obtain human approval
     - Human approval is required before commits and before sensitive changes are
-      accepted.
+accepted.
 
 11. Commit
     - Stage explicit files.

@@ -37,4 +37,4 @@ Documentation usually does not need to change for:
 - Keep discovered commands exact.
 - Label examples clearly when commands are not discovered from the repository.
 - Avoid duplicating the same procedure in many files; link to the canonical guide
-  instead.
+instead.

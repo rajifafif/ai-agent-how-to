@@ -12,17 +12,17 @@ Saat ini repository memakai strategi bilingual terbatas:
 
 - Materi awal tersedia dalam Bahasa Indonesia.
 - Materi lifecycle baru tersedia dalam English-only agar maintainable dan tidak
-  menghasilkan terjemahan mesin berkualitas rendah.
+menghasilkan terjemahan mesin berkualitas rendah.
 - Jika tim membutuhkan versi Indonesia lengkap, terjemahkan bertahap mulai dari file
-  yang paling sering dipakai: prompt, verification guide, security review guide, lalu
-  commit/handoff guide.
+yang paling sering dipakai: prompt, verification guide, security review guide, lalu
+commit/handoff guide.
 
 ## File Bahasa Indonesia
 
 - `docs/ai-agent-guide.id.md` — panduan utama tim dalam Bahasa Indonesia: checklist,
-  workflow, safety rules, mode/skill, dan prompt siap pakai.
+workflow, safety rules, mode/skill, dan prompt siap pakai.
 - `templates/AGENTS.template.id.md` — copy ke root project sebagai `AGENTS.md`, lalu
-  minta AI agent mengisi detail spesifik project.
+minta AI agent mengisi detail spesifik project.
 
 Versi English:
 
@@ -35,28 +35,31 @@ Versi English:
 Prompt siap copy-paste:
 
 - `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` — menyiapkan project existing agar AI Agent
-  Ready.
+Ready.
+- `prompts/PLANNING_LOOP_PROMPT.md` — membuat phased plan untuk task besar.
 - `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` — implementasi feature.
 - `prompts/BUGFIX_PROMPT.md` — systematic bugfix.
 - `prompts/VERIFY_CHANGES_PROMPT.md` — verifikasi perubahan setelah implementasi.
 - `prompts/SECURITY_REVIEW_PROMPT.md` — review security terpisah dan adversarial.
 - `prompts/UPDATE_DOCUMENTATION_PROMPT.md` — sinkronisasi dokumentasi setelah code
-  change.
+change.
 - `prompts/COMMIT_PROMPT.md` — prepare commit atau commit hanya jika diizinkan
-  eksplisit.
+eksplisit.
 - `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` — melanjutkan work dari plan/handoff.
 
 Guide lifecycle:
 
 - `docs/ai-workflows.md` — workflow router agar agent bisa mengubah short
-  natural-language prompt menjadi workflow yang tepat. English-only.
+natural-language prompt menjadi workflow yang tepat. English-only.
 - `docs/development-lifecycle.md` — workflow lengkap AI-assisted development.
+- `docs/planning-loop-guide.md` — planning loop untuk task besar, phased work,
+verification checkpoint, dan handoff. English-only.
 - `docs/verification-guide.md` — cara verifikasi dengan command output nyata.
 - `docs/security-review-guide.md` — kapan dan bagaimana melakukan security review.
 - `docs/documentation-guide.md` — kapan dokumentasi harus diupdate.
 - `docs/commit-guide.md` — lifecycle commit yang aman.
 - `docs/unfinished-work-guide.md` — menyimpan pekerjaan yang belum selesai di
-  repository.
+repository.
 
 Template:
 
@@ -74,19 +77,23 @@ Template:
 2. Implement feature kecil.
    - Prompt: `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` English-only
    - Template: `templates/IMPLEMENTATION_PLAN.template.md` English-only
-3. Verifikasi perubahan.
+3. Untuk task yang lebih besar, jalankan planning loop sebelum implementasi.
+   - Prompt: `prompts/PLANNING_LOOP_PROMPT.md` English-only
+   - Guide: `docs/planning-loop-guide.md` English-only
+   - Template: `templates/IMPLEMENTATION_PLAN.template.md` English-only
+4. Verifikasi perubahan.
    - Prompt: `prompts/VERIFY_CHANGES_PROMPT.md` English-only
    - Guide: `docs/verification-guide.md` English-only
-4. Jalankan security review.
+5. Jalankan security review.
    - Prompt: `prompts/SECURITY_REVIEW_PROMPT.md` English-only
    - Guide: `docs/security-review-guide.md` English-only
-5. Update dokumentasi.
+6. Update dokumentasi.
    - Prompt: `prompts/UPDATE_DOCUMENTATION_PROMPT.md` English-only
    - Guide: `docs/documentation-guide.md` English-only
-6. Siapkan commit.
+7. Siapkan commit.
    - Prompt: `prompts/COMMIT_PROMPT.md` English-only
    - Guide: `docs/commit-guide.md` English-only
-7. Simpan handoff dan lanjutkan di sesi baru.
+8. Simpan handoff dan lanjutkan di sesi baru.
    - Prompt: `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` English-only
    - Guide: `docs/unfinished-work-guide.md` English-only
 
@@ -95,6 +102,7 @@ Template:
 | Situasi | Prompt |
 | --- | --- |
 | Menyiapkan existing project | `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
+| Planning task besar | `prompts/PLANNING_LOOP_PROMPT.md` |
 | Membuat feature | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` |
 | Memperbaiki bug | `prompts/BUGFIX_PROMPT.md` |
 | Mengecek code yang selesai | `prompts/VERIFY_CHANGES_PROMPT.md` |
@@ -111,7 +119,7 @@ Pola yang disarankan:
 
 1. Copy `templates/AGENTS.template.id.md` ke target project sebagai `AGENTS.md`.
 2. Copy `docs/ai-workflows.md` ke target project jika ingin workflow router. File ini
-   English-only.
+English-only.
 3. Copy folder `prompts/` jika tim ingin detailed reusable checklist.
 4. Minta agent membaca `AGENTS.md` dulu.
 5. Pakai short natural-language prompt.
@@ -151,12 +159,14 @@ cd /path/to/target-project
 mkdir -p guide-templates/docs guide-templates/templates guide-templates/prompts
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-agent-guide.md -o guide-templates/docs/ai-agent-guide.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-workflows.md -o guide-templates/docs/ai-workflows.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/planning-loop-guide.md -o guide-templates/docs/planning-loop-guide.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/AGENTS.template.md -o guide-templates/templates/AGENTS.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/IMPLEMENTATION_PLAN.template.md -o guide-templates/templates/IMPLEMENTATION_PLAN.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/HANDOFF.template.md -o guide-templates/templates/HANDOFF.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/SECURITY_REVIEW.template.md -o guide-templates/templates/SECURITY_REVIEW.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/COMPLETION_REPORT.template.md -o guide-templates/templates/COMPLETION_REPORT.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/INITIAL_AI_AGENT_READY_PROMPT.md -o guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/PLANNING_LOOP_PROMPT.md -o guide-templates/prompts/PLANNING_LOOP_PROMPT.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/FEATURE_IMPLEMENTATION_PROMPT.md -o guide-templates/prompts/FEATURE_IMPLEMENTATION_PROMPT.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/BUGFIX_PROMPT.md -o guide-templates/prompts/BUGFIX_PROMPT.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/VERIFY_CHANGES_PROMPT.md -o guide-templates/prompts/VERIFY_CHANGES_PROMPT.md
@@ -187,9 +197,10 @@ Read guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md completely and exe
 
 Use guide-templates/docs/ai-agent-guide.md as the source guide.
 Use guide-templates/docs/ai-workflows.md as the workflow-router reference.
+Use guide-templates/docs/planning-loop-guide.md as the larger-task planning reference.
 Use guide-templates/templates/AGENTS.template.md as the starting template for AGENTS.md.
 
-Create or update project-local files such as AGENTS.md, docs/ai-agent-guide.md, docs/architecture.md, docs/testing.md, and docs/ai-workflows.md based on the real repository.
+Create or update project-local files such as AGENTS.md, docs/ai-agent-guide.md, docs/architecture.md, docs/testing.md, docs/ai-workflows.md, and docs/planning-loop-guide.md based on the real repository.
 Install reusable prompts from guide-templates/prompts/ into prompts/.
 Install reusable templates from guide-templates/templates/ into templates/.
 Create docs/plans/ and docs/handoffs/ for persistent implementation plans and handoffs.
@@ -202,9 +213,9 @@ Do not commit or push.
 After setup is complete and verified, delete the temporary guide-templates/ folder only if prompts/ and templates/ contain the reusable workflow files.
 ```
 
-Folder temporary `guide-templates/` hanya bootstrap material.
-Final project menyimpan generated project-local docs plus installed `prompts/` dan
-`templates/`, bukan references ke temporary source folder.
+Folder temporary `guide-templates/` hanya bootstrap material. Final project menyimpan
+generated project-local docs plus installed `prompts/` dan `templates/`, bukan
+references ke temporary source folder.
 
 ### 4. Optional: download full prompt set
 
@@ -217,15 +228,15 @@ bukan untuk download GitHub directory dalam satu command.
 Setelah setup selesai, docs yang dibuat menjadi context layer project untuk AI agent:
 
 - `AGENTS.md` menjadi rulebook utama. Prompt harian sebaiknya dimulai dengan “Read
-  AGENTS.md first.” Agent menggunakannya untuk memahami aturan project, command, batas
-  arsitektur, aturan git, testing, dan safety.
+AGENTS.md first.” Agent menggunakannya untuk memahami aturan project, command, batas
+arsitektur, aturan git, testing, dan safety.
 - `docs/ai-agent-guide.md` menjadi panduan workflow tim.
 - `docs/architecture.md` membantu agent memahami lokasi code yang benar sebelum
-  mengedit.
+mengedit.
 - `docs/testing.md` memberi tahu command verifikasi yang harus dijalankan sebelum agent
-  bilang task selesai.
+bilang task selesai.
 - `docs/ai-workflows.md` memberi tahu workflow spesifik repo untuk feature, bugfix,
-  refactor, review, dan release.
+refactor, review, dan release.
 
 Dalam kerja harian, tim tidak perlu mengulang semua context project secara manual. Cukup
 bilang:
@@ -258,6 +269,7 @@ Project siap untuk AI-assisted development jika punya:
 - `AGENTS.md`
 - `docs/ai-agent-guide.md`
 - `docs/ai-workflows.md`
+- `docs/planning-loop-guide.md`
 - `docs/architecture.md`
 - `docs/testing.md`
 - `docs/plans/`
@@ -271,7 +283,7 @@ Project siap untuk AI-assisted development jika punya:
 - aturan git jelas: AI tidak boleh commit kecuali diminta
 - aturan security jelas: AI tidak boleh expose secrets
 - human review wajib untuk auth, permission, data deletion, migrations, payments, dan
-  production config
+production config
 
 ## Catatan RTK / Redux Toolkit
 

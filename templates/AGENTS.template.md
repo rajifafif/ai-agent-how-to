@@ -125,6 +125,7 @@ short-prompt behavior.
 | User asks for | Follow |
 | --- | --- |
 | Make project AI Agent Ready | `docs/ai-agent-guide.md` and `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` if present |
+| Plan larger work, break task into phases | `prompts/PLANNING_LOOP_PROMPT.md` and `docs/planning-loop-guide.md` if present |
 | Implement, build, add, or change behavior | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` if present |
 | Fix bug, debug, error, regression | `prompts/BUGFIX_PROMPT.md` if present |
 | Check current changes, verify, review diff | `prompts/VERIFY_CHANGES_PROMPT.md` if present |
@@ -146,9 +147,9 @@ Commit intent rules:
 
 - “prepare commit” means prepare-only mode. Do not commit.
 - “commit rules” means apply commit safety checks. Do not commit unless commit is also
-  explicitly requested.
+explicitly requested.
 - “make commits”, “create commits”, or “commit this” means commit-authorized mode after
-  verification and safety checks.
+verification and safety checks.
 - Commit permission does not imply push permission.
 - Never use `git add .` blindly. Stage explicit files only.
 
@@ -157,22 +158,23 @@ For feature work:
 1. Read this file.
 2. Inspect existing patterns.
 3. Restate requested behavior and acceptance criteria.
-4. For non-trivial work, create or update a persistent plan in `docs/plans/`
-   using `templates/IMPLEMENTATION_PLAN.template.md`.
+4. For non-trivial work, read `docs/planning-loop-guide.md` if present, then create
+or update a persistent plan in `docs/plans/` using
+`templates/IMPLEMENTATION_PLAN.template.md`.
 5. Ask clarification if requirements are unclear.
 6. Implement small focused changes.
 7. Keep the plan updated as work progresses.
 8. Add or update tests where practical.
 9. Run relevant tests/lint/typecheck/build.
 10. If unfinished, create or update a handoff in `docs/handoffs/` using
-    `templates/HANDOFF.template.md`.
+`templates/HANDOFF.template.md`.
 11. Summarize changed files, commands run, risks, and commit status.
 
 For debugging:
 
 1. Reproduce or inspect the issue.
 2. For non-trivial bugs, create or update a persistent investigation plan in
-   `docs/plans/`.
+`docs/plans/`.
 3. Identify root cause before changing code.
 4. Make the minimal safe fix.
 5. Add regression test if possible.

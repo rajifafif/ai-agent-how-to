@@ -11,7 +11,7 @@ diffs, or explicit manual checks, not agent confidence.
 
 2. Diff review
    - Look for debug statements, commented-out code, temporary files, generated files,
-     formatting-only churn, and hardcoded secrets.
+formatting-only churn, and hardcoded secrets.
 
 3. Automated tests
    - Run the smallest relevant test first, then broader suites when practical.
@@ -35,17 +35,18 @@ diffs, or explicit manual checks, not agent confidence.
 
 9. Browser checks for frontend work
    - Check visible behavior, loading states, error states, permissions, and responsive
-     layouts when relevant.
+layouts when relevant.
 
 10. API checks for backend work
     - Check status codes, validation errors, authorization, and response shape.
 
 11. Compatibility checks for legacy projects
     - Confirm syntax and runtime compatibility, especially for PHP 5.6, PHP 7.4, older
-      jQuery, and older browsers.
+jQuery, and older browsers.
 
 12. Record exact commands and results
     - Never write “tests passed” unless the command ran and exited successfully.
+    - Report the actual command, exit result, and important output or observed result.
 
 13. Handle commands that cannot run
     - List the command and reason: missing dependency, missing service, credentials

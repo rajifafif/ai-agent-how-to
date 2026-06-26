@@ -12,19 +12,21 @@ use AI coding agents safely.
 English version:
 
 - `docs/ai-agent-guide.md` — main team guide with checklist, workflows, safety rules,
-  skill modes, and starter prompts.
+skill modes, and starter prompts.
 - `prompts/` — copy-paste prompts for common AI-assisted development tasks.
 - `docs/ai-workflows.md` — workflow router that lets agents map short natural-language
-  requests to the right detailed prompt.
+requests to the right detailed prompt.
 - `docs/development-lifecycle.md` — end-to-end lifecycle: Prepare → Plan → Implement →
-  Verify → Security Review → Update Documentation → Commit → Handoff or Continue.
+Verify → Security Review → Update Documentation → Commit → Handoff or Continue.
+- `docs/planning-loop-guide.md` — how to split larger tasks into phased plans,
+verification checkpoints, handoffs, and completion decisions.
 - `docs/verification-guide.md` — how to verify changes with real commands and evidence.
 - `docs/security-review-guide.md` — when and how to run separate security review.
 - `docs/documentation-guide.md` — when code changes require documentation updates.
 - `docs/commit-guide.md` — safe commit lifecycle for AI-assisted work.
 - `docs/unfinished-work-guide.md` — how to persist work outside chat.
 - `templates/AGENTS.template.md` — copy this to a project's root as `AGENTS.md`, then
-  ask the AI agent to fill it with project-specific details.
+ask the AI agent to fill it with project-specific details.
 - `templates/IMPLEMENTATION_PLAN.template.md` — reusable implementation plan template.
 - `templates/HANDOFF.template.md` — reusable handoff template.
 - `templates/SECURITY_REVIEW.template.md` — reusable security review report template.
@@ -48,21 +50,25 @@ The newer lifecycle guides, prompts, and templates are currently English-only. S
 2. Implement a small feature.
    - Prompt: `prompts/FEATURE_IMPLEMENTATION_PROMPT.md`
    - Template: `templates/IMPLEMENTATION_PLAN.template.md`
-3. Verify the change.
+3. For larger tasks, run the planning loop before implementation.
+   - Prompt: `prompts/PLANNING_LOOP_PROMPT.md`
+   - Guide: `docs/planning-loop-guide.md`
+   - Template: `templates/IMPLEMENTATION_PLAN.template.md`
+4. Verify the change.
    - Prompt: `prompts/VERIFY_CHANGES_PROMPT.md`
    - Guide: `docs/verification-guide.md`
-4. Run a security review.
+5. Run a security review.
    - Prompt: `prompts/SECURITY_REVIEW_PROMPT.md`
    - Guide: `docs/security-review-guide.md`
    - Template: `templates/SECURITY_REVIEW.template.md`
-5. Update documentation.
+6. Update documentation.
    - Prompt: `prompts/UPDATE_DOCUMENTATION_PROMPT.md`
    - Guide: `docs/documentation-guide.md`
-6. Prepare a commit.
+7. Prepare a commit.
    - Prompt: `prompts/COMMIT_PROMPT.md`
    - Guide: `docs/commit-guide.md`
    - Template: `templates/COMPLETION_REPORT.template.md`
-7. Save a handoff and continue in a new session.
+8. Save a handoff and continue in a new session.
    - Prompt: `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md`
    - Guide: `docs/unfinished-work-guide.md`
    - Template: `templates/HANDOFF.template.md`
@@ -74,6 +80,7 @@ For the complete lifecycle, read `docs/development-lifecycle.md`.
 | Situation | Prompt |
 | --- | --- |
 | Preparing an existing project | `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
+| Planning larger work | `prompts/PLANNING_LOOP_PROMPT.md` |
 | Building a feature | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` |
 | Fixing a bug | `prompts/BUGFIX_PROMPT.md` |
 | Checking completed code | `prompts/VERIFY_CHANGES_PROMPT.md` |
@@ -91,7 +98,7 @@ Use this pattern:
 1. Copy `templates/AGENTS.template.md` to the target project as `AGENTS.md`.
 2. Keep or copy `docs/ai-workflows.md` into the target project.
 3. Keep or copy the `prompts/` directory when the team wants detailed reusable
-   checklists.
+checklists.
 4. Ask the agent to read `AGENTS.md` first.
 5. Use short natural-language prompts.
 
@@ -132,12 +139,14 @@ cd /path/to/target-project
 mkdir -p guide-templates/docs guide-templates/templates guide-templates/prompts
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-agent-guide.md -o guide-templates/docs/ai-agent-guide.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-workflows.md -o guide-templates/docs/ai-workflows.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/planning-loop-guide.md -o guide-templates/docs/planning-loop-guide.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/AGENTS.template.md -o guide-templates/templates/AGENTS.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/IMPLEMENTATION_PLAN.template.md -o guide-templates/templates/IMPLEMENTATION_PLAN.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/HANDOFF.template.md -o guide-templates/templates/HANDOFF.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/SECURITY_REVIEW.template.md -o guide-templates/templates/SECURITY_REVIEW.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/COMPLETION_REPORT.template.md -o guide-templates/templates/COMPLETION_REPORT.template.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/INITIAL_AI_AGENT_READY_PROMPT.md -o guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/PLANNING_LOOP_PROMPT.md -o guide-templates/prompts/PLANNING_LOOP_PROMPT.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/FEATURE_IMPLEMENTATION_PROMPT.md -o guide-templates/prompts/FEATURE_IMPLEMENTATION_PROMPT.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/BUGFIX_PROMPT.md -o guide-templates/prompts/BUGFIX_PROMPT.md
 curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/VERIFY_CHANGES_PROMPT.md -o guide-templates/prompts/VERIFY_CHANGES_PROMPT.md
@@ -168,9 +177,10 @@ Read guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md completely and exe
 
 Use guide-templates/docs/ai-agent-guide.md as the source guide.
 Use guide-templates/docs/ai-workflows.md as the workflow-router reference.
+Use guide-templates/docs/planning-loop-guide.md as the larger-task planning reference.
 Use guide-templates/templates/AGENTS.template.md as the starting template for AGENTS.md.
 
-Create or update project-local files such as AGENTS.md, docs/ai-agent-guide.md, docs/architecture.md, docs/testing.md, and docs/ai-workflows.md based on the real repository.
+Create or update project-local files such as AGENTS.md, docs/ai-agent-guide.md, docs/architecture.md, docs/testing.md, docs/ai-workflows.md, and docs/planning-loop-guide.md based on the real repository.
 Install reusable prompts from guide-templates/prompts/ into prompts/.
 Install reusable templates from guide-templates/templates/ into templates/.
 Create docs/plans/ and docs/handoffs/ for persistent implementation plans and handoffs.
@@ -183,9 +193,9 @@ Do not commit or push.
 After setup is complete and verified, delete the temporary guide-templates/ folder only if prompts/ and templates/ contain the reusable workflow files.
 ```
 
-The temporary `guide-templates/` folder is only bootstrap material.
-The final project should keep generated project-local docs plus installed `prompts/`
-and `templates/`, not references to the temporary source folder.
+The temporary `guide-templates/` folder is only bootstrap material. The final project
+should keep generated project-local docs plus installed `prompts/` and `templates/`, not
+references to the temporary source folder.
 
 ### 4. Optional: download the full prompt set
 
@@ -199,17 +209,19 @@ After this setup is complete, the generated docs become the agent's project cont
 layer:
 
 - `AGENTS.md` becomes the main operating rulebook. Future prompts should start with
-  “Read AGENTS.md first.” The agent uses it to know project rules, commands,
-  architecture boundaries, git rules, testing rules, and safety requirements.
+“Read AGENTS.md first.” The agent uses it to know project rules, commands, architecture
+boundaries, git rules, testing rules, and safety requirements.
 - `docs/ai-agent-guide.md` becomes the team workflow guide. The agent uses it to
-  understand expected behavior: plan before risky changes, avoid commits, run checks,
-  summarize files changed, and use the right mode such as planning, debugging, TDD,
-  review, or backend-first.
+understand expected behavior: plan before risky changes, avoid commits, run checks,
+summarize files changed, and use the right mode such as planning, debugging, TDD,
+review, or backend-first.
 - `docs/architecture.md` helps the agent understand where code belongs before editing.
 - `docs/testing.md` tells the agent which commands to run before saying the task is
-  done.
+done.
 - `docs/ai-workflows.md` tells the agent how to handle common tasks in this specific
-  repo, such as features, bugfixes, refactors, reviews, and releases.
+repo, such as features, bugfixes, refactors, reviews, and releases.
+- `docs/planning-loop-guide.md` tells the agent when to create a persistent phased
+plan before implementation and how to update it after each phase.
 
 In normal daily work, team members should not need to repeat all project context
 manually. They can say:
@@ -239,7 +251,7 @@ Use:
 
 - `prompts/VERIFY_CHANGES_PROMPT.md`
 - `prompts/SECURITY_REVIEW_PROMPT.md` when security-sensitive rules or project setup are
-  involved
+involved
 
 ### 7. Commit only after human review
 
@@ -253,13 +265,14 @@ prompt.
 
 A practical default sequence:
 
-1. `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` or `prompts/BUGFIX_PROMPT.md`
-2. `prompts/VERIFY_CHANGES_PROMPT.md`
-3. `prompts/SECURITY_REVIEW_PROMPT.md` when relevant
-4. `prompts/UPDATE_DOCUMENTATION_PROMPT.md`
-5. `prompts/COMMIT_PROMPT.md` in prepare-only mode unless commit is explicitly
-   authorized
-6. `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` if work spans sessions
+1. `prompts/PLANNING_LOOP_PROMPT.md` for larger tasks that need phases
+2. `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` or `prompts/BUGFIX_PROMPT.md`
+3. `prompts/VERIFY_CHANGES_PROMPT.md`
+4. `prompts/SECURITY_REVIEW_PROMPT.md` when relevant
+5. `prompts/UPDATE_DOCUMENTATION_PROMPT.md`
+6. `prompts/COMMIT_PROMPT.md` in prepare-only mode unless commit is explicitly
+authorized
+7. `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` if work spans sessions
 
 ## Minimum Project Readiness Checklist
 
@@ -268,6 +281,7 @@ A project is ready for AI-assisted development when it has:
 - `AGENTS.md`
 - `docs/ai-agent-guide.md`
 - `docs/ai-workflows.md`
+- `docs/planning-loop-guide.md`
 - `docs/architecture.md`
 - `docs/testing.md`
 - `docs/plans/`
@@ -281,7 +295,7 @@ A project is ready for AI-assisted development when it has:
 - clear git safety rule: AI must not commit unless asked
 - clear security rule: AI must not expose secrets
 - human review required for auth, permission, data deletion, migrations, payments, and
-  production config
+production config
 
 ## Notes on RTK / Redux Toolkit
 

@@ -24,7 +24,7 @@ Logs, errors, screenshots, or evidence:
 Rules:
 1. Gather evidence or reproduce the issue before editing.
 2. Inspect nearby code and relevant tests.
-3. For non-trivial bugs, create or update a persistent investigation plan in `docs/plans/` using `templates/IMPLEMENTATION_PLAN.template.md` before editing.
+3. For non-trivial bugs, read `docs/planning-loop-guide.md` if it exists, then create or update a persistent investigation plan in `docs/plans/` using `templates/IMPLEMENTATION_PLAN.template.md` before editing.
 4. Identify root cause before changing code.
 5. Explain why the bug happens.
 6. Make the minimal safe fix.
