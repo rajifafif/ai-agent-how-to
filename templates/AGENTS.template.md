@@ -123,15 +123,49 @@ If a command cannot run, explain why and what should be run manually.
 
 ## AI Agent Workflow
 
+Read this file first for every task. Then route the user's natural-language request to the right workflow. Developers should not need to paste long prompts when the intent is clear.
+
+If this repository includes `docs/ai-workflows.md`, read it for workflow routing and short-prompt behavior.
+
+| User asks for | Follow |
+| --- | --- |
+| Make project AI Agent Ready | `docs/ai-agent-guide.md` and `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` if present |
+| Implement, build, add, or change behavior | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` if present |
+| Fix bug, debug, error, regression | `prompts/BUGFIX_PROMPT.md` if present |
+| Check current changes, verify, review diff | `prompts/VERIFY_CHANGES_PROMPT.md` if present |
+| Security review, auth/permission review | `prompts/SECURITY_REVIEW_PROMPT.md` if present |
+| Update docs | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` if present |
+| Prepare commit, commit rules, make commits | `prompts/COMMIT_PROMPT.md` if present |
+| Continue, resume, handoff | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` if present |
+
+For combined requests, run workflows in safe lifecycle order:
+
+1. Inspect status and diff.
+2. Verify changes.
+3. Run security review when relevant.
+4. Update documentation when needed.
+5. Prepare commits or commit only when explicitly authorized.
+6. Save handoff if work remains unfinished.
+
+Commit intent rules:
+
+- “prepare commit” means prepare-only mode. Do not commit.
+- “commit rules” means apply commit safety checks. Do not commit unless commit is also explicitly requested.
+- “make commits”, “create commits”, or “commit this” means commit-authorized mode after verification and safety checks.
+- Commit permission does not imply push permission.
+- Never use `git add .` blindly. Stage explicit files only.
+
 For feature work:
 
 1. Read this file.
 2. Inspect existing patterns.
-3. Write a short plan for non-trivial work.
-4. Ask clarification if requirements are unclear.
-5. Implement small focused changes.
-6. Run relevant tests/lint/typecheck/build.
-7. Summarize changed files, commands run, and risks.
+3. Restate requested behavior and acceptance criteria.
+4. Write a short plan for non-trivial work.
+5. Ask clarification if requirements are unclear.
+6. Implement small focused changes.
+7. Add or update tests where practical.
+8. Run relevant tests/lint/typecheck/build.
+9. Summarize changed files, commands run, risks, and commit status.
 
 For debugging:
 

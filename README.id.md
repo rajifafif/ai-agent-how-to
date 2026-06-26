@@ -38,6 +38,7 @@ Prompt siap copy-paste:
 
 Guide lifecycle:
 
+- `docs/ai-workflows.md` — workflow router agar agent bisa mengubah short natural-language prompt menjadi workflow yang tepat. English-only.
 - `docs/development-lifecycle.md` — workflow lengkap AI-assisted development.
 - `docs/verification-guide.md` — cara verifikasi dengan command output nyata.
 - `docs/security-review-guide.md` — kapan dan bagaimana melakukan security review.
@@ -90,45 +91,91 @@ Template:
 | Menyiapkan commit | `prompts/COMMIT_PROMPT.md` |
 | Melanjutkan work sebelumnya | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` |
 
+## Membuat Prompt Lebih Mudah Dipakai
+
+Developer tidak perlu paste prompt panjang untuk kerja harian.
+
+Pola yang disarankan:
+
+1. Copy `templates/AGENTS.template.id.md` ke target project sebagai `AGENTS.md`.
+2. Copy `docs/ai-workflows.md` ke target project jika ingin workflow router. File ini English-only.
+3. Copy folder `prompts/` jika tim ingin detailed reusable checklist.
+4. Minta agent membaca `AGENTS.md` dulu.
+5. Pakai short natural-language prompt.
+
+Contoh short prompt:
+
+```text
+Read AGENTS.md first. Implement: [feature].
+```
+
+```text
+Read AGENTS.md first. Verify current changes.
+```
+
+```text
+Read AGENTS.md first. Check current code changes, apply commit rules, and make focused commits.
+```
+
+Workflow router di `AGENTS.md` membantu agent memilih prompt/detail workflow yang tepat selama agent mengikuti repository instructions.
+
 ## Checklist Langkah Pertama untuk Project Apa Pun
 
 Gunakan checklist ini saat menyiapkan project baru atau existing project agar siap dibantu AI agent.
 
-### 1. Copy AI guide ke target project
+### 1. Download temporary guide templates ke target project
 
-Dari repository ini:
-
-```bash
-mkdir -p /path/to/target-project/docs
-cp docs/ai-agent-guide.id.md /path/to/target-project/docs/ai-agent-guide.md
-```
-
-Catatan: di target project, tetap gunakan nama `docs/ai-agent-guide.md` supaya prompt standar tetap sama.
-
-### 2. Copy template AGENTS.md ke target project
-
-```bash
-cp templates/AGENTS.template.id.md /path/to/target-project/AGENTS.md
-```
-
-### 3. Buka target project dengan AI agent
-
-Jalankan AI agent dari root target project.
+Mulai dari project yang ingin disiapkan. Download workshop kit ini ke folder temporary `guide-templates/` supaya agent bisa membaca guide tanpa mencampur source template ke final project docs.
 
 Contoh:
 
 ```bash
 cd /path/to/target-project
+mkdir -p guide-templates/docs guide-templates/templates guide-templates/prompts
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-agent-guide.md -o guide-templates/docs/ai-agent-guide.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-workflows.md -o guide-templates/docs/ai-workflows.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/AGENTS.template.md -o guide-templates/templates/AGENTS.template.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/INITIAL_AI_AGENT_READY_PROMPT.md -o guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md
+```
+
+### 2. Buka target project dengan AI agent
+
+Jalankan AI agent dari root target project setelah `guide-templates/` tersedia.
+
+Contoh:
+
+```bash
 hermes
 ```
 
-Atau gunakan agent CLI/tool lain yang biasa dipakai tim.
+Atau gunakan agent CLI/tool lain.
 
-### 4. Minta AI agent membaca guide dan menjalankan setup
+### 3. Minta agent menjalankan initial setup dari temporary templates
 
-Gunakan `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` dari root target project.
+Paste prompt ini:
 
-Prompt ini meminta agent membaca `docs/ai-agent-guide.md` dulu, inspect repository nyata, show plan sebelum edit, dan tidak invent architecture atau command.
+```text
+Read guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md completely and execute it for this repository.
+
+Use guide-templates/docs/ai-agent-guide.md as the source guide.
+Use guide-templates/docs/ai-workflows.md as the workflow-router reference.
+Use guide-templates/templates/AGENTS.template.md as the starting template for AGENTS.md.
+
+Create or update project-local files such as AGENTS.md, docs/ai-agent-guide.md, docs/architecture.md, docs/testing.md, and docs/ai-workflows.md based on the real repository.
+Inspect the real repository before documenting it.
+Show a concise plan before editing project-specific files.
+Do not invent architecture or commands.
+Mark unknown facts as “Needs confirmation”.
+Do not commit or push.
+
+After setup is complete and verified, delete the temporary guide-templates/ folder.
+```
+
+Folder temporary `guide-templates/` hanya bootstrap material. Final project menyimpan generated project-local docs, bukan source templates temporary.
+
+### 4. Optional: download full prompt set
+
+Untuk daily short-prompt workflows, download seluruh folder `prompts/` dari repository ini atau clone/download repository. Plain `curl` cocok untuk raw file individual, tapi bukan untuk download GitHub directory dalam satu command.
 
 ### Bagaimana AI agent memakai docs ini setelah setup
 

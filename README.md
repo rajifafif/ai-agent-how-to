@@ -10,6 +10,7 @@ English version:
 
 - `docs/ai-agent-guide.md` — main team guide with checklist, workflows, safety rules, skill modes, and starter prompts.
 - `prompts/` — copy-paste prompts for common AI-assisted development tasks.
+- `docs/ai-workflows.md` — workflow router that lets agents map short natural-language requests to the right detailed prompt.
 - `docs/development-lifecycle.md` — end-to-end lifecycle: Prepare → Plan → Implement → Verify → Security Review → Update Documentation → Commit → Handoff or Continue.
 - `docs/verification-guide.md` — how to verify changes with real commands and evidence.
 - `docs/security-review-guide.md` — when and how to run separate security review.
@@ -73,49 +74,93 @@ For the complete lifecycle, read `docs/development-lifecycle.md`.
 | Preparing commits | `prompts/COMMIT_PROMPT.md` |
 | Resuming previous work | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` |
 
+## Making Prompts Easy to Use
+
+Developers should not need to paste long prompt files during daily work.
+
+Use this pattern:
+
+1. Copy `templates/AGENTS.template.md` to the target project as `AGENTS.md`.
+2. Keep or copy `docs/ai-workflows.md` into the target project.
+3. Keep or copy the `prompts/` directory when the team wants detailed reusable checklists.
+4. Ask the agent to read `AGENTS.md` first.
+5. Use short natural-language prompts.
+
+Example short prompts:
+
+```text
+Read AGENTS.md first. Implement: [feature].
+```
+
+```text
+Read AGENTS.md first. Verify current changes.
+```
+
+```text
+Read AGENTS.md first. Check current code changes, apply commit rules, and make focused commits.
+```
+
+The `AGENTS.md` workflow router maps these short prompts to the detailed prompt files automatically when the agent follows repository instructions.
+
+Prompt files are still useful as references, workshop handouts, and fallback copy-paste prompts for tools that do not reliably read repository instructions.
+
 ## First Step Checklist for Any Project
 
 Use this checklist when preparing a new or existing project for AI-assisted development.
 
-### 1. Copy the AI guide into the target project
+### 1. Download temporary guide templates into the target project
 
-From this repository:
-
-```bash
-cp docs/ai-agent-guide.md /path/to/target-project/docs/ai-agent-guide.md
-```
-
-If the target project does not have a `docs/` folder yet:
-
-```bash
-mkdir -p /path/to/target-project/docs
-cp docs/ai-agent-guide.md /path/to/target-project/docs/ai-agent-guide.md
-```
-
-### 2. Copy the AGENTS.md template into the target project
-
-```bash
-cp templates/AGENTS.template.md /path/to/target-project/AGENTS.md
-```
-
-### 3. Open the target project with your AI agent
-
-Start the AI agent from the target project root.
+Start from the project you want to prepare. Download this workshop kit into a temporary `guide-templates/` folder so the agent can read the guide without mixing source templates into the final project docs.
 
 Example:
 
 ```bash
 cd /path/to/target-project
+mkdir -p guide-templates/docs guide-templates/templates guide-templates/prompts
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-agent-guide.md -o guide-templates/docs/ai-agent-guide.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-workflows.md -o guide-templates/docs/ai-workflows.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/AGENTS.template.md -o guide-templates/templates/AGENTS.template.md
+curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/INITIAL_AI_AGENT_READY_PROMPT.md -o guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md
+```
+
+### 2. Open the target project with your AI agent
+
+Start the AI agent from the target project root after `guide-templates/` exists.
+
+Example:
+
+```bash
 hermes
 ```
 
 Or use your preferred agent CLI/tool.
 
-### 4. Ask the AI agent to read the guide and execute the setup
+### 3. Ask the agent to run the initial setup from the temporary templates
 
-Use `prompts/INITIAL_AI_AGENT_READY_PROMPT.md`.
+Paste this prompt:
 
-Important: the prompt tells the agent to read `docs/ai-agent-guide.md` first, inspect the actual repository, show a plan before editing, and never invent architecture or commands.
+```text
+Read guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md completely and execute it for this repository.
+
+Use guide-templates/docs/ai-agent-guide.md as the source guide.
+Use guide-templates/docs/ai-workflows.md as the workflow-router reference.
+Use guide-templates/templates/AGENTS.template.md as the starting template for AGENTS.md.
+
+Create or update project-local files such as AGENTS.md, docs/ai-agent-guide.md, docs/architecture.md, docs/testing.md, and docs/ai-workflows.md based on the real repository.
+Inspect the real repository before documenting it.
+Show a concise plan before editing project-specific files.
+Do not invent architecture or commands.
+Mark unknown facts as “Needs confirmation”.
+Do not commit or push.
+
+After setup is complete and verified, delete the temporary guide-templates/ folder.
+```
+
+The temporary `guide-templates/` folder is only bootstrap material. The final project should keep the generated project-local docs, not the temporary source templates.
+
+### 4. Optional: download the full prompt set
+
+For daily short-prompt workflows, download the full `prompts/` directory from this repository or clone/download the repository. Plain `curl` is good for individual raw files, but not for downloading a GitHub directory in one command.
 
 ### How the AI agent will use these docs after setup
 

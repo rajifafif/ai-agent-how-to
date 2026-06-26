@@ -123,15 +123,49 @@ Jika command tidak bisa dijalankan, jelaskan alasannya dan command apa yang haru
 
 ## AI Agent Workflow
 
+Baca file ini dulu untuk setiap task. Lalu route permintaan user dalam bahasa natural ke workflow yang tepat. Developer tidak perlu paste prompt panjang jika intent sudah jelas.
+
+Jika repository ini punya `docs/ai-workflows.md`, baca file itu untuk workflow routing dan short-prompt behavior.
+
+| User meminta | Ikuti |
+| --- | --- |
+| Membuat project AI Agent Ready | `docs/ai-agent-guide.md` dan `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` jika ada |
+| Implement, build, add, atau mengubah behavior | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` jika ada |
+| Fix bug, debug, error, regression | `prompts/BUGFIX_PROMPT.md` jika ada |
+| Check current changes, verify, review diff | `prompts/VERIFY_CHANGES_PROMPT.md` jika ada |
+| Security review, auth/permission review | `prompts/SECURITY_REVIEW_PROMPT.md` jika ada |
+| Update docs | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` jika ada |
+| Prepare commit, commit rules, make commits | `prompts/COMMIT_PROMPT.md` jika ada |
+| Continue, resume, handoff | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` jika ada |
+
+Untuk request gabungan, jalankan workflow dalam urutan aman:
+
+1. Inspect status dan diff.
+2. Verify changes.
+3. Jalankan security review jika relevan.
+4. Update dokumentasi jika perlu.
+5. Prepare commit atau commit hanya jika diotorisasi eksplisit.
+6. Simpan handoff jika pekerjaan belum selesai.
+
+Aturan intent commit:
+
+- “prepare commit” berarti prepare-only mode. Jangan commit.
+- “commit rules” berarti jalankan safety check commit. Jangan commit kecuali commit juga diminta eksplisit.
+- “make commits”, “create commits”, atau “commit this” berarti commit-authorized mode setelah verification dan safety checks.
+- Izin commit tidak berarti izin push.
+- Jangan pakai `git add .` secara blind. Stage file eksplisit saja.
+
 Untuk feature work:
 
 1. Baca file ini.
 2. Inspect pattern yang sudah ada.
-3. Tulis plan singkat untuk pekerjaan non-trivial.
-4. Tanya klarifikasi jika requirement kurang jelas.
-5. Implement perubahan kecil dan fokus.
-6. Jalankan test/lint/typecheck/build yang relevan.
-7. Rangkum file yang berubah, command yang dijalankan, dan risiko.
+3. Restate behavior dan acceptance criteria.
+4. Tulis plan singkat untuk pekerjaan non-trivial.
+5. Tanya klarifikasi jika requirement kurang jelas.
+6. Implement perubahan kecil dan fokus.
+7. Tambahkan atau update test jika praktis.
+8. Jalankan test/lint/typecheck/build yang relevan.
+9. Rangkum file yang berubah, command yang dijalankan, risiko, dan commit status.
 
 Untuk debugging:
 
