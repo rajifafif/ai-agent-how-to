@@ -1,8 +1,11 @@
 # Panduan Penggunaan AI Agent
 
-Panduan ini menjelaskan cara tim menyiapkan project untuk AI coding agent dan cara memakai agent dengan aman dalam development harian.
+Panduan ini menjelaskan cara tim menyiapkan project untuk AI coding agent dan cara
+memakai agent dengan aman dalam development harian.
 
-Tujuannya bukan membiarkan AI mengambil semua keputusan. Tujuannya adalah memberi AI context project, command, aturan, dan safety boundary yang cukup supaya AI bisa membantu lebih cepat tanpa merusak codebase.
+Tujuannya bukan membiarkan AI mengambil semua keputusan. Tujuannya adalah memberi AI
+context project, command, aturan, dan safety boundary yang cukup supaya AI bisa membantu
+lebih cepat tanpa merusak codebase.
 
 ## Prinsip Utama
 
@@ -11,7 +14,8 @@ Tujuannya bukan membiarkan AI mengambil semua keputusan. Tujuannya adalah member
 3. AI tidak boleh commit kecuali diminta secara eksplisit.
 4. AI harus membuat plan sebelum perubahan besar atau berisiko.
 5. AI harus menjalankan check yang relevan sebelum bilang selesai.
-6. Human wajib review security, auth, permissions, database migrations, payments, data deletion, dan production config.
+6. Human wajib review security, auth, permissions, database migrations, payments, data
+   deletion, dan production config.
 7. Setiap project sebaiknya punya file `AGENTS.md` di root repository.
 
 ## Apa Itu “AI Agent Ready”
@@ -192,11 +196,13 @@ Return prioritized findings and a final checklist.
 
 ## Checklist Skill / Mode
 
-AI agent biasanya bekerja lebih baik jika diberi mode spesifik. Gunakan mode berikut sesuai tipe task.
+AI agent biasanya bekerja lebih baik jika diberi mode spesifik. Gunakan mode berikut
+sesuai tipe task.
 
 ### Planning Mode
 
-Gunakan untuk perubahan besar, task ambigu, architecture changes, atau pekerjaan multi-step.
+Gunakan untuk perubahan besar, task ambigu, architecture changes, atau pekerjaan
+multi-step.
 
 ```text
 Use planning mode.
@@ -222,7 +228,8 @@ Run verification commands.
 
 ### Test-Driven Development Mode
 
-Gunakan untuk critical logic, permissions, billing, data transformation, dan area berisiko tinggi.
+Gunakan untuk critical logic, permissions, billing, data transformation, dan area
+berisiko tinggi.
 
 ```text
 Use TDD.
@@ -334,7 +341,8 @@ atau:
 bun add @reduxjs/toolkit react-redux
 ```
 
-Jika project sudah menggunakan Apollo, React Query, atau SWR untuk server state, hindari duplikasi server state ke Redux kecuali ada alasan jelas.
+Jika project sudah menggunakan Apollo, React Query, atau SWR untuk server state, hindari
+duplikasi server state ke Redux kecuali ada alasan jelas.
 
 ## Backend Checklist
 
@@ -435,4 +443,5 @@ AI agent tidak boleh:
 2. Setiap PR hasil AI wajib human-reviewed.
 3. Setiap project wajib maintain AGENTS.md.
 4. Setiap project baru sebaiknya dibuat AI Agent Ready dari hari pertama.
-5. Setiap perubahan AI yang berisiko wajib direview dua kali: sekali oleh AI review mode, sekali oleh human.
+5. Setiap perubahan AI yang berisiko wajib direview dua kali: sekali oleh AI review
+   mode, sekali oleh human.

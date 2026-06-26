@@ -5,11 +5,13 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
 ## Lifecycle
 
 1. Prepare context
-   - Make sure the project has `AGENTS.md`, setup notes, architecture notes, and testing notes.
+   - Make sure the project has `AGENTS.md`, setup notes, architecture notes, and testing
+     notes.
    - If a fact is not known, write “Needs confirmation”.
 
 2. Define the task
-   - State the requested behavior, acceptance criteria, constraints, and out-of-scope items.
+   - State the requested behavior, acceptance criteria, constraints, and out-of-scope
+     items.
 
 3. Inspect before planning
    - The agent should inspect real files before proposing design.
@@ -17,7 +19,11 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
 
 4. Create a written plan
    - Keep the plan short and practical.
-   - Include affected files, risks, tests, documentation impact, and human approval points.
+   - For non-trivial feature or bugfix work, persist it under `docs/plans/` using
+     `templates/IMPLEMENTATION_PLAN.template.md`.
+   - Include affected files, risks, tests, documentation impact, and human approval
+     points.
+   - Update the plan as tasks are completed, blocked, or changed.
 
 5. Implement in small steps
    - Prefer focused diffs.
@@ -30,7 +36,8 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
    - Green tests help, but they do not prove the implementation is correct.
 
 7. Perform independent review
-   - Ask a separate review pass to inspect correctness, scope, maintainability, and missing tests.
+   - Ask a separate review pass to inspect correctness, scope, maintainability, and
+     missing tests.
 
 8. Perform security review
    - Treat security review as a separate step from implementation.
@@ -41,7 +48,8 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
    - Keep commands exact or clearly labeled as examples.
 
 10. Obtain human approval
-    - Human approval is required before commits and before sensitive changes are accepted.
+    - Human approval is required before commits and before sensitive changes are
+      accepted.
 
 11. Commit
     - Stage explicit files.
@@ -49,7 +57,9 @@ This lifecycle is for teams using AI coding agents as helpers, not decision owne
     - Do not push unless separately authorized.
 
 12. Persist unfinished state
-    - Save plans and handoffs in repository files.
+    - Save plans under `docs/plans/` and handoffs under `docs/handoffs/`.
+    - Use `templates/HANDOFF.template.md` when work cannot finish in one session.
+    - Record the exact next step so another agent or human can resume safely.
     - Do not rely on chat history as durable memory.
 
 ## Workflow Diagram
@@ -74,4 +84,6 @@ Handoff <- Commit <- Human Approval <- Docs <- Security Review <- Verify
 
 ## Sensitive Work Requires Human Review
 
-Mandatory human review applies to authentication, authorization, permissions, payments, personal data, data deletion, migrations, production configuration, cryptography, file uploads, and tenant or organization boundaries.
+Mandatory human review applies to authentication, authorization, permissions, payments,
+personal data, data deletion, migrations, production configuration, cryptography, file
+uploads, and tenant or organization boundaries.

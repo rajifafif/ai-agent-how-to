@@ -2,7 +2,16 @@
 
 AI chat sessions are temporary. The repository is the durable memory.
 
-Persist unfinished work in a plan or handoff file when a task spans sessions, is blocked, or needs human review before continuing.
+Persist unfinished work in a plan or handoff file when a task spans sessions, is
+blocked, or needs human review before continuing.
+
+Use these default locations unless the project chooses another convention:
+
+- `docs/plans/` for implementation plans and investigation plans.
+- `docs/handoffs/` for resume notes when work is unfinished.
+
+For non-trivial feature or bugfix work, create the plan before editing code and update
+it as the repository changes.
 
 ## Good Handoff Contents
 

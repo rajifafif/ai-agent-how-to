@@ -4,21 +4,12 @@ File ini berisi instruksi untuk AI coding agent yang bekerja di repository ini.
 
 ## Project Overview
 
-Project name: [isi]
-Purpose: [isi]
-Main users: [isi]
-Business domain: [isi]
+Project name: [isi] Purpose: [isi] Main users: [isi] Business domain: [isi]
 
 ## Tech Stack
 
-Backend: [isi]
-Frontend: [isi]
-Database: [isi]
-Queue/background jobs: [isi]
-Cache: [isi]
-Auth: [isi]
-Deployment: [isi]
-Package manager: [isi]
+Backend: [isi] Frontend: [isi] Database: [isi] Queue/background jobs: [isi] Cache: [isi]
+Auth: [isi] Deployment: [isi] Package manager: [isi]
 
 ## Local Setup
 
@@ -119,13 +110,16 @@ Sebelum selesai, jalankan command yang relevan:
 [isi]
 ```
 
-Jika command tidak bisa dijalankan, jelaskan alasannya dan command apa yang harus dijalankan manual.
+Jika command tidak bisa dijalankan, jelaskan alasannya dan command apa yang harus
+dijalankan manual.
 
 ## AI Agent Workflow
 
-Baca file ini dulu untuk setiap task. Lalu route permintaan user dalam bahasa natural ke workflow yang tepat. Developer tidak perlu paste prompt panjang jika intent sudah jelas.
+Baca file ini dulu untuk setiap task. Lalu route permintaan user dalam bahasa natural ke
+workflow yang tepat. Developer tidak perlu paste prompt panjang jika intent sudah jelas.
 
-Jika repository ini punya `docs/ai-workflows.md`, baca file itu untuk workflow routing dan short-prompt behavior.
+Jika repository ini punya `docs/ai-workflows.md`, baca file itu untuk workflow routing
+dan short-prompt behavior.
 
 | User meminta | Ikuti |
 | --- | --- |
@@ -150,8 +144,10 @@ Untuk request gabungan, jalankan workflow dalam urutan aman:
 Aturan intent commit:
 
 - “prepare commit” berarti prepare-only mode. Jangan commit.
-- “commit rules” berarti jalankan safety check commit. Jangan commit kecuali commit juga diminta eksplisit.
-- “make commits”, “create commits”, atau “commit this” berarti commit-authorized mode setelah verification dan safety checks.
+- “commit rules” berarti jalankan safety check commit. Jangan commit kecuali commit juga
+  diminta eksplisit.
+- “make commits”, “create commits”, atau “commit this” berarti commit-authorized mode
+  setelah verification dan safety checks.
 - Izin commit tidak berarti izin push.
 - Jangan pakai `git add .` secara blind. Stage file eksplisit saja.
 
@@ -160,20 +156,27 @@ Untuk feature work:
 1. Baca file ini.
 2. Inspect pattern yang sudah ada.
 3. Restate behavior dan acceptance criteria.
-4. Tulis plan singkat untuk pekerjaan non-trivial.
+4. Untuk pekerjaan non-trivial, create atau update persistent plan di
+   `docs/plans/` memakai `templates/IMPLEMENTATION_PLAN.template.md`.
 5. Tanya klarifikasi jika requirement kurang jelas.
 6. Implement perubahan kecil dan fokus.
-7. Tambahkan atau update test jika praktis.
-8. Jalankan test/lint/typecheck/build yang relevan.
-9. Rangkum file yang berubah, command yang dijalankan, risiko, dan commit status.
+7. Update plan saat pekerjaan selesai, blocked, atau berubah.
+8. Tambahkan atau update test jika praktis.
+9. Jalankan test/lint/typecheck/build yang relevan.
+10. Jika unfinished, create atau update handoff di `docs/handoffs/` memakai
+    `templates/HANDOFF.template.md`.
+11. Rangkum file yang berubah, command yang dijalankan, risiko, dan commit status.
 
 Untuk debugging:
 
 1. Reproduce atau inspect issue.
-2. Identifikasi root cause sebelum mengubah code.
-3. Buat fix minimal yang aman.
-4. Tambahkan regression test jika memungkinkan.
-5. Jalankan verification.
+2. Untuk bug non-trivial, create atau update persistent investigation plan di
+   `docs/plans/`.
+3. Identifikasi root cause sebelum mengubah code.
+4. Buat fix minimal yang aman.
+5. Tambahkan regression test jika memungkinkan.
+6. Jika unfinished, create atau update handoff di `docs/handoffs/`.
+7. Jalankan verification.
 
 ## Final Response Format
 

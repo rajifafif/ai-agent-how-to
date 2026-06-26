@@ -1,6 +1,7 @@
 # Documentation Guide
 
-Documentation should change when code changes affect how people install, run, use, test, deploy, review, or extend the project.
+Documentation should change when code changes affect how people install, run, use, test,
+deploy, review, or extend the project.
 
 ## Documentation Decision Table
 
@@ -35,4 +36,5 @@ Documentation usually does not need to change for:
 - Use “Needs confirmation” for unresolved repository-specific facts.
 - Keep discovered commands exact.
 - Label examples clearly when commands are not discovered from the repository.
-- Avoid duplicating the same procedure in many files; link to the canonical guide instead.
+- Avoid duplicating the same procedure in many files; link to the canonical guide
+  instead.

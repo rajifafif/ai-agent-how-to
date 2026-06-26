@@ -1,6 +1,7 @@
 # Commit Prompt
 
-Use this prompt to prepare commit boundaries or, only when explicitly authorized, create commits.
+Use this prompt to prepare commit boundaries or, only when explicitly authorized, create
+commits.
 
 ```text
 Read AGENTS.md first.

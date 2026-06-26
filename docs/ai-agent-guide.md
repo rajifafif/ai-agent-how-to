@@ -1,8 +1,11 @@
 # AI Agent Usage Guide
 
-This guide explains how the team should prepare projects for AI coding agents and how to use agents safely in daily development.
+This guide explains how the team should prepare projects for AI coding agents and how to
+use agents safely in daily development.
 
-The goal is not to let AI decide everything. The goal is to give the AI enough project context, commands, rules, and safety boundaries so it can help faster without damaging the codebase.
+The goal is not to let AI decide everything. The goal is to give the AI enough project
+context, commands, rules, and safety boundaries so it can help faster without damaging
+the codebase.
 
 ## Core Principles
 
@@ -11,7 +14,8 @@ The goal is not to let AI decide everything. The goal is to give the AI enough p
 3. AI must not commit unless explicitly asked.
 4. AI must plan before large or risky changes.
 5. AI must run relevant checks before saying done.
-6. Human must review security, auth, permissions, database migrations, payments, data deletion, and production config.
+6. Human must review security, auth, permissions, database migrations, payments, data
+   deletion, and production config.
 7. Every project should have an `AGENTS.md` file at the repository root.
 
 ## What “AI Agent Ready” Means
@@ -192,7 +196,8 @@ Return prioritized findings and a final checklist.
 
 ## Skill / Mode Checklist
 
-AI agents often work better when given a specific mode. Use these modes depending on task type.
+AI agents often work better when given a specific mode. Use these modes depending on
+task type.
 
 ### Planning Mode
 
@@ -222,7 +227,8 @@ Run verification commands.
 
 ### Test-Driven Development Mode
 
-Use for critical logic, permissions, billing, data transformation, and anything high-risk.
+Use for critical logic, permissions, billing, data transformation, and anything
+high-risk.
 
 ```text
 Use TDD.
@@ -334,7 +340,8 @@ or:
 bun add @reduxjs/toolkit react-redux
 ```
 
-If the project already uses Apollo, React Query, or SWR for server state, avoid duplicating server state into Redux unless there is a clear reason.
+If the project already uses Apollo, React Query, or SWR for server state, avoid
+duplicating server state into Redux unless there is a clear reason.
 
 ## Backend Checklist
 

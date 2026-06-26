@@ -54,7 +54,8 @@ Do not split so much that each commit cannot stand on its own.
 
 ## Commit Messages
 
-Follow the project’s existing convention first. Conventional Commit examples are optional:
+Follow the project’s existing convention first. Conventional Commit examples are
+optional:
 
 - `feat(auth): add password reset rate limiting`
 - `fix(invoice): preserve tax value during update`

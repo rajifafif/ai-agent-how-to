@@ -4,21 +4,13 @@ This file gives instructions to AI coding agents working in this repository.
 
 ## Project Overview
 
-Project name: [fill in]
-Purpose: [fill in]
-Main users: [fill in]
-Business domain: [fill in]
+Project name: [fill in] Purpose: [fill in] Main users: [fill in] Business domain: [fill
+in]
 
 ## Tech Stack
 
-Backend: [fill in]
-Frontend: [fill in]
-Database: [fill in]
-Queue/background jobs: [fill in]
-Cache: [fill in]
-Auth: [fill in]
-Deployment: [fill in]
-Package manager: [fill in]
+Backend: [fill in] Frontend: [fill in] Database: [fill in] Queue/background jobs: [fill
+in] Cache: [fill in] Auth: [fill in] Deployment: [fill in] Package manager: [fill in]
 
 ## Local Setup
 
@@ -123,9 +115,12 @@ If a command cannot run, explain why and what should be run manually.
 
 ## AI Agent Workflow
 
-Read this file first for every task. Then route the user's natural-language request to the right workflow. Developers should not need to paste long prompts when the intent is clear.
+Read this file first for every task. Then route the user's natural-language request to
+the right workflow. Developers should not need to paste long prompts when the intent is
+clear.
 
-If this repository includes `docs/ai-workflows.md`, read it for workflow routing and short-prompt behavior.
+If this repository includes `docs/ai-workflows.md`, read it for workflow routing and
+short-prompt behavior.
 
 | User asks for | Follow |
 | --- | --- |
@@ -150,8 +145,10 @@ For combined requests, run workflows in safe lifecycle order:
 Commit intent rules:
 
 - “prepare commit” means prepare-only mode. Do not commit.
-- “commit rules” means apply commit safety checks. Do not commit unless commit is also explicitly requested.
-- “make commits”, “create commits”, or “commit this” means commit-authorized mode after verification and safety checks.
+- “commit rules” means apply commit safety checks. Do not commit unless commit is also
+  explicitly requested.
+- “make commits”, “create commits”, or “commit this” means commit-authorized mode after
+  verification and safety checks.
 - Commit permission does not imply push permission.
 - Never use `git add .` blindly. Stage explicit files only.
 
@@ -160,20 +157,27 @@ For feature work:
 1. Read this file.
 2. Inspect existing patterns.
 3. Restate requested behavior and acceptance criteria.
-4. Write a short plan for non-trivial work.
+4. For non-trivial work, create or update a persistent plan in `docs/plans/`
+   using `templates/IMPLEMENTATION_PLAN.template.md`.
 5. Ask clarification if requirements are unclear.
 6. Implement small focused changes.
-7. Add or update tests where practical.
-8. Run relevant tests/lint/typecheck/build.
-9. Summarize changed files, commands run, risks, and commit status.
+7. Keep the plan updated as work progresses.
+8. Add or update tests where practical.
+9. Run relevant tests/lint/typecheck/build.
+10. If unfinished, create or update a handoff in `docs/handoffs/` using
+    `templates/HANDOFF.template.md`.
+11. Summarize changed files, commands run, risks, and commit status.
 
 For debugging:
 
 1. Reproduce or inspect the issue.
-2. Identify root cause before changing code.
-3. Make the minimal safe fix.
-4. Add regression test if possible.
-5. Run verification.
+2. For non-trivial bugs, create or update a persistent investigation plan in
+   `docs/plans/`.
+3. Identify root cause before changing code.
+4. Make the minimal safe fix.
+5. Add regression test if possible.
+6. If unfinished, create or update a handoff in `docs/handoffs/`.
+7. Run verification.
 
 ## Final Response Format
 

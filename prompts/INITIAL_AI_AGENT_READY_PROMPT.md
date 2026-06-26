@@ -21,8 +21,11 @@ If no source guide is available because this is an empty, legacy, or not-yet-pre
 If `guide-templates/` exists:
 - Treat it as temporary source material only.
 - Use it to generate project-local files.
+- Install the reusable prompt files into `prompts/` before deleting `guide-templates/`.
+- Install the reusable template files into `templates/` before deleting `guide-templates/`.
+- Create `docs/plans/` and `docs/handoffs/` when the project will use persistent plans or handoffs.
 - Do not leave final project instructions pointing to `guide-templates/`.
-- Delete `guide-templates/` after setup is complete and verified, unless the user asks to keep it.
+- Delete `guide-templates/` only after setup is complete, verified, and the required prompt/template files exist in their final locations, unless the user asks to keep it.
 
 Before editing, inspect the real repository. Do not invent architecture, commands, tools, or workflows.
 
@@ -31,15 +34,17 @@ Tasks:
 2. Create or update AGENTS.md with project-specific instructions for AI coding agents.
 3. Add a workflow router to AGENTS.md so short natural-language requests map to the right workflow without requiring developers to paste long prompts.
 4. Create or update docs/ai-workflows.md if the repository uses workflow-specific agent guidance.
-5. Document current architecture, important folders, boundaries, and where business logic belongs.
-6. Document testing and verification commands that actually exist. If a command is only a recommendation, label it as an example or recommendation.
-7. Review README.md setup instructions and propose or make practical improvements if they are incomplete.
-8. Review `.env.example` safely. Do not expose secrets. Document required variables without copying real secret values.
-9. Check package scripts, Makefile, Composer scripts, Go commands, shell scripts, or equivalent command runners.
-10. If information cannot be known from the repository, write “Needs confirmation”.
-11. Do not use destructive commands.
-12. Do not modify unrelated files.
-13. Do not commit automatically.
+5. Create or update `docs/plans/` and `docs/handoffs/` conventions for persistent task state.
+6. Install reusable prompts into `prompts/` and reusable templates into `templates/` when using a temporary bootstrap folder.
+7. Document current architecture, important folders, boundaries, and where business logic belongs.
+8. Document testing and verification commands that actually exist. If a command is only a recommendation, label it as an example or recommendation.
+9. Review README.md setup instructions and propose or make practical improvements if they are incomplete.
+10. Review `.env.example` safely. Do not expose secrets. Document required variables without copying real secret values.
+11. Check package scripts, Makefile, Composer scripts, Go commands, shell scripts, or equivalent command runners.
+12. If information cannot be known from the repository, write “Needs confirmation”.
+13. Do not use destructive commands.
+14. Do not modify unrelated files.
+15. Do not commit automatically.
 
 Before editing:
 - Show a concise plan.

@@ -1,6 +1,7 @@
 # Verification Guide
 
-Verification proves what was actually checked. It must rely on command output, inspected diffs, or explicit manual checks, not agent confidence.
+Verification proves what was actually checked. It must rely on command output, inspected
+diffs, or explicit manual checks, not agent confidence.
 
 ## Verification Steps
 
@@ -9,7 +10,8 @@ Verification proves what was actually checked. It must rely on command output, i
    - Confirm there are no unrelated edits.
 
 2. Diff review
-   - Look for debug statements, commented-out code, temporary files, generated files, formatting-only churn, and hardcoded secrets.
+   - Look for debug statements, commented-out code, temporary files, generated files,
+     formatting-only churn, and hardcoded secrets.
 
 3. Automated tests
    - Run the smallest relevant test first, then broader suites when practical.
@@ -32,23 +34,27 @@ Verification proves what was actually checked. It must rely on command output, i
    - Use focused scenarios tied to acceptance criteria.
 
 9. Browser checks for frontend work
-   - Check visible behavior, loading states, error states, permissions, and responsive layouts when relevant.
+   - Check visible behavior, loading states, error states, permissions, and responsive
+     layouts when relevant.
 
 10. API checks for backend work
     - Check status codes, validation errors, authorization, and response shape.
 
 11. Compatibility checks for legacy projects
-    - Confirm syntax and runtime compatibility, especially for PHP 5.6, PHP 7.4, older jQuery, and older browsers.
+    - Confirm syntax and runtime compatibility, especially for PHP 5.6, PHP 7.4, older
+      jQuery, and older browsers.
 
 12. Record exact commands and results
     - Never write “tests passed” unless the command ran and exited successfully.
 
 13. Handle commands that cannot run
-    - List the command and reason: missing dependency, missing service, credentials unavailable, environment unavailable, or Needs confirmation.
+    - List the command and reason: missing dependency, missing service, credentials
+      unavailable, environment unavailable, or Needs confirmation.
 
 ## Example Commands
 
-These examples are not guaranteed project commands. Use commands discovered from the target repository first.
+These examples are not guaranteed project commands. Use commands discovered from the
+target repository first.
 
 ### Native PHP examples
 
@@ -109,4 +115,5 @@ When automated tests are missing, risk increases. Compensate with:
 - rollback planning
 - human review
 
-Lack of tests is not permission to skip verification. It means verification must be more explicit.
+Lack of tests is not permission to skip verification. It means verification must be more
+explicit.

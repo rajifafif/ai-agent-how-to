@@ -1,6 +1,8 @@
 # AI Workflow Router
 
-This file helps agents turn short natural-language requests into the right workflow. It is meant to be referenced from `AGENTS.md` so developers do not need to paste long prompts during daily work.
+This file helps agents turn short natural-language requests into the right workflow. It
+is meant to be referenced from `AGENTS.md` so developers do not need to paste long
+prompts during daily work.
 
 ## How Agents Should Use This File
 
@@ -46,6 +48,19 @@ Expected agent behavior:
 8. Stage explicit files only.
 9. Create focused commits.
 10. Do not push unless separately authorized.
+
+## Persistent Plans and Handoffs
+
+For non-trivial feature or bugfix work, use repository files as durable task
+memory:
+
+- Store implementation or investigation plans under `docs/plans/`.
+- Use `templates/IMPLEMENTATION_PLAN.template.md` when available.
+- Store unfinished-work handoffs under `docs/handoffs/`.
+- Use `templates/HANDOFF.template.md` when available.
+- Update plans and handoffs as work changes.
+
+Do not rely on chat history as the only record of current status.
 
 ## Commit Intent Rules
 
@@ -99,13 +114,16 @@ For portable agent behavior across tools:
 1. Put `AGENTS.md` at the repository root.
 2. Add a workflow router section to `AGENTS.md`.
 3. Point the router to this file and the detailed prompt files.
-4. Ask developers to start normal tasks with `Read AGENTS.md first` when their tool does not automatically read it.
+4. Ask developers to start normal tasks with `Read AGENTS.md first` when their tool does
+   not automatically read it.
 
-Some agents automatically read `AGENTS.md` or similar repository instruction files. Others need to be told explicitly. The repository should support both.
+Some agents automatically read `AGENTS.md` or similar repository instruction files.
+Others need to be told explicitly. The repository should support both.
 
 ## Optional Hermes Usage
 
-Hermes users can load reusable procedures as skills, but this repository remains agent-agnostic.
+Hermes users can load reusable procedures as skills, but this repository remains
+agent-agnostic.
 
 Optional Hermes examples:
 
@@ -117,7 +135,8 @@ hermes -s ai-agent-development-lifecycle
 /skill ai-agent-development-lifecycle
 ```
 
-Those commands are examples only. They require a skill with that name to exist in the user's Hermes profile.
+Those commands are examples only. They require a skill with that name to exist in the
+user's Hermes profile.
 
 ## Non-Negotiable Safety Rules
 
