@@ -1,21 +1,77 @@
 # AI Agent How-To
 
-Guide and templates for making team projects AI Agent Ready.
+Guide, prompts, and templates for making team projects AI Agent Ready and for running a safe AI-assisted development lifecycle.
 
-This repository is meant to be copied into existing projects before the team starts using AI agents heavily.
+This repository is meant to be copied into existing projects before the team starts using AI agents heavily. It is also a practical workshop kit for developers learning to use AI coding agents safely.
 
 ## Files
 
 English version:
 
-- `docs/ai-agent-guide.md` — main team guide with checklist, workflows, safety rules, skill modes, and prompts.
+- `docs/ai-agent-guide.md` — main team guide with checklist, workflows, safety rules, skill modes, and starter prompts.
+- `prompts/` — copy-paste prompts for common AI-assisted development tasks.
+- `docs/development-lifecycle.md` — end-to-end lifecycle: Prepare → Plan → Implement → Verify → Security Review → Update Documentation → Commit → Handoff or Continue.
+- `docs/verification-guide.md` — how to verify changes with real commands and evidence.
+- `docs/security-review-guide.md` — when and how to run separate security review.
+- `docs/documentation-guide.md` — when code changes require documentation updates.
+- `docs/commit-guide.md` — safe commit lifecycle for AI-assisted work.
+- `docs/unfinished-work-guide.md` — how to persist work outside chat.
 - `templates/AGENTS.template.md` — copy this to a project's root as `AGENTS.md`, then ask the AI agent to fill it with project-specific details.
+- `templates/IMPLEMENTATION_PLAN.template.md` — reusable implementation plan template.
+- `templates/HANDOFF.template.md` — reusable handoff template.
+- `templates/SECURITY_REVIEW.template.md` — reusable security review report template.
+- `templates/COMPLETION_REPORT.template.md` — reusable final task report template.
 
 Indonesian version:
 
 - `README.id.md`
 - `docs/ai-agent-guide.id.md`
 - `templates/AGENTS.template.id.md`
+
+The newer lifecycle guides, prompts, and templates are currently English-only. See `README.id.md` for the recommended translation strategy.
+
+## Suggested Workshop Flow
+
+1. Make a project AI Agent Ready.
+   - Prompt: `prompts/INITIAL_AI_AGENT_READY_PROMPT.md`
+   - Guide: `docs/ai-agent-guide.md`
+   - Template: `templates/AGENTS.template.md`
+2. Implement a small feature.
+   - Prompt: `prompts/FEATURE_IMPLEMENTATION_PROMPT.md`
+   - Template: `templates/IMPLEMENTATION_PLAN.template.md`
+3. Verify the change.
+   - Prompt: `prompts/VERIFY_CHANGES_PROMPT.md`
+   - Guide: `docs/verification-guide.md`
+4. Run a security review.
+   - Prompt: `prompts/SECURITY_REVIEW_PROMPT.md`
+   - Guide: `docs/security-review-guide.md`
+   - Template: `templates/SECURITY_REVIEW.template.md`
+5. Update documentation.
+   - Prompt: `prompts/UPDATE_DOCUMENTATION_PROMPT.md`
+   - Guide: `docs/documentation-guide.md`
+6. Prepare a commit.
+   - Prompt: `prompts/COMMIT_PROMPT.md`
+   - Guide: `docs/commit-guide.md`
+   - Template: `templates/COMPLETION_REPORT.template.md`
+7. Save a handoff and continue in a new session.
+   - Prompt: `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md`
+   - Guide: `docs/unfinished-work-guide.md`
+   - Template: `templates/HANDOFF.template.md`
+
+For the complete lifecycle, read `docs/development-lifecycle.md`.
+
+## Which Prompt Should I Use?
+
+| Situation | Prompt |
+| --- | --- |
+| Preparing an existing project | `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
+| Building a feature | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` |
+| Fixing a bug | `prompts/BUGFIX_PROMPT.md` |
+| Checking completed code | `prompts/VERIFY_CHANGES_PROMPT.md` |
+| Reviewing security | `prompts/SECURITY_REVIEW_PROMPT.md` |
+| Synchronizing docs | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` |
+| Preparing commits | `prompts/COMMIT_PROMPT.md` |
+| Resuming previous work | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` |
 
 ## First Step Checklist for Any Project
 
@@ -57,9 +113,9 @@ Or use your preferred agent CLI/tool.
 
 ### 4. Ask the AI agent to read the guide and execute the setup
 
-Use the first prompt below.
+Use `prompts/INITIAL_AI_AGENT_READY_PROMPT.md`.
 
-Important: the prompt tells the agent to read `docs/ai-agent-guide.md` first, then execute the AI Agent Ready setup based on that guide.
+Important: the prompt tells the agent to read `docs/ai-agent-guide.md` first, inspect the actual repository, show a plan before editing, and never invent architecture or commands.
 
 ### How the AI agent will use these docs after setup
 
@@ -91,126 +147,29 @@ Check especially:
 - `.env.example`
 - package scripts / Makefile commands
 
-### 6. Run the review prompt
+### 6. Verify and review the setup
 
-After first setup, run the review prompt below to audit the AI Agent Ready setup before sharing with team.
+Use:
+
+- `prompts/VERIFY_CHANGES_PROMPT.md`
+- `prompts/SECURITY_REVIEW_PROMPT.md` when security-sensitive rules or project setup are involved
 
 ### 7. Commit only after human review
 
-AI should not commit by default. Human reviews diff, then human commits.
-
-## First Prompt: Make Project AI Agent Ready
-
-Copy-paste this into the AI agent from the target project root.
-
-```text
-Please make this project AI Agent Ready.
-
-First, read docs/ai-agent-guide.md completely and follow it as the operating guide for this setup.
-
-Then execute the AI Agent Ready setup for this repository.
-
-Tasks:
-1. Inspect the repository structure, tech stack, package manager, test commands, lint commands, typecheck commands, migration system, and local setup flow.
-2. Create or update AGENTS.md with clear project-specific instructions for AI coding agents.
-3. Add or update docs/ai-workflows.md explaining how agents should work in this repo.
-4. Add or update docs/architecture.md summarizing current architecture, important folders, and boundaries.
-5. Add or update docs/testing.md with exact commands for install, dev, test, lint, typecheck, build, migration, and known caveats.
-6. Check if README.md has enough local setup instructions. If missing, propose or add improvements.
-7. Check .env.example exists and is safe. Do not expose secrets.
-8. Check package scripts, Makefile, or equivalent command runners. Recommend missing scripts if needed.
-9. Check frontend state management needs. If this is a React project, only recommend Redux Toolkit / RTK if global client state is actually needed. Do not install dependencies without explaining why.
-10. Do not commit changes.
-11. Before editing, show your plan.
-12. After editing, show changed files and commands verified.
-
-Important rules:
-- Follow docs/ai-agent-guide.md.
-- Follow existing project conventions.
-- Do not invent architecture that does not exist.
-- Base documentation on actual files.
-- If uncertain, write “Needs confirmation”.
-- Do not use destructive commands.
-- Do not change unrelated files.
-- Prefer minimal, safe changes.
-```
-
-## Review Prompt: Audit AI Agent Ready Setup
-
-Run this after the first prompt is done.
-
-```text
-Review the AI Agent Ready setup.
-
-First, read docs/ai-agent-guide.md and AGENTS.md.
-
-Check:
-1. Is AGENTS.md specific enough for this project?
-2. Are setup/test/build/lint/typecheck/migration commands accurate?
-3. Are dangerous or unclear instructions removed?
-4. Are architecture docs based on actual code?
-5. Are security rules included?
-6. Are git rules included, especially “do not commit unless asked”?
-7. Are auth, permissions, database, and tenant/org conventions documented where relevant?
-8. Are frontend state management recommendations accurate and not blindly adding RTK?
-9. Are missing scripts or tooling clearly marked as recommendations instead of fake existing commands?
-10. Is this ready for other team members to use?
-
-Give me:
-- Missing items
-- Risky instructions
-- Incorrect assumptions
-- Recommended edits
-- Final readiness verdict
-
-Do not commit.
-```
+AI should not commit by default. Human reviews the diff, verification evidence, security findings if relevant, and documentation updates before authorizing a commit.
 
 ## Recommended Team Workflow
 
-For every task, team members should start with enough context and specify the agent mode.
+For every task, team members should start with enough context and choose the right prompt.
 
-### Feature prompt
+A practical default sequence:
 
-```text
-Read AGENTS.md first.
-Use planning mode before editing.
-Implement this feature: [describe feature].
-
-Rules:
-- Follow existing patterns.
-- Keep changes small.
-- Do not commit.
-- Run relevant checks before final response.
-
-Final response must include summary, files changed, commands run, and risks.
-```
-
-### Bugfix prompt
-
-```text
-Read AGENTS.md first.
-Use systematic debugging.
-Fix this bug: [describe bug].
-
-Rules:
-- Reproduce or inspect first.
-- Identify root cause before changing code.
-- Make minimal safe fix.
-- Add regression test if possible.
-- Do not commit.
-```
-
-### PR review prompt
-
-```text
-Read AGENTS.md first.
-Review current changes like a senior engineer.
-
-Check correctness, security, auth/permission, tenant/org scoping, migrations, performance, tests, and unrelated changes.
-Do not commit.
-Return prioritized findings.
-```
+1. `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` or `prompts/BUGFIX_PROMPT.md`
+2. `prompts/VERIFY_CHANGES_PROMPT.md`
+3. `prompts/SECURITY_REVIEW_PROMPT.md` when relevant
+4. `prompts/UPDATE_DOCUMENTATION_PROMPT.md`
+5. `prompts/COMMIT_PROMPT.md` in prepare-only mode unless commit is explicitly authorized
+6. `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` if work spans sessions
 
 ## Minimum Project Readiness Checklist
 
@@ -243,3 +202,12 @@ Recommend RTK when:
 Do not recommend RTK only because the project uses React.
 
 If the project already uses React Query, SWR, or Apollo for server state, avoid duplicating server state into Redux unless there is a clear reason.
+
+## Command Accuracy Rule
+
+Commands in this repository are either:
+
+- discovered from a target project and documented exactly there, or
+- examples clearly labeled as examples.
+
+Do not claim that an example command exists in a target project until the repository has been inspected.
