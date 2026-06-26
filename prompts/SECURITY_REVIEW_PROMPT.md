@@ -7,6 +7,8 @@ Read AGENTS.md first.
 
 Perform an adversarial security review of the current diff. Assume the change may contain vulnerabilities until evidence shows otherwise.
 
+Treat this AI review as an additional evaluator, not a replacement for security testing or mandatory human approval.
+
 Do not modify code. Do not commit.
 
 Review for:
