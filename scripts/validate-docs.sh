@@ -30,8 +30,36 @@ for f in "${required[@]}"; do
   fi
 done
 
+extra_required=(
+  standards/README.md
+  guides/README.md
+  checklists/README.md
+  skills/README.md
+)
+for f in "${extra_required[@]}"; do
+  if [ -e "$f" ]; then
+    printf 'OK   restructured %s\n' "$f"
+  else
+    printf 'WARN restructured path missing %s\n' "$f"
+  fi
+done
+
+if [ -d skills ]; then
+  missing_skill=0
+  for d in skills/*; do
+    [ -d "$d" ] || continue
+    if [ -f "$d/SKILL.md" ]; then
+      printf 'OK   skill %s\n' "$d/SKILL.md"
+    else
+      printf 'FAIL missing skill file %s/SKILL.md\n' "$d"
+      missing_skill=$((missing_skill + 1))
+    fi
+  done
+  if [ "$missing_skill" -ne 0 ]; then fail=$((fail + 1)); fi
+fi
+
 python3 - <<'PY'
-import os, re, sys
+import os, sys
 names={}
 dups=[]
 for dp,_,fs in os.walk('prompts') if os.path.isdir('prompts') else []:
