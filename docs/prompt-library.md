@@ -37,8 +37,8 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 | Resume unfinished work | `skills/continue-unfinished-work/SKILL.md` | `prompts/continue-unfinished-work.md` |
 | Prepare QA handover | `guides/qa-handover-workflow.md` | `skills/qa-handover/SKILL.md` |
 | Check release readiness | `checklists/release-readiness-checklist.md` | `checklists/release-readiness-checklist.md` |
-| Validate environment/deployment readiness | `docs/ARCHIVE/devops/environment-standard.md`, `docs/ARCHIVE/devops/deployment-readiness.md` | `templates/ENVIRONMENT_INVENTORY.template.md`, `templates/DEPLOYMENT_READINESS_CHECKLIST.template.md` |
-| Incident triage / RCA | `docs/ARCHIVE/incidents/incident-response-playbook.md` | `docs/ARCHIVE/incidents/incident-response-playbook.md`, `templates/ROOT_CAUSE_ANALYSIS.template.md` |
+| Validate environment/deployment readiness | `templates/ARCHIVE/ENVIRONMENT_INVENTORY.template.md` | Archived/specialized workflow |
+| Incident triage / RCA | `templates/ARCHIVE/PRODUCTION_INCIDENT_REPORT.template.md` | Archived/specialized workflow |
 
 ## Short Prompt Examples
 

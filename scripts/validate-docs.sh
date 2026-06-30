@@ -46,7 +46,16 @@ extra_required=(
   checklists/README.md
   checklists/repository-ai-readiness-checklist.md
   skills/README.md
+  templates/AGENTS.template.md
+  templates/PROJECT_CONTEXT.template.md
+  templates/IMPLEMENTATION_PLAN.template.md
+  templates/HANDOFF.template.md
+  templates/CHANGE_PLAN.template.md
+  templates/PR_CHECKLIST.template.md
+  templates/SECURITY_REVIEW.template.md
+  templates/REPOSITORY_READINESS_CHECKLIST.template.md
   templates/STARTER_PACK/README.md
+  templates/AI_AGENT_READY_REPOSITORY/README.md
   prompts/initialize-project.md
   prompts/plan-feature.md
   prompts/implement-feature.md

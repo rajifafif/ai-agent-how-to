@@ -7,6 +7,9 @@ if [ ! -d templates ]; then
 fi
 for f in templates/*.template.md; do
   [ -e "$f" ] || continue
+  case "$f" in
+    templates/ARCHIVE/*) continue ;;
+  esac
   if grep -q 'Needs confirmation' "$f"; then
     printf 'OK   %s has configurable placeholders\n' "$f"
   else
