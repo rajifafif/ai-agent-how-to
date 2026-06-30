@@ -1,324 +1,158 @@
-# AI Agent How-To
-
-Guide, prompts, and templates for making team projects AI Agent Ready and for running a
-safe AI-assisted development lifecycle.
-
-This repository is meant to be copied into existing projects before the team starts
-using AI agents heavily. It is also a practical workshop kit for developers learning to
-use AI coding agents safely.
-
-## Files
-
-English version:
-
-- `docs/ai-agent-guide.md` — main team guide with checklist, workflows, safety rules,
-skill modes, and starter prompts.
-- `prompts/` — copy-paste prompts for common AI-assisted development tasks.
-- `docs/ai-workflows.md` — workflow router that lets agents map short natural-language
-requests to the right detailed prompt.
-- `docs/development-lifecycle.md` — end-to-end lifecycle: Prepare → Plan → Implement →
-Verify → Security Review → Update Documentation → Commit → Handoff or Continue.
-- `docs/planning-loop-guide.md` — how to split larger tasks into phased plans,
-verification checkpoints, handoffs, and completion decisions.
-- `docs/verification-guide.md` — how to verify changes with real commands and evidence.
-- `docs/security-review-guide.md` — when and how to run separate security review.
-- `docs/documentation-guide.md` — when code changes require documentation updates.
-- `docs/commit-guide.md` — safe commit lifecycle for AI-assisted work.
-- `docs/unfinished-work-guide.md` — how to persist work outside chat.
-- `templates/AGENTS.template.md` — copy this to a project's root as `AGENTS.md`, then
-ask the AI agent to fill it with project-specific details.
-- `templates/IMPLEMENTATION_PLAN.template.md` — reusable implementation plan template.
-- `templates/HANDOFF.template.md` — reusable handoff template.
-- `templates/SECURITY_REVIEW.template.md` — reusable security review report template.
-- `templates/COMPLETION_REPORT.template.md` — reusable final task report template.
-
-Indonesian version:
-
-- `README.id.md`
-- `docs/ai-agent-guide.id.md`
-- `templates/AGENTS.template.id.md`
-
-The newer lifecycle guides, prompts, and templates are currently English-only. See
-`README.id.md` for the recommended translation strategy.
-
-## Suggested Workshop Flow
-
-1. Make a project AI Agent Ready.
-   - Prompt: `prompts/INITIAL_AI_AGENT_READY_PROMPT.md`
-   - Guide: `docs/ai-agent-guide.md`
-   - Template: `templates/AGENTS.template.md`
-2. Implement a small feature.
-   - Prompt: `prompts/FEATURE_IMPLEMENTATION_PROMPT.md`
-   - Template: `templates/IMPLEMENTATION_PLAN.template.md`
-3. For larger tasks, run the planning loop before implementation.
-   - Prompt: `prompts/PLANNING_LOOP_PROMPT.md`
-   - Guide: `docs/planning-loop-guide.md`
-   - Template: `templates/IMPLEMENTATION_PLAN.template.md`
-4. Verify the change.
-   - Prompt: `prompts/VERIFY_CHANGES_PROMPT.md`
-   - Guide: `docs/verification-guide.md`
-5. Run a security review.
-   - Prompt: `prompts/SECURITY_REVIEW_PROMPT.md`
-   - Guide: `docs/security-review-guide.md`
-   - Template: `templates/SECURITY_REVIEW.template.md`
-6. Update documentation.
-   - Prompt: `prompts/UPDATE_DOCUMENTATION_PROMPT.md`
-   - Guide: `docs/documentation-guide.md`
-7. Prepare a commit.
-   - Prompt: `prompts/COMMIT_PROMPT.md`
-   - Guide: `docs/commit-guide.md`
-   - Template: `templates/COMPLETION_REPORT.template.md`
-8. Save a handoff and continue in a new session.
-   - Prompt: `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md`
-   - Guide: `docs/unfinished-work-guide.md`
-   - Template: `templates/HANDOFF.template.md`
-
-For the complete lifecycle, read `docs/development-lifecycle.md`.
-
-## Which Prompt Should I Use?
-
-| Situation | Prompt |
-| --- | --- |
-| Preparing an existing project | `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
-| Planning larger work | `prompts/PLANNING_LOOP_PROMPT.md` |
-| Building a feature | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` |
-| Fixing a bug | `prompts/BUGFIX_PROMPT.md` |
-| Checking completed code | `prompts/VERIFY_CHANGES_PROMPT.md` |
-| Reviewing security | `prompts/SECURITY_REVIEW_PROMPT.md` |
-| Synchronizing docs | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` |
-| Preparing commits | `prompts/COMMIT_PROMPT.md` |
-| Resuming previous work | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` |
-
-## Making Prompts Easy to Use
-
-Developers should not need to paste long prompt files during daily work.
-
-Use this pattern:
-
-1. Copy `templates/AGENTS.template.md` to the target project as `AGENTS.md`.
-2. Keep or copy `docs/ai-workflows.md` into the target project.
-3. Keep or copy the `prompts/` directory when the team wants detailed reusable
-checklists.
-4. Ask the agent to read `AGENTS.md` first.
-5. Use short natural-language prompts.
-
-Example short prompts:
-
-```text
-Read AGENTS.md first. Implement: [feature].
-```
-
-```text
-Read AGENTS.md first. Verify current changes.
-```
-
-```text
-Read AGENTS.md first. Check current code changes, apply commit rules, and make focused commits.
-```
-
-The `AGENTS.md` workflow router maps these short prompts to the detailed prompt files
-automatically when the agent follows repository instructions.
-
-Prompt files are still useful as references, workshop handouts, and fallback copy-paste
-prompts for tools that do not reliably read repository instructions.
-
-## First Step Checklist for Any Project
-
-Use this checklist when preparing a new or existing project for AI-assisted development.
-
-### 1. Download temporary guide templates into the target project
-
-Start from the project you want to prepare. Download this workshop kit into a temporary
-`guide-templates/` folder so the agent can read the guide without mixing source
-templates into the final project docs.
-
-Example:
-
-```bash
-cd /path/to/target-project
-mkdir -p guide-templates/docs guide-templates/templates guide-templates/prompts
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-agent-guide.md -o guide-templates/docs/ai-agent-guide.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/ai-workflows.md -o guide-templates/docs/ai-workflows.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/docs/planning-loop-guide.md -o guide-templates/docs/planning-loop-guide.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/AGENTS.template.md -o guide-templates/templates/AGENTS.template.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/IMPLEMENTATION_PLAN.template.md -o guide-templates/templates/IMPLEMENTATION_PLAN.template.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/HANDOFF.template.md -o guide-templates/templates/HANDOFF.template.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/SECURITY_REVIEW.template.md -o guide-templates/templates/SECURITY_REVIEW.template.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/templates/COMPLETION_REPORT.template.md -o guide-templates/templates/COMPLETION_REPORT.template.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/INITIAL_AI_AGENT_READY_PROMPT.md -o guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/PLANNING_LOOP_PROMPT.md -o guide-templates/prompts/PLANNING_LOOP_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/FEATURE_IMPLEMENTATION_PROMPT.md -o guide-templates/prompts/FEATURE_IMPLEMENTATION_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/BUGFIX_PROMPT.md -o guide-templates/prompts/BUGFIX_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/VERIFY_CHANGES_PROMPT.md -o guide-templates/prompts/VERIFY_CHANGES_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/SECURITY_REVIEW_PROMPT.md -o guide-templates/prompts/SECURITY_REVIEW_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/UPDATE_DOCUMENTATION_PROMPT.md -o guide-templates/prompts/UPDATE_DOCUMENTATION_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/COMMIT_PROMPT.md -o guide-templates/prompts/COMMIT_PROMPT.md
-curl -fsSL https://raw.githubusercontent.com/rajifafif/ai-agent-how-to/main/prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md -o guide-templates/prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md
-```
-
-### 2. Open the target project with your AI agent
-
-Start the AI agent from the target project root after `guide-templates/` exists.
-
-Example:
-
-```bash
-hermes
-```
-
-Or use your preferred agent CLI/tool.
-
-### 3. Ask the agent to run the initial setup from the temporary templates
-
-Paste this prompt:
-
-```text
-Read guide-templates/prompts/INITIAL_AI_AGENT_READY_PROMPT.md completely and execute it for this repository.
-
-Use guide-templates/docs/ai-agent-guide.md as the source guide.
-Use guide-templates/docs/ai-workflows.md as the workflow-router reference.
-Use guide-templates/docs/planning-loop-guide.md as the larger-task planning reference.
-Use guide-templates/templates/AGENTS.template.md as the starting template for AGENTS.md.
-
-Create or update project-local files such as AGENTS.md, docs/ai-agent-guide.md, docs/architecture.md, docs/testing.md, docs/ai-workflows.md, and docs/planning-loop-guide.md based on the real repository.
-Install reusable prompts from guide-templates/prompts/ into prompts/.
-Install reusable templates from guide-templates/templates/ into templates/.
-Create docs/plans/ and docs/handoffs/ for persistent implementation plans and handoffs.
-Inspect the real repository before documenting it.
-Show a concise plan before editing project-specific files.
-Do not invent architecture or commands.
-Mark unknown facts as “Needs confirmation”.
-Do not commit or push.
-
-After setup is complete and verified, delete the temporary guide-templates/ folder only if prompts/ and templates/ contain the reusable workflow files.
-```
-
-The temporary `guide-templates/` folder is only bootstrap material. The final project
-should keep generated project-local docs plus installed `prompts/` and `templates/`, not
-references to the temporary source folder.
-
-### 4. Optional: download the full prompt set
-
-For daily short-prompt workflows, download the full `prompts/` directory from this
-repository or clone/download the repository. Plain `curl` is good for individual raw
-files, but not for downloading a GitHub directory in one command.
-
-### How the AI agent will use these docs after setup
-
-After this setup is complete, the generated docs become the agent's project context
-layer:
-
-- `AGENTS.md` becomes the main operating rulebook. Future prompts should start with
-“Read AGENTS.md first.” The agent uses it to know project rules, commands, architecture
-boundaries, git rules, testing rules, and safety requirements.
-- `docs/ai-agent-guide.md` becomes the team workflow guide. The agent uses it to
-understand expected behavior: plan before risky changes, avoid commits, run checks,
-summarize files changed, and use the right mode such as planning, debugging, TDD,
-review, or backend-first.
-- `docs/architecture.md` helps the agent understand where code belongs before editing.
-- `docs/testing.md` tells the agent which commands to run before saying the task is
-done.
-- `docs/ai-workflows.md` tells the agent how to handle common tasks in this specific
-repo, such as features, bugfixes, refactors, reviews, and releases.
-- `docs/planning-loop-guide.md` tells the agent when to create a persistent phased
-plan before implementation and how to update it after each phase.
-
-In normal daily work, team members should not need to repeat all project context
-manually. They can say:
-
-```text
-Read AGENTS.md first, then help me with [task].
-```
-
-The agent should then use the generated docs to plan, edit, verify, and report work
-consistently.
-
-### 5. Review the generated docs manually
-
-Check especially:
-
-- `AGENTS.md`
-- `docs/architecture.md`
-- `docs/testing.md`
-- `docs/ai-workflows.md`
-- README setup section
-- `.env.example`
-- package scripts / Makefile commands
-
-### 6. Verify and review the setup
-
-Use:
-
-- `prompts/VERIFY_CHANGES_PROMPT.md`
-- `prompts/SECURITY_REVIEW_PROMPT.md` when security-sensitive rules or project setup are
-involved
-
-### 7. Commit only after human review
-
-AI should not commit by default. Human reviews the diff, verification evidence, security
-findings if relevant, and documentation updates before authorizing a commit.
-
-## Recommended Team Workflow
-
-For every task, team members should start with enough context and choose the right
-prompt.
-
-A practical default sequence:
-
-1. `prompts/PLANNING_LOOP_PROMPT.md` for larger tasks that need phases
-2. `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` or `prompts/BUGFIX_PROMPT.md`
-3. `prompts/VERIFY_CHANGES_PROMPT.md`
-4. `prompts/SECURITY_REVIEW_PROMPT.md` when relevant
-5. `prompts/UPDATE_DOCUMENTATION_PROMPT.md`
-6. `prompts/COMMIT_PROMPT.md` in prepare-only mode unless commit is explicitly
-authorized
-7. `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` if work spans sessions
-
-## Minimum Project Readiness Checklist
-
-A project is ready for AI-assisted development when it has:
-
-- `AGENTS.md`
-- `docs/ai-agent-guide.md`
-- `docs/ai-workflows.md`
-- `docs/planning-loop-guide.md`
-- `docs/architecture.md`
-- `docs/testing.md`
-- `docs/plans/`
-- `docs/handoffs/`
-- `prompts/`
-- `templates/`
-- README local setup instructions
-- `.env.example`
-- documented install/dev/test/lint/typecheck/build commands
-- documented migration command if backend/database project
-- clear git safety rule: AI must not commit unless asked
-- clear security rule: AI must not expose secrets
-- human review required for auth, permission, data deletion, migrations, payments, and
-production config
-
-## Notes on RTK / Redux Toolkit
-
-Do not make RTK mandatory for every frontend project.
-
-Recommend RTK when:
-
-- global client state is needed
-- auth/session/user state is shared across many screens
-- complex UI state exists
-- predictable state transitions are important
-
-Do not recommend RTK only because the project uses React.
-
-If the project already uses React Query, SWR, or Apollo for server state, avoid
-duplicating server state into Redux unless there is a clear reason.
-
-## Command Accuracy Rule
-
-Commands in this repository are either:
-
-- discovered from a target project and documented exactly there, or
-- examples clearly labeled as examples.
-
-Do not claim that an example command exists in a target project until the repository has
-been inspected.
+1|1|1|1|1|1|# AI Agent How-To
+2|2|2|2|2|2|
+3|3|3|3|3|3|Practical, reusable, AI-agent-friendly implementation guide for Developer, QA, Security,
+4|4|4|4|4|4|DevOps, and Engineering teams.
+5|5|5|5|5|5|
+6|6|6|6|6|6|This repository is not only conceptual documentation. It provides standards, templates,
+7|7|7|7|7|7|checklists, prompts, examples, validation rules, and adoption instructions that can be
+8|8|8|8|8|8|copied or adapted into real software repositories.
+9|9|9|9|9|9|
+10|10|10|10|10|10|## What Problem Does It Solve?
+11|11|11|11|11|11|
+12|12|12|12|12|12|Teams using AI coding agents need shared rules for safe development, QA collaboration,
+13|13|13|13|13|13|verification evidence, PR handover, security review, automation testing, environment
+14|14|14|14|14|14|readiness, and incident learning. This toolkit makes those workflows explicit and reusable
+15|15|15|15|15|15|without assuming a specific technology stack.
+16|16|16|16|16|16|
+17|17|17|17|17|17|## Who Should Use It?
+18|18|18|18|18|18|
+19|19|19|19|19|19|| Role | Use this repository to |
+20|20|20|20|20|20|| --- | --- |
+21|21|21|21|21|21|| Developer | Plan, implement, verify, document, and prepare PRs with AI assistance safely. |
+22|22|22|22|22|22|| QA Engineer | Review requirements, generate scenarios, validate evidence, report bugs, and review QA handovers. |
+23|23|23|23|23|23|| Tech Lead | Adopt consistent Dev-QA workflow, PR standards, architecture decisions, and human approval boundaries. |
+24|24|24|24|24|24|| QA Lead | Standardize bug reporting, severity/SLA, automation testing, metrics, and release readiness. |
+25|25|25|25|25|25|| DevOps | Standardize environment, deployment, smoke validation, drift checks, and readiness evidence. |
+26|26|26|26|26|26|| Security Reviewer | Apply secure coding, security review, and high-risk approval rules. |
+27|27|27|27|27|27|| AI Agent | Read `AGENTS.md`, route tasks through `docs/ai-workflows.md`, and use task-specific prompts/templates. |
+28|28|28|28|28|28|| Engineering Manager | Track adoption, quality metrics, incident follow-up, and ownership decisions. |
+29|29|29|29|29|29|
+30|30|30|30|30|30|## Read This First
+31|31|31|31|31|31|
+32|32|32|32|32|32|1. `AGENTS.md` — operating rules for AI agents in this repository.
+33|33|33|33|33|33|2. `docs/getting-started.md` — role-based starting points and safe customization rules.
+34|34|34|34|34|34|3. `docs/implementation-roadmap.md` — incremental adoption phases.
+35|35|35|35|35|35|4. `docs/prompt-library.md` — prompt catalog and missing prompt backlog.
+36|36|36|36|36|36|5. `docs/roadmap/Q3_IMPLEMENTATION_GAP_ANALYSIS.md` — audit baseline for Q3 scope.
+37|37|37|37|37|37|6. `docs/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md` — action-item-to-artifact tracker.
+38|38|38|38|38|38|
+39|39|39|39|39|39|## Source of Truth
+40|40|40|40|40|40|
+41|41|41|41|41|41|| Topic | Canonical file |
+42|42|42|42|42|42|| --- | --- |
+43|43|43|43|43|43|| Root navigation | `README.md` |
+44|44|44|44|44|44|| AI-agent operating rules for this repo | `AGENTS.md` |
+45|45|45|45|45|45|| Adoption phases | `docs/implementation-roadmap.md` |
+46|46|46|46|46|46|| Terminology | `docs/glossary.md` |
+47|47|47|47|47|47|| Definition of Done | `docs/definition-of-done.md` |
+48|48|48|48|48|48|| AI workflow routing | `docs/ai-workflows.md` |
+49|49|49|49|49|49|| Prompt catalog | `docs/prompt-library.md` |
+50|50|50|50|50|50|| Q3 audit baseline | `docs/roadmap/Q3_IMPLEMENTATION_GAP_ANALYSIS.md` |
+51|51|51|51|51|51|| Q3 traceability | `docs/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md` |
+52|52|52|52|52|52|
+53|53|53|53|53|53|## Current Toolkit Contents
+54|54|54|54|54|54|
+55|55|55|55|55|55|| Area | Files |
+56|56|56|56|56|56|| --- | --- |
+57|57|57|57|57|57|| AI-agent setup | `docs/ai-agent-guide.md`, `templates/AGENTS.template.md`, `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
+58|58|58|58|58|58|| Workflow routing | `docs/ai-workflows.md`, `docs/prompt-library.md` |
+59|59|59|59|59|59|| Planning and lifecycle | `docs/development-lifecycle.md`, `docs/planning-loop-guide.md`, `templates/IMPLEMENTATION_PLAN.template.md`, `prompts/PLANNING_LOOP_PROMPT.md` |
+60|60|60|60|60|60|| Implementation and bugfix | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md`, `prompts/BUGFIX_PROMPT.md` |
+61|61|61|61|61|61|| Verification | `docs/verification-guide.md`, `prompts/VERIFY_CHANGES_PROMPT.md` |
+62|62|62|62|62|62|| AI and security | `docs/security/ai-assisted-development-standard.md`, `docs/security/secure-coding-checklist.md`, `docs/security/security-review-guide.md`, `templates/SECURITY_REVIEW.template.md`, `prompts/SECURITY_REVIEW_PROMPT.md` |
+63|63|63|63|63|63|| Documentation update | `docs/documentation-guide.md`, `prompts/UPDATE_DOCUMENTATION_PROMPT.md` |
+64|64|64|64|64|64|| Commit and handoff | `docs/commit-guide.md`, `docs/unfinished-work-guide.md`, `prompts/COMMIT_PROMPT.md`, `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md`, `templates/HANDOFF.template.md`, `templates/COMPLETION_REPORT.template.md` |
+65|65|65|65|65|65|| Roadmap and governance | `docs/implementation-roadmap.md`, `docs/definition-of-done.md`, `docs/glossary.md`, `docs/roadmap/` |
+66|66|66|66|66|| Core Dev-QA standards | `docs/dev-qa/social-contract-guide.md`, `docs/dev-qa/quality-workflow.md`, `docs/dev/pr-standard.md`, `docs/qa/bug-report-standard.md`, `docs/qa/bug-severity-and-sla.md` |
+67|67|67|67|67|| Core Dev-QA templates | `templates/DEV_QA_SOCIAL_CONTRACT.template.md`, `templates/PR_CHECKLIST.template.md`, `templates/BUG_REPORT.template.md`, `templates/QA_HANDOVER_CHECKLIST.template.md`, `templates/RELEASE_QUALITY_GATE.template.md` |
+68|68|68|| Automation metrics/testing | `docs/qa/automation-metrics-and-kpi.md`, `docs/qa/automation-testing-standard.md`, `templates/AUTOMATION_KPI_PLAN.template.md`, `templates/AUTOMATION_COVERAGE_REPORT.template.md`, `templates/AUTOMATION_TEST_PLAN.template.md` |
+69|69|| Repository/environment readiness | `docs/ai-agent-ready-repository-standard.md`, `docs/devops/environment-standard.md`, `docs/devops/deployment-readiness.md`, `scripts/validate-ai-agent-readiness.sh`, `scripts/validate-links.sh`, `scripts/validate-templates.sh` |
+70|| Architecture and incidents | `docs/architecture/architecture-improvement-workflow.md`, `templates/ARCHITECTURE_IMPROVEMENT_PLAN.template.md`, `templates/ADR.template.md`, `docs/incidents/incident-response-playbook.md`, `docs/incidents/root-cause-analysis-guide.md` |
+| Examples and validation | `docs/examples/fictional-sample-project-end-to-end.md`, `docs/examples/automation-testing/fictional-checkout-flow.md`, `.github/workflows/docs-quality.yml`, `scripts/validate-docs.sh` |
+71|70|69|68|68|66|
+72|71|70|69|69|67|## Which Prompt Should Be Used?
+73|72|71|70|70|68|
+74|73|72|71|71|69|| Task | Prompt |
+75|74|73|72|72|70|| --- | --- |
+76|75|74|73|73|71|| Prepare an existing repository for AI agents | `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
+77|76|75|74|74|72|| Plan larger work before implementation | `prompts/PLANNING_LOOP_PROMPT.md` |
+78|77|76|75|75|73|| Implement a feature | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` |
+79|78|77|76|76|74|| Investigate/fix a bug | `prompts/BUGFIX_PROMPT.md` |
+80|79|78|77|77|75|| Verify current changes | `prompts/VERIFY_CHANGES_PROMPT.md` |
+81|80|79|78|78|76|| Run security review | `prompts/SECURITY_REVIEW_PROMPT.md` |
+82|81|80|79|79|77|| Update documentation | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` |
+83|82|81|80|80|78|| Prepare commits, only when authorized | `prompts/COMMIT_PROMPT.md` |
+84|83|82|81|81|79|| Resume unfinished work | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` |
+85|84|83|82|82|80|| See full prompt coverage and gaps | `docs/prompt-library.md` |
+86|85|84|83|83|81|
+87|86|85|84|84|82|Short daily examples:
+88|87|86|85|85|83|
+89|88|87|86|86|84|```text
+90|89|88|87|87|85|Read AGENTS.md first. Implement this feature: [feature].
+91|90|89|88|88|86|```
+92|91|90|89|89|87|
+93|92|91|90|90|88|```text
+94|93|92|91|91|89|Read AGENTS.md first. Review this change for QA readiness: [change or PR].
+95|94|93|92|92|90|```
+96|95|94|93|93|91|
+97|96|95|94|94|92|## How to Copy This Toolkit Into Another Repository
+98|97|96|95|95|93|
+99|98|97|96|96|94|1. Inspect the target repository first.
+100|99|98|97|97|95|2. Copy or temporarily download only the needed guides/templates/prompts.
+101|100|99|98|98|96|3. Generate `AGENTS.md` from `templates/AGENTS.template.md` using facts discovered from
+102|101|100|99|99|97|   the target repository.
+103|102|101|100|100|98|4. Discover actual install, test, lint, type-check, build, migration, seed, and run
+104|103|102|101|101|99|   commands. Do not invent them.
+105|104|103|102|102|100|5. Mark unknown values as `Needs confirmation`.
+106|105|104|103|103|101|6. Ask for human review before making generated docs authoritative.
+107|106|105|104|104|102|7. Remove temporary bootstrap material after durable prompts/templates/docs are installed.
+108|107|106|105|105|103|
+109|108|107|106|106|104|See `docs/getting-started.md` for the safe customization rules.
+110|109|108|107|107|105|
+111|110|109|108|108|106|## Templates vs Standards
+112|111|110|109|109|107|
+113|112|111|110|110|108|| Type | Meaning |
+114|113|112|111|111|109|| --- | --- |
+115|114|113|112|112|110|| Template | A reusable starting point under `templates/`. Copy and customize. Keep placeholders for organization-specific values. |
+116|115|114|113|113|111|| Standard | A guide that becomes mandatory only after a team adopts it. Link to it instead of duplicating it. |
+117|116|115|114|114|112|| Prompt | Copy-paste instruction for an AI agent. It should route to standards and templates. |
+118|117|116|115|115|113|| Example | Fictional demonstration only. Never treat examples as real project policy. |
+119|118|117|116|116|114|
+120|119|118|117|117|115|## Language Strategy
+121|120|119|118|118|116|
+122|121|120|119|119|117|English is the primary source of truth for this repository unless a file explicitly says
+123|122|121|120|120|118|otherwise.
+124|123|122|121|121|119|
+125|124|123|122|122|120|Indonesian files currently maintained:
+126|125|124|123|123|121|
+127|126|125|124|124|122|- `README.id.md`
+128|127|126|125|125|123|- `docs/ai-agent-guide.id.md`
+129|128|127|126|126|124|- `templates/AGENTS.template.id.md`
+130|129|128|127|127|125|
+131|130|129|128|128|126|When an English source changes, translated files should either be updated or marked with
+132|131|130|129|129|127|an outdated note. Do not maintain two manually diverging full document sets without a
+133|132|131|130|130|128|clear owner and review cadence.
+134|133|132|131|131|129|
+135|134|133|132|132|130|Adoption-critical files to consider translating next:
+136|135|134|133|133|131|
+137|136|135|134|134|132|- `docs/getting-started.md`
+138|137|136|135|135|133|- `docs/implementation-roadmap.md`
+139|138|137|136|136|134|- future Social Contract template
+140|139|138|137|137|135|- future PR checklist
+141|140|139|138|138|136|- future bug-report template
+142|141|140|139|139|137|- future Dev-QA quality workflow
+143|142|141|140|140|138|
+144|143|142|141|141|139|## Current Status
+145|144|143|142|142|140|
+146|145|144|143|143|141|Stage 1 and Stage 2 foundation work are in progress:
+147|146|145|144|144|142|
+148|147|146|145|145|143|- Audit baseline: `docs/roadmap/Q3_IMPLEMENTATION_GAP_ANALYSIS.md`
+149|148|147|146|146|144|- Adoption roadmap: `docs/implementation-roadmap.md`
+150|149|148|147|147|145|- Traceability tracker: `docs/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md`
+151|150|149|148|148|146|- Definition of Done: `docs/definition-of-done.md`
+152|151|150|149|149|147|- Prompt catalog: `docs/prompt-library.md`
+153|152|151|150|150|148|
+154|153|152|151|151|149|The remaining Q3 implementation artifacts are tracked in the traceability matrix. Do not
+155|154|153|152|152|150|claim all 12 Q3 action items are complete until the traceability matrix and Definition of
+156|155|154|153|153|151|Done checks support that claim.
+157|156|155|154|154|152|

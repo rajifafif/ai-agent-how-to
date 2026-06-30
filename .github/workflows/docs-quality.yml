@@ -1,0 +1,16 @@
+name: Documentation Quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  docs-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run lightweight documentation checks
+        run: |
+          chmod +x scripts/validate-*.sh
+          scripts/validate-docs.sh
