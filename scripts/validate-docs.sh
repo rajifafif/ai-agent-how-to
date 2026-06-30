@@ -17,8 +17,7 @@ required=(
   docs/prompt-library.md
   docs/definition-of-done.md
   docs/glossary.md
-  docs/roadmap/Q3_IMPLEMENTATION_GAP_ANALYSIS.md
-  docs/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md
+  docs/roadmap/RESTRUCTURE_TO_STANDARDS_AND_SKILLS_PLAN.md
 )
 
 for f in "${required[@]}"; do
@@ -32,15 +31,37 @@ done
 
 extra_required=(
   standards/README.md
+  standards/ai-usage-standard.md
+  standards/ai-ready-repository-standard.md
+  standards/secure-coding-standard.md
+  standards/testing-standard.md
+  standards/documentation-standard.md
+  standards/commit-standard.md
+  standards/pull-request-standard.md
+  standards/human-review-standard.md
   guides/README.md
+  guides/opencode-adoption-guide.md
+  guides/make-new-project-ai-ready.md
+  guides/make-legacy-project-ai-ready.md
   checklists/README.md
+  checklists/repository-ai-readiness-checklist.md
   skills/README.md
+  templates/STARTER_PACK/README.md
+  prompts/initialize-project.md
+  prompts/plan-feature.md
+  prompts/implement-feature.md
+  prompts/fix-bug.md
+  prompts/review-security.md
+  prompts/create-commits.md
+  prompts/create-pull-request.md
+  prompts/continue-unfinished-work.md
 )
 for f in "${extra_required[@]}"; do
   if [ -e "$f" ]; then
     printf 'OK   restructured %s\n' "$f"
   else
-    printf 'WARN restructured path missing %s\n' "$f"
+    printf 'FAIL missing restructured path %s\n' "$f"
+    fail=$((fail + 1))
   fi
 done
 
@@ -59,10 +80,30 @@ if [ -d skills ]; then
 fi
 
 python3 - <<'PY'
+from pathlib import Path
+import sys
+missing=[]
+allowed=('Status: Canonical','Status: Active','Status: Detail reference','Status: Compatibility pointer','Status: Historical','Status: Example')
+for p in Path('docs').rglob('*.md'):
+    if 'ARCHIVE' in p.parts:
+        continue
+    lines=p.read_text(encoding='utf-8').splitlines()[:8]
+    if not any(line.startswith(allowed) for line in lines):
+        missing.append(str(p))
+for p in missing:
+    print(f'FAIL missing docs status header {p}')
+print(f'docs_status_missing={len(missing)}')
+sys.exit(1 if missing else 0)
+PY
+if [ "$?" -ne 0 ]; then fail=$((fail + 1)); fi
+
+python3 - <<'PY'
 import os, sys
 names={}
 dups=[]
 for dp,_,fs in os.walk('prompts') if os.path.isdir('prompts') else []:
+    if 'ARCHIVE' in dp.split(os.sep):
+        continue
     for f in fs:
         if f.endswith('.md'):
             key=f.lower()

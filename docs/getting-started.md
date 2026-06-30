@@ -1,5 +1,7 @@
 # Getting Started
 
+Status: Active guide
+
 This repository is a practical toolkit for building AI-agent-friendly engineering and QA
 workflows. Use it as a source of reusable standards, templates, prompts, validation
 scripts, and examples.
@@ -9,11 +11,11 @@ scripts, and examples.
 | Role | Start here | Then use |
 | --- | --- | --- |
 | Developer | `README.md`, `AGENTS.md`, `docs/ai-workflows.md` | Feature/bugfix/verification/PR prompts and templates. |
-| QA Engineer | `README.md`, `docs/dev-qa/quality-workflow.md` when available | QA handover, bug report, release readiness, testing prompts. |
+| QA Engineer | `README.md`, `docs/ARCHIVE/dev-qa/quality-workflow.md` when available | QA handover, bug report, release readiness, testing prompts. |
 | Tech Lead | `docs/implementation-roadmap.md` | Social contract, PR standard, architecture workflow, security approval rules. |
 | QA Lead | `docs/implementation-roadmap.md` | Bug/SLA, automation metrics, automation testing standard. |
-| DevOps | `docs/devops/environment-standard.md` when available | Deployment readiness and validation prompts/templates. |
-| Security Reviewer | `docs/security/security-review-guide.md` when available | Secure coding checklist and security review prompt/template. |
+| DevOps | `docs/ARCHIVE/devops/environment-standard.md` when available | Deployment readiness and validation prompts/templates. |
+| Security Reviewer | `docs/ARCHIVE/security/security-review-guide.md` when available | Secure coding checklist and security review prompt/template. |
 | AI Agent | `AGENTS.md` | `docs/ai-workflows.md`, `docs/prompt-library.md`, and task-specific prompts. |
 | Engineering Manager | `docs/implementation-roadmap.md` | Metrics, SLA, incident, adoption, and ownership artifacts. |
 
@@ -37,7 +39,7 @@ scripts, and examples.
 | `docs/*standard*.md` | Normative guidance once adopted by a team. |
 | `templates/*.template.md` | Copy/customize; keep placeholders until humans provide values. |
 | `prompts/*.md` | Copy-paste or reference from short daily prompts. |
-| `docs/examples/` | Fictional examples only; never treat as policy. |
+| `docs/ARCHIVE/examples/` | Fictional examples only; never treat as policy. |
 
 ## Safe Customization Rules
 

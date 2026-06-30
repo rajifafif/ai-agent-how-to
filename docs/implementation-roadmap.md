@@ -1,5 +1,7 @@
 # Implementation Roadmap
 
+Status: Active roadmap
+
 This roadmap helps a team adopt the toolkit incrementally. It does not assume a specific
 company structure, CI system, framework, or release calendar.
 

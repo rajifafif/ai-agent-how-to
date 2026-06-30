@@ -15,9 +15,9 @@
 15|| Mulai pakai toolkit | `docs/getting-started.md` |
 16|| Roadmap adoption bertahap | `docs/implementation-roadmap.md` |
 17|| Katalog prompt | `docs/prompt-library.md` |
-18|| Gap analysis Q3 | `docs/roadmap/Q3_IMPLEMENTATION_GAP_ANALYSIS.md` |
-19|| Traceability Q3 | `docs/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md` |
-20|| Panduan AI agent Bahasa Indonesia | `docs/ai-agent-guide.id.md` |
+18|| Gap analysis Q3 | `docs/ARCHIVE/roadmap/Q3_IMPLEMENTATION_GAP_ANALYSIS.md` |
+19|| Traceability Q3 | `docs/ARCHIVE/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md` |
+20|| Panduan AI agent Bahasa Indonesia | `docs/ARCHIVE/ai-agent-guide.id.md` |
 21|| Template AGENTS Bahasa Indonesia | `templates/AGENTS.template.id.md` |
 22|
 23|## Strategi Bahasa
@@ -25,7 +25,7 @@
 25|- English adalah source of truth utama.
 26|- File Indonesia yang saat ini tersedia:
 27|  - `README.id.md`
-28|  - `docs/ai-agent-guide.id.md`
+28|  - `docs/ARCHIVE/ai-agent-guide.id.md`
 29|  - `templates/AGENTS.template.id.md`
 30|- Jika source English berubah, file Indonesia harus diupdate atau ditandai outdated.
 31|- Jangan membuat dua set dokumentasi lengkap yang dimaintain manual tanpa owner dan
@@ -60,7 +60,7 @@
 60|```
 61|
 62|QA artifact lengkap masih dalam roadmap Q3. Statusnya bisa dilihat di
-63|`docs/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md`.
+63|`docs/ARCHIVE/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md`.
 64|
 65|## Status Saat Ini
 66|
@@ -90,7 +90,7 @@
 90|
 ## Contoh dan Validasi
 
-- Contoh end-to-end fictional: `docs/examples/fictional-sample-project-end-to-end.md`
-- Contoh automation testing fictional: `docs/examples/automation-testing/fictional-checkout-flow.md`
+- Contoh end-to-end fictional: `docs/ARCHIVE/examples/fictional-sample-project-end-to-end.md`
+- Contoh automation testing fictional: `docs/ARCHIVE/examples/automation-testing/fictional-checkout-flow.md`
 - Validasi dokumentasi: `scripts/validate-docs.sh`
 - CI documentation quality: `.github/workflows/docs-quality.yml`

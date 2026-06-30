@@ -1,5 +1,7 @@
 # Definition of Done Framework
 
+Status: Canonical
+
 Use this framework to decide whether a documentation standard, workflow, prompt, or
 template is actually complete. A file existing is not enough.
 

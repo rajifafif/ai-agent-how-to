@@ -4,7 +4,8 @@ python3 - <<'PY'
 import os, re, sys
 missing=[]
 for dp,_,fs in os.walk('.'):
-    if '.git' in dp.split(os.sep):
+    parts = dp.split(os.sep)
+    if '.git' in parts or 'ARCHIVE' in parts:
         continue
     for f in fs:
         if not f.endswith('.md'):

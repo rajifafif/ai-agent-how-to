@@ -7,7 +7,7 @@ existing repository.
 
 1. Inspect target repository structure and existing docs.
 2. Detect real stack, package managers, frameworks, CI, test tools, and commands.
-3. Compare existing docs against `docs/ai-agent-ready-repository-standard.md`.
+3. Compare existing docs against `standards/ai-ready-repository-standard.md`.
 4. Propose changes before editing.
 5. Generate or update `AGENTS.md` from `templates/AGENTS.template.md`.
 6. Copy only relevant prompts/templates.

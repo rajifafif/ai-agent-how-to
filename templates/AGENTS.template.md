@@ -124,15 +124,15 @@ short-prompt behavior.
 
 | User asks for | Follow |
 | --- | --- |
-| Make project AI Agent Ready | `docs/ai-agent-guide.md` and `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` if present |
-| Plan larger work, break task into phases | `prompts/PLANNING_LOOP_PROMPT.md` and `docs/planning-loop-guide.md` if present |
-| Implement, build, add, or change behavior | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` if present |
-| Fix bug, debug, error, regression | `prompts/BUGFIX_PROMPT.md` if present |
-| Check current changes, verify, review diff | `prompts/VERIFY_CHANGES_PROMPT.md` if present |
-| Security review, auth/permission review | `prompts/SECURITY_REVIEW_PROMPT.md` if present |
-| Update docs | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` if present |
-| Prepare commit, commit rules, make commits | `prompts/COMMIT_PROMPT.md` if present |
-| Continue, resume, handoff | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` if present |
+| Make project AI Agent Ready | `guides/opencode-adoption-guide.md` and `prompts/initialize-project.md` if present |
+| Plan larger work, break task into phases | `prompts/plan-feature.md` and `prompts/plan-feature.md` if present |
+| Implement, build, add, or change behavior | `prompts/implement-feature.md` if present |
+| Fix bug, debug, error, regression | `prompts/fix-bug.md` if present |
+| Check current changes, verify, review diff | `checklists/pre-commit-checklist.md` if present |
+| Security review, auth/permission review | `prompts/review-security.md` if present |
+| Update docs | `standards/documentation-standard.md` if present |
+| Prepare commit, commit rules, make commits | `prompts/create-commits.md` if present |
+| Continue, resume, handoff | `prompts/continue-unfinished-work.md` if present |
 
 For combined requests, run workflows in safe lifecycle order:
 
@@ -158,7 +158,7 @@ For feature work:
 1. Read this file.
 2. Inspect existing patterns.
 3. Restate requested behavior and acceptance criteria.
-4. For non-trivial work, read `docs/planning-loop-guide.md` if present, then create
+4. For non-trivial work, read `prompts/plan-feature.md` if present, then create
 or update a persistent plan in `docs/plans/` using
 `templates/IMPLEMENTATION_PLAN.template.md`.
 5. Ask clarification if requirements are unclear.

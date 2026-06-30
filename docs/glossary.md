@@ -1,5 +1,7 @@
 # Glossary
 
+Status: Canonical
+
 Use these terms consistently across guides, prompts, and templates.
 
 | Term | Meaning |

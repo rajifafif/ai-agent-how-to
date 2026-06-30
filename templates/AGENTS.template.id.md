@@ -123,15 +123,15 @@ dan short-prompt behavior.
 
 | User asks for | Follow |
 | --- | --- |
-| Make project AI Agent Ready | `docs/ai-agent-guide.md` dan `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` jika ada |
-| Plan larger work, pecah task jadi phases | `prompts/PLANNING_LOOP_PROMPT.md` dan `docs/planning-loop-guide.md` jika ada |
-| Implement, build, add, atau change behavior | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` jika ada |
-| Fix bug, debug, error, regression | `prompts/BUGFIX_PROMPT.md` jika ada |
-| Check current changes, verify, review diff | `prompts/VERIFY_CHANGES_PROMPT.md` jika ada |
-| Security review, auth/permission review | `prompts/SECURITY_REVIEW_PROMPT.md` jika ada |
-| Update docs | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` jika ada |
-| Prepare commit, commit rules, make commits | `prompts/COMMIT_PROMPT.md` jika ada |
-| Continue, resume, handoff | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` jika ada |
+| Make project AI Agent Ready | `guides/opencode-adoption-guide.md` dan `prompts/initialize-project.md` jika ada |
+| Plan larger work, pecah task jadi phases | `prompts/plan-feature.md` dan `prompts/plan-feature.md` jika ada |
+| Implement, build, add, atau change behavior | `prompts/implement-feature.md` jika ada |
+| Fix bug, debug, error, regression | `prompts/fix-bug.md` jika ada |
+| Check current changes, verify, review diff | `checklists/pre-commit-checklist.md` jika ada |
+| Security review, auth/permission review | `prompts/review-security.md` jika ada |
+| Update docs | `standards/documentation-standard.md` jika ada |
+| Prepare commit, commit rules, make commits | `prompts/create-commits.md` jika ada |
+| Continue, resume, handoff | `prompts/continue-unfinished-work.md` jika ada |
 
 Untuk request gabungan, jalankan workflow dalam urutan aman:
 
@@ -157,7 +157,7 @@ Untuk feature work:
 1. Baca file ini.
 2. Inspect pattern yang sudah ada.
 3. Restate behavior dan acceptance criteria.
-4. Untuk pekerjaan non-trivial, baca `docs/planning-loop-guide.md` jika ada, lalu
+4. Untuk pekerjaan non-trivial, baca `prompts/plan-feature.md` jika ada, lalu
 create atau update persistent plan di `docs/plans/` memakai
 `templates/IMPLEMENTATION_PLAN.template.md`.
 5. Tanya klarifikasi jika requirement kurang jelas.

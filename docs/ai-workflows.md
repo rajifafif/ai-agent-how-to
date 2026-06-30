@@ -1,5 +1,7 @@
 # AI Workflow Router
 
+Status: Active router
+
 This file helps agents turn short natural-language requests into the right workflow. It
 is meant to be referenced from `AGENTS.md` so developers do not need to paste long
 prompts during daily work.
@@ -15,17 +17,18 @@ prompts during daily work.
 
 ## Natural-Language Router
 
-| User asks for | Follow |
-| --- | --- |
-| “make this project AI Agent Ready”, “setup agent docs” | `prompts/INITIAL_AI_AGENT_READY_PROMPT.md` |
-| “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `prompts/PLANNING_LOOP_PROMPT.md` |
-| “implement”, “build”, “add feature”, “change behavior” | `prompts/FEATURE_IMPLEMENTATION_PROMPT.md` |
-| “fix bug”, “debug”, “error”, “regression” | `prompts/BUGFIX_PROMPT.md` |
-| “check current changes”, “verify”, “review diff”, “did this pass?” | `prompts/VERIFY_CHANGES_PROMPT.md` |
-| “security review”, “check vulnerabilities”, “review auth/permissions” | `prompts/SECURITY_REVIEW_PROMPT.md` |
-| “update docs”, “sync documentation” | `prompts/UPDATE_DOCUMENTATION_PROMPT.md` |
-| “prepare commit”, “commit rules”, “make commits”, “create commits” | `prompts/COMMIT_PROMPT.md` |
-| “continue”, “resume”, “handoff”, “unfinished work” | `prompts/CONTINUE_UNFINISHED_WORK_PROMPT.md` |
+| User asks for | Follow first | Detailed legacy prompt |
+| --- | --- | --- |
+| “make this project AI Agent Ready”, “setup agent docs” | `../prompts/initialize-project.md` | `../prompts/initialize-project.md` |
+| “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `../prompts/plan-feature.md` | `../prompts/plan-feature.md` |
+| “implement”, “build”, “add feature”, “change behavior” | `../prompts/implement-feature.md` | `../prompts/implement-feature.md` |
+| “fix bug”, “debug”, “error”, “regression” | `../prompts/fix-bug.md` | `../prompts/fix-bug.md` |
+| “check current changes”, “verify”, “review diff”, “did this pass?” | `../checklists/pre-commit-checklist.md` | `../checklists/pre-commit-checklist.md` |
+| “security review”, “check vulnerabilities”, “review auth/permissions” | `../prompts/review-security.md` | `../prompts/review-security.md` |
+| “update docs”, “sync documentation” | `../standards/documentation-standard.md` | `../standards/documentation-standard.md` |
+| “prepare commit”, “commit rules”, “make commits”, “create commits” | `../prompts/create-commits.md` | `../prompts/create-commits.md` |
+| “create pull request”, “prepare PR”, “open PR” | `../prompts/create-pull-request.md` | `../prompts/create-pull-request.md` |
+| “continue”, “resume”, “handoff”, “unfinished work” | `../prompts/continue-unfinished-work.md` | `../prompts/continue-unfinished-work.md` |
 
 ## Combined Requests
 
@@ -56,7 +59,7 @@ For non-trivial feature or bugfix work, use repository files as durable task mem
 
 - Store implementation or investigation plans under `docs/plans/`.
 - Use `templates/IMPLEMENTATION_PLAN.template.md` when available.
-- Read `docs/planning-loop-guide.md` when available.
+- Read `docs/ARCHIVE/planning-loop-guide.md` when available.
 - Store unfinished-work handoffs under `docs/handoffs/`.
 - Use `templates/HANDOFF.template.md` when available.
 - Update plans and handoffs as work changes.
