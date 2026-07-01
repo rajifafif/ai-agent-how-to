@@ -54,8 +54,6 @@ extra_required=(
   templates/PR_CHECKLIST.template.md
   templates/SECURITY_REVIEW.template.md
   templates/REPOSITORY_READINESS_CHECKLIST.template.md
-  templates/STARTER_PACK/README.md
-  templates/AI_AGENT_READY_REPOSITORY/README.md
   prompts/bootstrap-existing-project.md
   prompts/plan-feature.md
   prompts/fix-bug.md
@@ -63,6 +61,8 @@ extra_required=(
   prompts/create-commits.md
   prompts/create-pull-request.md
   prompts/continue-unfinished-work.md
+  scripts/bootstrap-agent-ready.sh
+  scripts/validate-skills.sh
 )
 for f in "${extra_required[@]}"; do
   if [ -e "$f" ]; then

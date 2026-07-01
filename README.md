@@ -12,7 +12,7 @@ skills. It is not meant to be copied wholesale into every project.
 | --- | --- |
 | Understand the operating model | This README, then `guides/opencode-adoption-guide.md` |
 | Bootstrap an existing project | `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>` or `prompts/bootstrap-existing-project.md` |
-| Prepare a new project with toolkit access | `guides/make-new-project-ai-ready.md` and `templates/STARTER_PACK/README.md` |
+| Prepare a new project with toolkit access | `guides/make-new-project-ai-ready.md` and `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>` |
 | Prepare a legacy project with toolkit access | `guides/make-legacy-project-ai-ready.md` |
 | Find company-wide rules | `standards/README.md` |
 | Run a task with an AI agent | `skills/README.md` or `prompts/` |
@@ -33,7 +33,7 @@ Rule of thumb:
 1. Keep organization rules here.
 2. Put project facts in the project.
 3. Put task facts in the ticket/request/plan.
-4. Install or copy only the small starter pack a project actually needs.
+4. Install or copy only the default bootstrap files a project actually needs.
 
 ## Current Structure State
 
@@ -45,7 +45,6 @@ The active top-level operating model is now simplified:
 | `guides/` | Adoption and workflow guides that point to runnable prompts. |
 | `checklists/` | Review/readiness gates. |
 | `skills/` | Initial workflow wrappers. |
-| `templates/STARTER_PACK/` | Starter pack entry point. |
 | `prompts/` | Canonical short runnable prompts. |
 | Validation scripts | Local docs/readiness/skill-sync checks. |
 
@@ -57,7 +56,6 @@ The active top-level operating model is now simplified:
 | `guides/README.md` | How to apply the rules in real repositories and workflows. |
 | `checklists/README.md` | Short gates for setup, implementation, review, PR, release. |
 | `skills/README.md` | AI-agent workflow wrappers for OpenCode or similar harnesses. |
-| `templates/STARTER_PACK/README.md` | Minimal files to copy into a project. |
 | `docs/` | Active getting-started, workflow router, prompt catalog, roadmap, glossary, and supporting references. |
 | `prompts/` | Canonical short runnable prompts. |
 | `scripts/` | Local documentation/readiness validation scripts. |
@@ -108,8 +106,8 @@ AI-agent ready.
 
 Start small. Do not copy every file.
 
-If the target project can access this toolkit, use `templates/STARTER_PACK/README.md`.
-If it cannot, use `prompts/bootstrap-existing-project.md` instead.
+If the target project can access this toolkit, use `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>`.
+If it cannot run the script, use `prompts/bootstrap-existing-project.md` instead.
 
 Default project-local files are usually:
 

@@ -16,7 +16,7 @@ This repo is the company standard. Each project gets local `AGENTS.md`. Skills m
 ## First Project Setup
 
 1. Pick one pilot project.
-2. Copy/adapt the starter pack.
+2. Run the local bootstrap script in dry-run mode, then apply only the files the project needs.
 3. Fill real commands in `AGENTS.md`.
 4. Install or copy needed skills.
 5. Ask OpenCode: `Read AGENTS.md first.`

@@ -1,7 +1,7 @@
 # Restructure Plan: Standards, Guides, Templates, and Skills
 
-Status: Active restructure plan
-Branch: `restructure-skills-standards`
+Status: Historical
+Branch: `restructure-skills-standards` (historical)
 Owner: Needs confirmation
 Created: 2026-06-30
 

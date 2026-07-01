@@ -14,7 +14,7 @@ scripts, and examples.
 | QA Engineer | `README.md`, `guides/qa-handover-workflow.md` | QA handover, bug report, release readiness, testing prompts. |
 | Tech Lead | `docs/implementation-roadmap.md`, `standards/README.md` | Social contract, PR standard, architecture workflow, security approval rules. |
 | QA Lead | `docs/implementation-roadmap.md`, `standards/testing-standard.md` | Bug/SLA, automation metrics, automation testing standard. |
-| DevOps | `README.md`, `templates/STARTER_PACK/README.md` | Deployment readiness and validation prompts/templates. |
+| DevOps | `README.md`, `scripts/bootstrap-agent-ready.sh`, `scripts/validate-docs.sh` | Deployment readiness and validation prompts/templates. |
 | Security Reviewer | `guides/security-review-workflow.md`, `standards/secure-coding-standard.md` | Secure coding checklist and security review prompt/template. |
 | AI Agent | `AGENTS.md` | `docs/ai-workflows.md`, `docs/prompt-library.md`, and task-specific prompts. |
 | Engineering Manager | `docs/implementation-roadmap.md` | Metrics, SLA, incident, adoption, and ownership artifacts. |
