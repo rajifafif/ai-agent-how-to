@@ -263,12 +263,58 @@ If no relevant skill or workflow exists, proceed using AGENTS.md and repository 
 | New feature / behavior change | Implementation workflow or feature skill |
 | Bug / regression | Debugging workflow or bugfix skill |
 | Security-sensitive change | Security review workflow before finishing |
+| "Do the security review", "security review", "review security", "check OWASP", "review auth/permissions" | Security Review Shortcut below |
 | Documentation update | Documentation workflow |
 | Refactor | Refactor workflow with compatibility checks |
 | Database/migration | Migration/database workflow; require human review for destructive changes |
 | Tests | Testing workflow and existing project test conventions |
 | Commit requested | Commit workflow; verify first; do not push unless asked |
 | Unfinished work / resume | Handoff workflow |
+
+## Security Review Shortcut
+
+When the user asks for a security review in plain language, do not wait for a tool-specific command. Run the local security review workflow automatically.
+
+Trigger phrases include:
+- Do the security review
+- Security review
+- Review security
+- Check OWASP
+- Review auth/permissions
+- Review this before PR
+
+Required source order:
+1. Read `AGENTS.md`.
+2. Read `docs/security-review.md`.
+3. Read project context docs if present: `docs/project-context.md`, `docs/testing.md`, `docs/repository-readiness-checklist.md`, and relevant module docs under `docs/`.
+4. If the agent supports skills, workflows, reusable prompts, slash commands, or built-in procedures, load the relevant security review workflow if present.
+5. If `.agents/skills/review-security/SKILL.md` exists, read it as the repository-local security review workflow.
+6. If `.agents/skills/owasp-top-10/` exists, read `.agents/skills/owasp-top-10/SKILL.md` and relevant files under `.agents/skills/owasp-top-10/references/`.
+7. If toolkit folders such as `guides/`, `standards/`, `checklists/`, or `prompts/` exist, use their security review files only as supporting references after project-local docs.
+
+Target selection:
+- If the user names a PR, branch, module, design, or path, review that target.
+- If the user does not name a target, inspect `git status` and review current uncommitted changes when present.
+- If no uncommitted changes exist, compare the current branch to the likely base branch when practical.
+- If no clear diff exists, ask whether to review a module, branch, PR, or design/spec.
+
+Review rules:
+- Inspect actual code, diff, module, or design before relying on summaries.
+- Map findings to OWASP Top 10 2025 where relevant.
+- Include auth, authorization, tenant/org scope, input handling, secrets, logging, dependencies, config, migrations, jobs, file handling, SSRF/outbound requests, and external integrations.
+- Do not modify code unless explicitly asked.
+- Do not claim full security assurance.
+- Mark missing evidence as `Needs confirmation` or `Blocked`.
+
+Security review output must include:
+- Verdict: PASS, PASS WITH WARNINGS, FAIL, or BLOCKED.
+- Scope reviewed.
+- OWASP Top 10 2025 areas touched.
+- Findings table with severity, OWASP area, evidence, risk, and recommendation.
+- Human approval requirements.
+- Checks performed and actual results.
+- Checks not performed / missing references.
+- Needs confirmation.
 
 ## Default Feature Workflow
 
@@ -466,20 +512,31 @@ Create or update with this structure:
 
 Use this guide for future AI-agent security review in this repository.
 
-## OWASP Top 10 Review Areas
+## How to Run a Security Review
+
+1. Read AGENTS.md first.
+2. Read this file before reviewing code.
+3. If `.agents/skills/owasp-top-10/` exists, read `.agents/skills/owasp-top-10/SKILL.md` and the relevant files under `.agents/skills/owasp-top-10/references/`.
+4. Inspect the actual PR, diff, current changes, module, or design before relying on summaries.
+5. Review the touched code paths against the OWASP Top 10 2025 areas below.
+6. Report findings with severity, evidence, remediation, checks run, and required human approval.
+
+## OWASP Top 10 2025 Review Areas
 
 | ID | Risk | What to check in this project |
 | --- | --- | --- |
-| A01 | Broken Access Control | Server-side authorization, object ownership, tenant/org scoping, role checks, direct object references. |
-| A02 | Cryptographic Failures | Sensitive data handling, transport security, secret storage, password/token storage, no weak/custom crypto. |
-| A03 | Injection | Parameterized queries, safe command execution, escaped templates, input validation, no unsafe eval/interpolation. |
-| A04 | Insecure Design | Abuse cases, workflow bypasses, rate limits, business-rule enforcement, secure failure behavior. |
-| A05 | Security Misconfiguration | Secure defaults, disabled debug mode, safe CORS/headers, environment config, least privilege. |
-| A06 | Vulnerable and Outdated Components | Dependency risk, known vulnerabilities, lockfiles, unsupported packages, trusted package sources. |
-| A07 | Identification and Authentication Failures | Login/session flows, token expiry/rotation, cookie flags, password reset, account enumeration. |
-| A08 | Software and Data Integrity Failures | CI/CD trust, artifact integrity, safe deserialization, migration integrity, dependency source trust. |
-| A09 | Security Logging and Monitoring Failures | Audit logs, no secret/PII leakage, alertability, incident investigation evidence. |
-| A10 | Server-Side Request Forgery | Outbound request allowlists, metadata/IP blocking, redirect handling, DNS rebinding, timeout/size limits. |
+| A01:2025 | Broken Access Control | Server-side authorization, object ownership, tenant/org scoping, role checks, direct object references, deny-by-default behavior. |
+| A02:2025 | Security Misconfiguration | Secure defaults, disabled debug mode, safe CORS/headers, environment config, network exposure, least privilege. |
+| A03:2025 | Software Supply Chain Failures | Dependency risk, known vulnerabilities, lockfiles, trusted package sources, CI/CD secrets, build scripts, artifact provenance. |
+| A04:2025 | Cryptographic Failures | Sensitive data handling, transport security, secret storage, password/token storage, key rotation, no weak/custom crypto. |
+| A05:2025 | Injection | Parameterized queries, safe command execution, escaped templates, context-aware output encoding, input validation, no unsafe eval/interpolation. |
+| A06:2025 | Insecure Design | Abuse cases, trust boundaries, workflow bypasses, rate limits, business-rule enforcement, secure failure behavior. |
+| A07:2025 | Authentication Failures | Login/session flows, token expiry/rotation, cookie flags, password reset, account enumeration, brute-force protection. |
+| A08:2025 | Software or Data Integrity Failures | CI/CD trust, artifact integrity, safe deserialization, migration integrity, dependency source trust, trusted update paths. |
+| A09:2025 | Security Logging and Alerting Failures | Audit logs, no secret/PII leakage, alertability, log retention needs, incident investigation evidence. |
+| A10:2025 | Mishandling of Exceptional Conditions | Safe error handling, fail-closed behavior, timeouts, bounded retries, idempotency, partial failure handling, race conditions. |
+
+Note: SSRF is still required review coverage. Check outbound request allowlists, metadata/IP blocking, redirect handling, DNS rebinding, timeout/size limits, and URL parser confusion under A05, A06, and external integration review.
 
 ## Project-Specific Security Notes
 
