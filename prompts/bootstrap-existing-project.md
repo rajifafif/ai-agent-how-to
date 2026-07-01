@@ -18,6 +18,7 @@ Primary outputs:
 - docs/project-context.md
 - docs/repository-readiness-checklist.md
 - docs/testing.md, only if test/verification instructions are unclear in README or AGENTS.md
+- docs/security-review.md, with OWASP Top 10 review guidance for future AI-agent work
 - docs/plans/README.md, only if the repo has no obvious place for implementation plans
 - docs/handoffs/README.md, only if the repo has no obvious place for unfinished-work handoffs
 
@@ -39,7 +40,8 @@ Phase 1: Inspect
 3. Read existing README files, docs, AGENTS.md/CLAUDE.md/Copilot instructions if present, package/build files, test config, CI config, Docker files, env examples, migration config, and obvious entrypoints.
 4. Identify the actual stack, package manager, test runner, lint/typecheck/build commands, app start command, migration command, and generated folders.
 5. Identify security-sensitive areas: auth, permissions, tenant/org scoping, payments, patient/health data, PII, secrets, infrastructure, destructive data jobs.
-6. Identify unknowns that require human confirmation.
+6. Map security-sensitive areas to OWASP Top 10 risks where applicable.
+7. Identify unknowns that require human confirmation.
 
 Phase 2: Decide mode
 Use Existing Project Mode by default.
@@ -67,6 +69,7 @@ A repository is AI-agent ready when it has:
 - testing and verification expectations;
 - git commit/push rules;
 - security and secret-handling rules;
+- OWASP Top 10 review expectations for future changes;
 - known risky areas;
 - generated files and files to avoid editing;
 - human-review boundaries;
@@ -344,6 +347,41 @@ Decision: Ready / Ready with gaps / Not ready
 Required follow-up:
 - Needs confirmation
 
+File: docs/security-review.md
+Create or update with this structure:
+
+# Security Review Guide
+
+Use this guide for future AI-agent security review in this repository.
+
+## OWASP Top 10 Review Areas
+
+| ID | Risk | What to check in this project |
+| --- | --- | --- |
+| A01 | Broken Access Control | Server-side authorization, object ownership, tenant/org scoping, role checks, direct object references. |
+| A02 | Cryptographic Failures | Sensitive data handling, transport security, secret storage, password/token storage, no weak/custom crypto. |
+| A03 | Injection | Parameterized queries, safe command execution, escaped templates, input validation, no unsafe eval/interpolation. |
+| A04 | Insecure Design | Abuse cases, workflow bypasses, rate limits, business-rule enforcement, secure failure behavior. |
+| A05 | Security Misconfiguration | Secure defaults, disabled debug mode, safe CORS/headers, environment config, least privilege. |
+| A06 | Vulnerable and Outdated Components | Dependency risk, known vulnerabilities, lockfiles, unsupported packages, trusted package sources. |
+| A07 | Identification and Authentication Failures | Login/session flows, token expiry/rotation, cookie flags, password reset, account enumeration. |
+| A08 | Software and Data Integrity Failures | CI/CD trust, artifact integrity, safe deserialization, migration integrity, dependency source trust. |
+| A09 | Security Logging and Monitoring Failures | Audit logs, no secret/PII leakage, alertability, incident investigation evidence. |
+| A10 | Server-Side Request Forgery | Outbound request allowlists, metadata/IP blocking, redirect handling, DNS rebinding, timeout/size limits. |
+
+## Project-Specific Security Notes
+
+- Auth and authorization model: Needs confirmation
+- Sensitive data types: Needs confirmation
+- Tenant/org scoping rules: Needs confirmation
+- External integrations and webhooks: Needs confirmation
+- File upload/download rules: Needs confirmation
+- Dependency/security scan command: Needs confirmation
+
+## Human Review Required
+
+Require human review before changing authentication, authorization, tenant scoping, cryptography, payment flows, patient/health data, PII handling, production infrastructure, secrets, or destructive data operations.
+
 File: docs/testing.md
 Create only if testing instructions are missing or unclear elsewhere.
 
@@ -370,7 +408,7 @@ If README.md is missing or clearly incomplete, create or patch a minimal README 
 - purpose;
 - setup commands or Needs confirmation;
 - test/lint/build commands or Needs confirmation;
-- links to AGENTS.md, docs/project-context.md, and docs/repository-readiness-checklist.md.
+- links to AGENTS.md, docs/project-context.md, docs/security-review.md, and docs/repository-readiness-checklist.md.
 
 Do not overwrite a useful README. Patch only missing AI-agent-readiness links if needed.
 
