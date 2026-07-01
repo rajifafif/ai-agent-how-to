@@ -33,7 +33,8 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 | Verify changes | `checklists/pre-commit-checklist.md` | `checklists/pre-commit-checklist.md` |
 | Review security | `guides/security-review-workflow.md` | `prompts/review-security.md` |
 | Update documentation | `standards/documentation-standard.md` | `standards/documentation-standard.md` |
-| Prepare commits, only when authorized | `skills/create-commits/SKILL.md` | `prompts/create-commits.md` |
+| Make commits, only when authorized | `skills/create-commits/SKILL.md` and `.agents/skills/create-commits/SKILL.md` when present | `prompts/create-commits.md` |
+| Prepare release/changelog | `skills/make-release/SKILL.md` and `.agents/skills/make-release/SKILL.md` when present | No standalone prompt; use release skill |
 | Prepare PR content or create PR, only when authorized | `skills/create-pull-request/SKILL.md` | `prompts/create-pull-request.md` |
 | Resume unfinished work | `skills/continue-unfinished-work/SKILL.md` | `prompts/continue-unfinished-work.md` |
 | Prepare QA handover | `guides/qa-handover-workflow.md` | `skills/qa-handover/SKILL.md` |

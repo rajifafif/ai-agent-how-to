@@ -131,7 +131,9 @@ short-prompt behavior.
 | Check current changes, verify, review diff | `checklists/pre-commit-checklist.md` if present |
 | Security review, auth/permission review | `prompts/review-security.md` if present |
 | Update docs | `standards/documentation-standard.md` if present |
-| Prepare commit, commit rules, make commits | `prompts/create-commits.md` if present |
+| Make commits, commits, create commits | `.agents/skills/create-commits/SKILL.md` and `prompts/create-commits.md` if present |
+| Prepare commit, commit rules | Commit workflow in prepare-only mode; do not commit |
+| Make release, create release, tag release | `.agents/skills/make-release/SKILL.md` if present; prepare changelog and confirm before tagging |
 | Continue, resume, handoff | `prompts/continue-unfinished-work.md` if present |
 
 For combined requests, run workflows in safe lifecycle order:

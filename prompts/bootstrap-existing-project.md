@@ -269,8 +269,95 @@ If no relevant skill or workflow exists, proceed using AGENTS.md and repository 
 | Refactor | Refactor workflow with compatibility checks |
 | Database/migration | Migration/database workflow; require human review for destructive changes |
 | Tests | Testing workflow and existing project test conventions |
-| Commit requested | Commit workflow; verify first; do not push unless asked |
+| "make commits", "commits", "create commits", "commit this" | Commit Shortcut below |
+| "prepare commit", "commit rules" | Commit Shortcut in prepare-only mode; do not commit |
+| "make release", "create release", "prepare release", "tag release" | Release Shortcut below |
 | Unfinished work / resume | Handoff workflow |
+
+## Commit Shortcut
+
+When the user asks for commits in plain language, do not wait for a tool-specific command. Run the local commit workflow automatically.
+
+Trigger phrases include:
+- make commits
+- commits
+- create commits
+- commit this
+- commit current changes
+
+Intent rules:
+- `make commits`, `commits`, `create commits`, and `commit this` mean commit-authorized mode.
+- `prepare commit`, `commit plan`, and `commit rules` mean prepare-only mode; do not commit.
+- Commit permission does not imply push permission.
+- Push requires explicit wording such as `push` or `push commits`.
+
+Required source order:
+1. Read `AGENTS.md`.
+2. Read project commit guidance if present: `standards/commit-standard.md`, `docs/ai-workflows.md`, `docs/project-context.md`, and `docs/testing.md`.
+3. If the agent supports skills, workflows, reusable prompts, slash commands, or built-in procedures, load the relevant commit workflow if present.
+4. If `.agents/skills/create-commits/SKILL.md` exists, read it as the repository-local commit workflow.
+
+Commit rules:
+- Inspect `git status --short --branch`, the complete tracked diff, and untracked files before staging anything.
+- Identify unrelated, generated, temporary, sensitive, credential, binary, or risky files.
+- Stop and ask if commit boundaries are ambiguous or unrelated local changes would be mixed.
+- Run relevant lightweight validation before committing when available.
+- Group changes into logical commits by purpose.
+- Generate commit titles and descriptions from actual changed files and diff evidence.
+- Stage explicit files only. Never use `git add .` blindly.
+- Do not push unless explicitly asked.
+
+Commit output must include:
+- Commit grouping rationale.
+- Validation commands and actual results.
+- Created commit hashes.
+- Files excluded and why.
+- Remaining uncommitted/untracked files.
+- Reminder that nothing was pushed unless push was explicitly requested.
+
+## Release Shortcut
+
+When the user asks to make a release, prepare the release and changelog first, then confirm before tagging.
+
+Trigger phrases include:
+- make release
+- create release
+- prepare release
+- release this
+- tag release
+- changelog for release
+
+Intent rules:
+- `prepare release` means prepare-only mode; no tag.
+- `make release`, `create release`, and `release this` mean prepare release notes/changelog and ask confirmation before tagging.
+- `tag release` may create a local tag only after confirming exact tag/version and changelog.
+- `publish release`, `push tag`, or `create GitHub release` require separate explicit approval.
+
+Required source order:
+1. Read `AGENTS.md`.
+2. Read release/version guidance if present: `docs/ai-workflows.md`, `docs/project-context.md`, `docs/release.md`, `CHANGELOG.md`, `.github/release.yml`, and package/version files.
+3. If the agent supports skills, workflows, reusable prompts, slash commands, or built-in procedures, load the relevant release workflow if present.
+4. If `.agents/skills/make-release/SKILL.md` exists, read it as the repository-local release workflow.
+
+Release rules:
+- Inspect `git status --short --branch`.
+- Require a clean working tree before tagging or publishing.
+- Identify the previous release from git tags, changelog, or release tooling.
+- Inspect commits and relevant diffs since the previous release.
+- Reuse the previous release note/changelog style when available.
+- Generate clear changelog sections for Breaking Changes, Features, Fixes, Security, Performance, Documentation, and Chores/Internal.
+- Propose the next version/tag from repository convention. If unclear, mark `Needs confirmation` and offer options.
+- Ask for confirmation before creating any tag.
+- Do not push tags or publish a release unless explicitly asked.
+
+Release output must include:
+- Previous release baseline.
+- Proposed next tag/version.
+- Draft changelog/release notes.
+- Release risks and `Needs confirmation` items.
+- Verification/release checks performed and actual results.
+- Exact commands that would tag/publish after approval.
+- Clear statement that no tag or publish was done unless explicitly confirmed.
 
 ## Planning Shortcut
 

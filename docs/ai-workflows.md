@@ -27,7 +27,9 @@ prompts during daily work.
 | “check current changes”, “verify”, “review diff”, “did this pass?” | `../checklists/pre-commit-checklist.md` | `../checklists/pre-commit-checklist.md` |
 | “security review”, “check vulnerabilities”, “review auth/permissions” | `../prompts/review-security.md` | `../prompts/review-security.md` |
 | “update docs”, “sync documentation” | `../standards/documentation-standard.md` | `../standards/documentation-standard.md` |
-| “prepare commit”, “commit rules”, “make commits”, “create commits” | `../prompts/create-commits.md` | `../prompts/create-commits.md` |
+| “make commits”, “commits”, “create commits”, “commit this” | `.agents/skills/create-commits/SKILL.md` and `../prompts/create-commits.md` when present | `../prompts/create-commits.md` |
+| “prepare commit”, “commit rules” | Commit workflow in prepare-only mode; do not commit | `../prompts/create-commits.md` |
+| “make release”, “create release”, “prepare release”, “tag release” | `.agents/skills/make-release/SKILL.md`; prepare changelog/release notes and confirm before tagging | No standalone prompt; use release skill |
 | “create pull request”, “prepare PR”, “open PR” | `../prompts/create-pull-request.md` | `../prompts/create-pull-request.md` |
 | “continue”, “resume”, “handoff”, “unfinished work” | `../prompts/continue-unfinished-work.md` | `../prompts/continue-unfinished-work.md` |
 
@@ -90,7 +92,10 @@ prepare or create a PR when explicitly authorized.
 | --- | --- |
 | “prepare commit” | Prepare-only mode. Recommend boundaries and messages. Do not commit. |
 | “commit rules” | Explain or apply commit safety checks. Do not commit unless commit is also explicitly requested. |
-| “make commits”, “create commits”, “commit this” | Commit-authorized mode, after verification and safety checks. |
+| “make commits”, “commits”, “create commits”, “commit this” | Commit-authorized mode, after verification and safety checks. |
+| “make release”, “create release” | Prepare release notes/changelog and ask confirmation before tagging. |
+| “tag release” | Confirm exact tag/version/changelog before creating a local tag. |
+| “publish release”, “push tag” | Publish/push only if explicitly requested. |
 | “push” | Push only if explicitly requested. Commit permission does not imply push permission. |
 
 If there are ambiguous unrelated changes, stop and ask before staging.
