@@ -26,7 +26,7 @@ prompts during daily work.
 | “Analisis Jam ini: https://jam.dev/c/<id>”, “Fix bug dari Jam ini”, “Jam.dev report” | `../docs/roadmap/jam-dev-mcp-integration-plan.md` first, then `../guides/feature-development-workflow.md` | `../prompts/fix-bug.md` or `../prompts/plan-feature.md` after Jam context is understood |
 | “check current changes”, “verify”, “verify this”, “review diff”, “did this pass?”, “pre-commit check” | `.agents/skills/verify-changes/SKILL.md` and `../checklists/pre-commit-checklist.md` when present | `../checklists/pre-commit-checklist.md` |
 | “security review”, “check vulnerabilities”, “review auth/permissions” | `../prompts/review-security.md` | `../prompts/review-security.md` |
-| “update docs”, “sync documentation” | `../standards/documentation-standard.md` | `../standards/documentation-standard.md` |
+| “update docs”, “sync documentation”, “clean up docs”, “remove obsolete docs”, “consolidate docs” | `.agents/skills/cleanup-docs/SKILL.md` and `../standards/documentation-standard.md` when present | `../standards/documentation-standard.md` |
 | “make commits”, “commits”, “create commits”, “commit this” | `.agents/skills/create-commits/SKILL.md` and `../prompts/create-commits.md` when present | `../prompts/create-commits.md` |
 | “prepare commit”, “commit rules” | Commit workflow in prepare-only mode; do not commit | `../prompts/create-commits.md` |
 | “make release”, “create release”, “prepare release”, “tag release” | `.agents/skills/make-release/SKILL.md`; prepare changelog/release notes and confirm before tagging | No standalone prompt; use release skill |

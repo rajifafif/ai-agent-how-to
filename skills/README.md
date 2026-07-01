@@ -22,6 +22,7 @@ Every skill should:
 | `plan-feature` | Plan this feature. |
 | `implement-feature` | Implement this feature. |
 | `review-security` | Review this change for security issues. |
+| `cleanup-docs` | Clean up docs / remove obsolete docs / consolidate documentation. |
 | `verify-changes` | Verify this / check current changes / review diff. |
 | `create-commits` | Make commits / commits / create commits. |
 | `make-release` | Make release / prepare release and changelog before tagging. |

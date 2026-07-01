@@ -53,7 +53,7 @@ check_skill() {
 printf 'Project skill sync validation\n'
 printf 'Policy: .agents/skills/* must be exact copies of skills/* for project skills.\n\n'
 
-for skill in prepare-repository plan-feature implement-feature review-security verify-changes create-commits make-release create-pull-request continue-unfinished-work qa-handover; do
+for skill in prepare-repository plan-feature implement-feature review-security cleanup-docs verify-changes create-commits make-release create-pull-request continue-unfinished-work qa-handover; do
   check_skill "$skill"
 done
 

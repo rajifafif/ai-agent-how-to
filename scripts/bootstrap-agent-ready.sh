@@ -131,7 +131,7 @@ install_text_if_missing "$TARGET_DIR/docs/testing.md" "Testing"
 ensure_dir "$TARGET_DIR/docs/plans"
 ensure_dir "$TARGET_DIR/docs/handoffs"
 
-for skill in prepare-repository plan-feature implement-feature review-security verify-changes create-commits make-release create-pull-request continue-unfinished-work qa-handover; do
+for skill in prepare-repository plan-feature implement-feature review-security cleanup-docs verify-changes create-commits make-release create-pull-request continue-unfinished-work qa-handover; do
   install_skill "$skill"
 done
 

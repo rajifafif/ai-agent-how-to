@@ -129,7 +129,7 @@ dan short-prompt behavior.
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` jika ada |
 | Check current changes, verify, verify this, review diff | `.agents/skills/verify-changes/SKILL.md` dan `checklists/pre-commit-checklist.md` jika ada |
 | Security review, auth/permission review | `prompts/review-security.md` jika ada |
-| Update docs | `standards/documentation-standard.md` jika ada |
+| Update docs, clean up docs, remove obsolete docs | `.agents/skills/cleanup-docs/SKILL.md` dan `standards/documentation-standard.md` jika ada |
 | Make commits, commits, create commits | `.agents/skills/create-commits/SKILL.md` dan `prompts/create-commits.md` jika ada |
 | Prepare commit, commit rules | Commit workflow dalam prepare-only mode; jangan commit |
 | Make release, create release, tag release | `.agents/skills/make-release/SKILL.md` jika ada; siapkan changelog dan konfirmasi sebelum tagging |

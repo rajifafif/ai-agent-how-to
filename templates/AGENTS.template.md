@@ -130,7 +130,7 @@ short-prompt behavior.
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` if present |
 | Check current changes, verify, verify this, review diff | `.agents/skills/verify-changes/SKILL.md` and `checklists/pre-commit-checklist.md` if present |
 | Security review, auth/permission review | `prompts/review-security.md` if present |
-| Update docs | `standards/documentation-standard.md` if present |
+| Update docs, clean up docs, remove obsolete docs | `.agents/skills/cleanup-docs/SKILL.md` and `standards/documentation-standard.md` if present |
 | Make commits, commits, create commits | `.agents/skills/create-commits/SKILL.md` and `prompts/create-commits.md` if present |
 | Prepare commit, commit rules | Commit workflow in prepare-only mode; do not commit |
 | Make release, create release, tag release | `.agents/skills/make-release/SKILL.md` if present; prepare changelog and confirm before tagging |

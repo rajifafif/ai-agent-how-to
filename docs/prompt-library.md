@@ -30,9 +30,9 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 | Plan larger work | `guides/feature-development-workflow.md` | `prompts/plan-feature.md` |
 | Implement a feature | Approved plan under `docs/plans/`, then repository instructions and `skills/implement-feature/SKILL.md` if present | No standalone prompt; implementation must follow an approved plan |
 | Fix a bug | `guides/bugfix-workflow.md` | `prompts/fix-bug.md` |
-| Verify changes | `checklists/pre-commit-checklist.md` | `checklists/pre-commit-checklist.md` |
+| Verify changes | `skills/verify-changes/SKILL.md` and `.agents/skills/verify-changes/SKILL.md` when present | `checklists/pre-commit-checklist.md` |
 | Review security | `guides/security-review-workflow.md` | `prompts/review-security.md` |
-| Update documentation | `standards/documentation-standard.md` | `standards/documentation-standard.md` |
+| Update or clean up documentation | `skills/cleanup-docs/SKILL.md` and `.agents/skills/cleanup-docs/SKILL.md` when present | `standards/documentation-standard.md` |
 | Make commits, only when authorized | `skills/create-commits/SKILL.md` and `.agents/skills/create-commits/SKILL.md` when present | `prompts/create-commits.md` |
 | Prepare release/changelog | `skills/make-release/SKILL.md` and `.agents/skills/make-release/SKILL.md` when present | No standalone prompt; use release skill |
 | Prepare PR content or create PR, only when authorized | `skills/create-pull-request/SKILL.md` | `prompts/create-pull-request.md` |
