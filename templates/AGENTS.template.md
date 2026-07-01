@@ -134,6 +134,8 @@ short-prompt behavior.
 | Make commits, commits, create commits | `.agents/skills/create-commits/SKILL.md` and `prompts/create-commits.md` if present |
 | Prepare commit, commit rules | Commit workflow in prepare-only mode; do not commit |
 | Make release, create release, tag release | `.agents/skills/make-release/SKILL.md` if present; prepare changelog and confirm before tagging |
+| Create PR, create pull request, open PR | `.agents/skills/create-pull-request/SKILL.md` and `prompts/create-pull-request.md` if present |
+| Prepare PR, draft PR body | PR workflow in prepare-only mode; do not push or create PR |
 | Continue, resume, handoff | `prompts/continue-unfinished-work.md` if present |
 
 For combined requests, run workflows in safe lifecycle order:

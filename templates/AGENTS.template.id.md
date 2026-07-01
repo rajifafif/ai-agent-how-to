@@ -133,6 +133,8 @@ dan short-prompt behavior.
 | Make commits, commits, create commits | `.agents/skills/create-commits/SKILL.md` dan `prompts/create-commits.md` jika ada |
 | Prepare commit, commit rules | Commit workflow dalam prepare-only mode; jangan commit |
 | Make release, create release, tag release | `.agents/skills/make-release/SKILL.md` jika ada; siapkan changelog dan konfirmasi sebelum tagging |
+| Create PR, create pull request, open PR | `.agents/skills/create-pull-request/SKILL.md` dan `prompts/create-pull-request.md` jika ada |
+| Prepare PR, draft PR body | PR workflow dalam prepare-only mode; jangan push atau create PR |
 | Continue, resume, handoff | `prompts/continue-unfinished-work.md` jika ada |
 
 Untuk request gabungan, jalankan workflow dalam urutan aman:

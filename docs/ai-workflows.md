@@ -30,7 +30,8 @@ prompts during daily work.
 | “make commits”, “commits”, “create commits”, “commit this” | `.agents/skills/create-commits/SKILL.md` and `../prompts/create-commits.md` when present | `../prompts/create-commits.md` |
 | “prepare commit”, “commit rules” | Commit workflow in prepare-only mode; do not commit | `../prompts/create-commits.md` |
 | “make release”, “create release”, “prepare release”, “tag release” | `.agents/skills/make-release/SKILL.md`; prepare changelog/release notes and confirm before tagging | No standalone prompt; use release skill |
-| “create pull request”, “prepare PR”, “open PR” | `../prompts/create-pull-request.md` | `../prompts/create-pull-request.md` |
+| “create PR”, “create pull request”, “open PR”, “make PR” | `.agents/skills/create-pull-request/SKILL.md` and `../prompts/create-pull-request.md` when present | `../prompts/create-pull-request.md` |
+| “prepare PR”, “draft PR body”, “PR description” | PR workflow in prepare-only mode; do not push or create PR | `../prompts/create-pull-request.md` |
 | “continue”, “resume”, “handoff”, “unfinished work” | `../prompts/continue-unfinished-work.md` | `../prompts/continue-unfinished-work.md` |
 
 ## Combined Requests

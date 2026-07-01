@@ -24,7 +24,7 @@ Every skill should:
 | `review-security` | Review this change for security issues. |
 | `create-commits` | Make commits / commits / create commits. |
 | `make-release` | Make release / prepare release and changelog before tagging. |
-| `create-pull-request` | Create a pull request from this branch. |
+| `create-pull-request` | Create PR / prepare PR / open PR from the current branch. |
 | `qa-handover` | Prepare QA handover. |
 | `continue-unfinished-work` | Continue unfinished work. |
 

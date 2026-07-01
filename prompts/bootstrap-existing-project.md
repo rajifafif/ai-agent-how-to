@@ -272,6 +272,8 @@ If no relevant skill or workflow exists, proceed using AGENTS.md and repository 
 | "make commits", "commits", "create commits", "commit this" | Commit Shortcut below |
 | "prepare commit", "commit rules" | Commit Shortcut in prepare-only mode; do not commit |
 | "make release", "create release", "prepare release", "tag release" | Release Shortcut below |
+| "create PR", "create pull request", "open PR", "make PR" | Pull Request Shortcut below |
+| "prepare PR", "draft PR body", "PR description" | Pull Request Shortcut in prepare-only mode; do not push or create PR |
 | Unfinished work / resume | Handoff workflow |
 
 ## Commit Shortcut
@@ -358,6 +360,49 @@ Release output must include:
 - Verification/release checks performed and actual results.
 - Exact commands that would tag/publish after approval.
 - Clear statement that no tag or publish was done unless explicitly confirmed.
+
+## Pull Request Shortcut
+
+When the user asks to prepare or create a pull request in plain language, do not wait for a tool-specific command. Run the local PR workflow automatically.
+
+Trigger phrases include:
+- create PR
+- create pull request
+- open PR
+- make PR
+- prepare PR
+- draft PR body
+- PR description
+
+Intent rules:
+- `prepare PR`, `draft PR body`, and `PR description` mean prepare-only mode; do not push or create the PR.
+- `create PR`, `create pull request`, `open PR`, and `make PR` mean PR-authorized mode after branch, remote, and auth checks.
+- PR creation does not imply merge permission.
+- Adding reviewers, labels, assignees, projects, milestones, or auto-merge requires explicit authorization unless repository convention requires it.
+
+Required source order:
+1. Read `AGENTS.md`.
+2. Read PR/review guidance if present: `.github/PULL_REQUEST_TEMPLATE*`, `standards/pull-request-standard.md`, `checklists/pull-request-checklist.md`, `docs/ai-workflows.md`, `docs/project-context.md`, `docs/testing.md`, and `docs/security-review.md`.
+3. If the agent supports skills, workflows, reusable prompts, slash commands, or built-in procedures, load the relevant PR workflow if present.
+4. If `.agents/skills/create-pull-request/SKILL.md` exists, read it as the repository-local PR workflow.
+
+PR rules:
+- Inspect `git status --short --branch`.
+- Inspect current branch, upstream, remotes, likely base branch, commits, and diff against base.
+- If uncommitted changes remain, ask whether to commit, exclude, or prepare a draft only.
+- Read the PR template and required checklist items.
+- Collect actual verification evidence; state `Not run` with reason for missing checks.
+- Identify scope, affected modules, API/config/migration changes, security impact, performance risk, rollback notes, release notes, and QA handover.
+- Draft PR title/body from repository evidence.
+- Create the PR only if explicitly requested and required CLI/auth/remote branch are available.
+- Do not merge PRs unless explicitly requested.
+
+PR output must include:
+- PR title/body or created PR URL.
+- Base/head branch.
+- Verification evidence.
+- Risks and `Needs confirmation` items.
+- Whether anything was pushed or created.
 
 ## Planning Shortcut
 
