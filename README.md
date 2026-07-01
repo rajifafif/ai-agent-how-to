@@ -11,7 +11,7 @@ skills. It is not meant to be copied wholesale into every project.
 | Need | Use |
 | --- | --- |
 | Understand the operating model | This README, then `guides/opencode-adoption-guide.md` |
-| Bootstrap an existing project with one prompt | `prompts/bootstrap-existing-project.md` |
+| Bootstrap an existing project | `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>` or `prompts/bootstrap-existing-project.md` |
 | Prepare a new project with toolkit access | `guides/make-new-project-ai-ready.md` and `templates/STARTER_PACK/README.md` |
 | Prepare a legacy project with toolkit access | `guides/make-legacy-project-ai-ready.md` |
 | Find company-wide rules | `standards/README.md` |
@@ -47,7 +47,7 @@ The active top-level operating model is now simplified:
 | `skills/` | Initial workflow wrappers. |
 | `templates/STARTER_PACK/` | Starter pack entry point. |
 | `prompts/` | Canonical short runnable prompts. |
-| Validation scripts | Present, but should be tightened as cleanup continues. |
+| Validation scripts | Local docs/readiness/skill-sync checks. |
 
 ## Canonical Navigation
 
@@ -66,15 +66,28 @@ The active top-level operating model is now simplified:
 
 Most developers do not need this whole toolkit in their application repository.
 
-For an existing application, open the target repository in the AI coding agent and paste
-one prompt:
+For an existing application with local access to this toolkit, preview the install first:
+
+```sh
+scripts/bootstrap-agent-ready.sh --dry-run --target /path/to/project
+```
+
+Apply only after reviewing the dry-run output:
+
+```sh
+scripts/bootstrap-agent-ready.sh --apply --target /path/to/project
+```
+
+If the target project cannot run the script, open the target repository in the AI coding
+agent and use the bootstrap prompt fallback:
 
 ```text
 prompts/bootstrap-existing-project.md
 ```
 
-That prompt is self-contained. It tells the agent to inspect the existing repo, then create
-or update the minimum local files:
+That prompt tells the agent to download/open the canonical bootstrap Markdown when
+possible instead of pasting a very long prompt inline. It tells the agent to inspect the
+existing repo, then create or update the default local files:
 
 ```text
 AGENTS.md
@@ -82,6 +95,8 @@ README.md, only if missing or incomplete
 docs/project-context.md
 docs/repository-readiness-checklist.md
 docs/testing.md, only if testing instructions are unclear
+.agents/skills/*, synced from canonical skills/*
+templates/*, selected workflow templates
 docs/plans/README.md, only if needed
 docs/handoffs/README.md, only if needed
 ```
@@ -96,7 +111,7 @@ Start small. Do not copy every file.
 If the target project can access this toolkit, use `templates/STARTER_PACK/README.md`.
 If it cannot, use `prompts/bootstrap-existing-project.md` instead.
 
-Minimum project-local files are usually:
+Default project-local files are usually:
 
 ```text
 AGENTS.md
@@ -104,6 +119,8 @@ README.md
 docs/project-context.md
 docs/repository-readiness-checklist.md
 docs/testing.md
+.agents/skills/*
+templates/*
 ```
 
 Replace unknown project facts with `Needs confirmation`; do not invent commands, owners,

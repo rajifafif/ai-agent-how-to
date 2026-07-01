@@ -1,13 +1,19 @@
 # Bootstrap Existing Project Prompt
 
-Use this self-contained prompt inside an existing application repository when the toolkit files are not available in that repository.
+Use this prompt inside an existing application repository when the toolkit files are not available in that repository.
 
-Copy the full text block below into the AI coding agent from the root of the target project.
+Preferred short invocation from a target repository:
 
 ```text
-You are inside an existing software project. Your task is to make this repository AI-agent ready using only the instructions in this prompt.
+Read AGENTS.md if present. Download or open the canonical bootstrap prompt from this toolkit at prompts/bootstrap-existing-project.md, then make this repository AI-agent ready. Do not paste the whole long prompt inline unless the agent cannot access the file.
+```
 
-Do not assume access to any external toolkit files, guides, standards, templates, or prompts.
+Fallback: copy the full text block below into the AI coding agent from the root of the target project.
+
+```text
+You are inside an existing software project. Your task is to make this repository AI-agent ready using this bootstrap prompt or the canonical toolkit files when available.
+
+If the toolkit repository is available, prefer reading its current files instead of relying on stale copied text. If not available, continue with only this prompt.
 
 Goal:
 Create or update the minimum local documentation an AI coding agent needs to work safely in this existing repository.
