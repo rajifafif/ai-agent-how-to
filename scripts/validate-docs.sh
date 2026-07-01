@@ -56,6 +56,7 @@ extra_required=(
   templates/REPOSITORY_READINESS_CHECKLIST.template.md
   templates/STARTER_PACK/README.md
   templates/AI_AGENT_READY_REPOSITORY/README.md
+  prompts/bootstrap-existing-project.md
   prompts/initialize-project.md
   prompts/plan-feature.md
   prompts/implement-feature.md

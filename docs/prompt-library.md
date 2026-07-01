@@ -25,7 +25,8 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 
 | Task | Use first | Detailed/legacy prompt |
 | --- | --- | --- |
-| Prepare a repository for AI agents | `guides/make-new-project-ai-ready.md` or `guides/make-legacy-project-ai-ready.md` | `prompts/initialize-project.md` |
+| Bootstrap an existing project without this toolkit installed | `prompts/bootstrap-existing-project.md` | Self-contained single prompt |
+| Prepare a repository for AI agents with toolkit access | `guides/make-new-project-ai-ready.md` or `guides/make-legacy-project-ai-ready.md` | `prompts/initialize-project.md` |
 | Plan larger work | `guides/feature-development-workflow.md` | `prompts/plan-feature.md` |
 | Implement a feature | `skills/implement-feature/SKILL.md` | `prompts/implement-feature.md` |
 | Fix a bug | `guides/bugfix-workflow.md` | `prompts/fix-bug.md` |
@@ -72,9 +73,10 @@ Read AGENTS.md first. Validate environment readiness for [environment]. Mark unk
 
 ## Canonical Short Prompts
 
-The restructure plan's short canonical prompt routers now exist:
+The active prompt set now includes one self-contained bootstrap prompt plus short canonical task routers:
 
 ```text
+prompts/bootstrap-existing-project.md
 prompts/initialize-project.md
 prompts/plan-feature.md
 prompts/implement-feature.md

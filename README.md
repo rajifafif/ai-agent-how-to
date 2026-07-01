@@ -11,8 +11,9 @@ skills. It is not meant to be copied wholesale into every project.
 | Need | Use |
 | --- | --- |
 | Understand the operating model | This README, then `guides/opencode-adoption-guide.md` |
-| Prepare a new project | `guides/make-new-project-ai-ready.md` and `templates/STARTER_PACK/README.md` |
-| Prepare a legacy project | `guides/make-legacy-project-ai-ready.md` |
+| Bootstrap an existing project with one prompt | `prompts/bootstrap-existing-project.md` |
+| Prepare a new project with toolkit access | `guides/make-new-project-ai-ready.md` and `templates/STARTER_PACK/README.md` |
+| Prepare a legacy project with toolkit access | `guides/make-legacy-project-ai-ready.md` |
 | Find company-wide rules | `standards/README.md` |
 | Run a task with an AI agent | `skills/README.md` or `prompts/` |
 | Use a review/check gate | `checklists/README.md` |
@@ -64,28 +65,52 @@ mostly implemented for the new top-level operating model:
 | `prompts/` | Detailed prompt library and compatibility prompt files. |
 | `scripts/` | Local documentation/readiness validation scripts. |
 
+## Fastest Path for Existing Projects
+
+Most developers do not need this whole toolkit in their application repository.
+
+For an existing application, open the target repository in the AI coding agent and paste
+one prompt:
+
+```text
+prompts/bootstrap-existing-project.md
+```
+
+That prompt is self-contained. It tells the agent to inspect the existing repo, then create
+or update the minimum local files:
+
+```text
+AGENTS.md
+README.md, only if missing or incomplete
+docs/project-context.md
+docs/repository-readiness-checklist.md
+docs/testing.md, only if testing instructions are unclear
+docs/plans/README.md, only if needed
+docs/handoffs/README.md, only if needed
+```
+
+The developer must review every `Needs confirmation` item before considering the project
+AI-agent ready.
+
 ## What to Copy Into a Project
 
 Start small. Do not copy every file.
 
-Minimum project-local starter pack:
+If the target project can access this toolkit, use `templates/STARTER_PACK/README.md`.
+If it cannot, use `prompts/bootstrap-existing-project.md` instead.
+
+Minimum project-local files are usually:
 
 ```text
 AGENTS.md
 README.md
-docs/PROJECT_CONTEXT.md
-docs/ARCHITECTURE.md
-docs/DEVELOPMENT.md
-docs/TESTING.md
-docs/SECURITY.md
-.github/pull_request_template.md
-scripts/verify.sh
+docs/project-context.md
+docs/repository-readiness-checklist.md
+docs/testing.md
 ```
 
-Use the templates in `templates/` and the starter-pack guide in
-`templates/STARTER_PACK/README.md`. Replace unknown project facts with
-`Needs confirmation`; do not invent commands, owners, SLAs, environments, or approval
-roles.
+Replace unknown project facts with `Needs confirmation`; do not invent commands, owners,
+SLAs, environments, or approval roles.
 
 ## OpenCode / AI-Agent Usage
 
