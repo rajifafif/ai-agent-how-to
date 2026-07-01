@@ -33,6 +33,9 @@ Hard rules:
 - Do not commit or push unless explicitly asked.
 - Keep docs practical and short.
 - Prefer actual repository evidence over assumptions.
+- If the AI agent supports skills, workflows, reusable prompts, memories, or built-in procedures, it must check and read task-relevant ones before editing.
+- Do not assume every AI agent has the same skill system; write AGENTS.md in portable language such as "skills, workflows, reusable prompts, or built-in procedures".
+- Check for duplicate, overlapping, stale, or superseded docs before creating new docs. Merge useful content into the canonical docs and prune/archive redundant docs when safe.
 
 Phase 1: Inspect
 1. Check git status and note existing modified/untracked files.
@@ -42,6 +45,8 @@ Phase 1: Inspect
 5. Identify security-sensitive areas: auth, permissions, tenant/org scoping, payments, patient/health data, PII, secrets, infrastructure, destructive data jobs.
 6. Map security-sensitive areas to OWASP Top 10 risks where applicable.
 7. Identify unknowns that require human confirmation.
+8. Identify whether the target repository already has workflow docs, agent skills, reusable prompts, coding standards, or task-specific checklists that future agents should read.
+9. Identify duplicate, overlapping, stale, or superseded documentation that should be merged, linked, archived, or deleted.
 
 Phase 2: Decide mode
 Use Existing Project Mode by default.
@@ -53,6 +58,8 @@ Existing Project Mode:
 - Keep current architecture conventions.
 - Add warnings for risky legacy areas rather than refactoring them.
 - Preserve compatibility and existing workflows.
+- Consolidate duplicate or overlapping docs into the new canonical docs when safe.
+- Do not keep multiple conflicting sources of truth; link to the canonical doc instead.
 
 New Project Mode:
 - Create minimal starter docs.
@@ -73,6 +80,8 @@ A repository is AI-agent ready when it has:
 - known risky areas;
 - generated files and files to avoid editing;
 - human-review boundaries;
+- instructions to read task-relevant skills, workflows, reusable prompts, or built-in procedures when the AI agent supports them;
+- a documentation map that identifies canonical docs and redundant/stale docs;
 - a checklist showing what is ready and what still needs confirmation.
 
 File: AGENTS.md
@@ -175,6 +184,20 @@ List only important folders and files. Keep this short.
 - Do not bypass auth, permission, tenant, or ownership checks.
 - Do not make destructive data changes without explicit approval.
 
+## Instruction Priority
+
+When instructions conflict, follow this order:
+
+1. Explicit user instruction in the current task.
+2. Safety, security, legal, and data-protection requirements.
+3. This AGENTS.md file.
+4. Repository-specific docs and discovered code patterns.
+5. Task-relevant skills, workflows, reusable prompts, or built-in procedures.
+6. General AI/model knowledge.
+
+Do not use a generic skill, workflow, prompt, or model habit to override repository-specific evidence.
+If the conflict affects security, data, deployment, or public behavior, stop and ask for confirmation.
+
 ## Git Rules
 
 - Do not commit unless the user explicitly asks.
@@ -202,15 +225,80 @@ Needs confirmation
 
 If a command cannot run, explain why and what should be run manually.
 
+## Skill and Workflow Standards
+
+Before starting a task, check whether the AI agent has any available skill, workflow, reusable prompt, or built-in procedure that matches the task.
+
+Use relevant skills or workflows for:
+- implementation work;
+- debugging;
+- security review;
+- documentation updates;
+- test creation;
+- refactoring;
+- database or migration work;
+- deployment or infrastructure work;
+- code review;
+- commit preparation;
+- handoff or resume tasks.
+
+When a relevant skill, workflow, reusable prompt, or built-in procedure exists:
+1. Read it before editing files.
+2. Follow the standards and workflow embedded in it.
+3. Prefer its specialized checklist over generic reasoning.
+4. Keep the task bounded to the user's request and repository needs.
+5. Mention in the final response which skills or workflows were used.
+
+Use skills and workflows as standards and checklists, not as permission to make unrelated changes.
+Do not expand task scope only because a skill mentions extra cleanup, refactoring, migration, security hardening, or documentation work.
+
+If a skill or workflow appears outdated, incompatible with this repository, or contradicted by project evidence, do not follow it blindly. Note the mismatch in the final response and follow repository-specific evidence.
+
+If no relevant skill or workflow exists, proceed using AGENTS.md and repository evidence.
+
+## Task Routing
+
+| Task type | Use |
+| --- | --- |
+| New feature / behavior change | Implementation workflow or feature skill |
+| Bug / regression | Debugging workflow or bugfix skill |
+| Security-sensitive change | Security review workflow before finishing |
+| Documentation update | Documentation workflow |
+| Refactor | Refactor workflow with compatibility checks |
+| Database/migration | Migration/database workflow; require human review for destructive changes |
+| Tests | Testing workflow and existing project test conventions |
+| Commit requested | Commit workflow; verify first; do not push unless asked |
+| Unfinished work / resume | Handoff workflow |
+
+## Documentation Consolidation Rules
+
+Before creating or updating docs, check for existing docs with the same purpose.
+
+If duplicate or overlapping docs exist:
+1. Preserve the most project-specific and accurate content.
+2. Merge useful content into the canonical doc.
+3. Replace redundant docs with a short link to the canonical doc, or archive/delete them only when safe.
+4. Do not leave contradictory instructions in multiple places.
+5. Record merged, archived, or deleted docs in the final response.
+
+Canonical docs for AI-agent readiness:
+- AGENTS.md: agent operating rules and workflow router.
+- README.md: human-facing project navigation and setup summary.
+- docs/project-context.md: domain, stack, structure, and risk context.
+- docs/repository-readiness-checklist.md: readiness status, command sources, duplicate-doc findings, and open gaps.
+- docs/security-review.md: security review guidance.
+- docs/testing.md: testing and verification details, only when not clear elsewhere.
+
 ## AI Agent Workflow
 
 For every task:
 1. Read AGENTS.md first.
-2. Inspect current git status and relevant files.
-3. Restate the requested outcome and acceptance criteria when the task is non-trivial.
-4. Prefer small focused changes.
-5. Run relevant verification.
-6. Report files changed, commands run, results, risks, and remaining Needs confirmation items.
+2. Check and read any task-relevant skills, workflows, reusable prompts, or built-in procedures if the AI agent supports them.
+3. Inspect current git status and relevant files.
+4. Restate the requested outcome and acceptance criteria when the task is non-trivial.
+5. Prefer small focused changes.
+6. Run relevant verification.
+7. Report files changed, commands run, results, risks, skills/workflows used, documentation consolidation performed, and remaining Needs confirmation items.
 
 For larger work:
 1. Create or update a plan under docs/plans/.
@@ -249,6 +337,12 @@ Files changed:
 - ...
 
 Commands run:
+- ...
+
+Skills / workflows used:
+- ...
+
+Documentation merged / archived / deleted:
 - ...
 
 Risks / notes:
@@ -318,6 +412,12 @@ Date: Needs confirmation
 - [ ] Environment docs exist or are marked Needs confirmation.
 - [ ] Security-sensitive areas are listed.
 - [ ] Unknown facts remain marked Needs confirmation.
+
+## Documentation Consolidation
+
+| Existing doc | Overlaps with | Action | Notes |
+| --- | --- | --- | --- |
+| Needs confirmation | Needs confirmation | Keep / Merge / Link / Archive / Delete / Needs confirmation | Needs confirmation |
 
 ## Commands
 
@@ -416,7 +516,9 @@ Phase 3: Write files
 1. Create missing docs directories only as needed.
 2. Patch existing files carefully.
 3. Preserve existing project-specific guidance.
-4. Keep generated content concise.
+4. Merge duplicate or overlapping docs into canonical docs when safe.
+5. Link, archive, or delete redundant docs only when the action is clearly safe and does not remove useful project-specific information.
+6. Keep generated content concise.
 
 Phase 4: Validate
 Run safe lightweight commands that are available and appropriate, for example:
@@ -432,9 +534,12 @@ Do not install new tooling just to validate docs unless asked.
 Phase 5: Final response
 Report exactly:
 - files created/updated;
+- duplicate/overlapping docs found and whether they were merged, linked, archived, deleted, or left unchanged;
 - commands discovered and their source files;
 - commands actually run and actual results;
+- skills/workflows used;
 - remaining Needs confirmation items;
 - risks or areas needing human review;
 - whether any existing modified files were present before your changes.
 ```
+
