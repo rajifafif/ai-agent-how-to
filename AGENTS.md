@@ -20,8 +20,6 @@ examples, and lightweight validation scripts.
 
 - Root navigation: `README.md`.
 - Adoption phases: `docs/implementation-roadmap.md`.
-- Q3 gap status: `docs/ARCHIVE/roadmap/Q3_IMPLEMENTATION_GAP_ANALYSIS.md`.
-- Q3 artifact completion: `docs/ARCHIVE/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md`.
 - Definition of Done: `docs/definition-of-done.md`.
 - Terminology: `docs/glossary.md`.
 - AI workflow routing: `docs/ai-workflows.md` and `docs/prompt-library.md`.

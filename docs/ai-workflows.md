@@ -59,7 +59,7 @@ For non-trivial feature or bugfix work, use repository files as durable task mem
 
 - Store implementation or investigation plans under `docs/plans/`.
 - Use `templates/IMPLEMENTATION_PLAN.template.md` when available.
-- Read `docs/ARCHIVE/planning-loop-guide.md` when available.
+- Read `../guides/feature-development-workflow.md` for the active planning lifecycle.
 - Store unfinished-work handoffs under `docs/handoffs/`.
 - Use `templates/HANDOFF.template.md` when available.
 - Update plans and handoffs as work changes.

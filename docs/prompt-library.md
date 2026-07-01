@@ -38,8 +38,6 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 | Resume unfinished work | `skills/continue-unfinished-work/SKILL.md` | `prompts/continue-unfinished-work.md` |
 | Prepare QA handover | `guides/qa-handover-workflow.md` | `skills/qa-handover/SKILL.md` |
 | Check release readiness | `checklists/release-readiness-checklist.md` | `checklists/release-readiness-checklist.md` |
-| Validate environment/deployment readiness | `templates/ARCHIVE/ENVIRONMENT_INVENTORY.template.md` | Archived/specialized workflow |
-| Incident triage / RCA | `templates/ARCHIVE/PRODUCTION_INCIDENT_REPORT.template.md` | Archived/specialized workflow |
 
 ## Short Prompt Examples
 
@@ -87,9 +85,7 @@ prompts/create-pull-request.md
 prompts/continue-unfinished-work.md
 ```
 
-The older uppercase prompt files remain as detailed/legacy prompts. Next cleanup should
-update `docs/ai-workflows.md` to route to the short prompts first, then keep uppercase files
-as detail references or archive them after user migration.
+Legacy uppercase prompt files were removed from the active tree. Add new short canonical prompts only when teams need that workflow.
 
 ## Missing or Optional Prompt Areas
 
@@ -104,4 +100,4 @@ as detail references or archive them after user migration.
 | Bug reproduction | Missing | Add if bug reports often lack reproduction evidence. |
 | Evidence review | Missing | Add as QA/reviewer checklist prompt. |
 
-Keep old flat prompt paths as compatibility files until users migrate.
+Add new prompt areas only when there is an active workflow and clear owner need.

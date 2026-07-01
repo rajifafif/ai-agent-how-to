@@ -17,7 +17,6 @@ skills. It is not meant to be copied wholesale into every project.
 | Find company-wide rules | `standards/README.md` |
 | Run a task with an AI agent | `skills/README.md` or `prompts/` |
 | Use a review/check gate | `checklists/README.md` |
-| Audit old Q3 scope | `docs/ARCHIVE/roadmap/Q3_ACTION_ITEM_TRACEABILITY.md` |
 
 ## Simple Operating Model
 
@@ -36,21 +35,19 @@ Rule of thumb:
 3. Put task facts in the ticket/request/plan.
 4. Install or copy only the small starter pack a project actually needs.
 
-## Current Restructure State
+## Current Structure State
 
-The restructure plan in `docs/roadmap/RESTRUCTURE_TO_STANDARDS_AND_SKILLS_PLAN.md` is
-mostly implemented for the new top-level operating model:
+The active top-level operating model is now simplified:
 
 | Area | State |
 | --- | --- |
-| `standards/` | Present. Canonical short standards exist. |
-| `guides/` | Present. Adoption and workflow guides exist. |
-| `checklists/` | Present. Review/readiness checklists exist. |
-| `skills/` | Present. Initial workflow skills exist. |
-| `templates/STARTER_PACK/` | Present. Starter pack entry point exists. |
+| `standards/` | Canonical short standards. |
+| `guides/` | Adoption and workflow guides that point to runnable prompts. |
+| `checklists/` | Review/readiness gates. |
+| `skills/` | Initial workflow wrappers. |
+| `templates/STARTER_PACK/` | Starter pack entry point. |
+| `prompts/` | Canonical short runnable prompts. |
 | Validation scripts | Present, but should be tightened as cleanup continues. |
-| Old `docs/` content | Still present as compatibility/reference material; needs pruning or pointer conversion. |
-| Old uppercase prompt files | Still present as compatibility/detailed prompts; should be mapped to canonical short prompts or archived later. |
 
 ## Canonical Navigation
 
@@ -61,8 +58,8 @@ mostly implemented for the new top-level operating model:
 | `checklists/README.md` | Short gates for setup, implementation, review, PR, release. |
 | `skills/README.md` | AI-agent workflow wrappers for OpenCode or similar harnesses. |
 | `templates/STARTER_PACK/README.md` | Minimal files to copy into a project. |
-| `docs/` | Legacy detailed references, roadmap history, examples, and compatibility pages. |
-| `prompts/` | Detailed prompt library and compatibility prompt files. |
+| `docs/` | Active getting-started, workflow router, prompt catalog, roadmap, glossary, and supporting references. |
+| `prompts/` | Canonical short runnable prompts. |
 | `scripts/` | Local documentation/readiness validation scripts. |
 
 ## Fastest Path for Existing Projects
@@ -156,35 +153,28 @@ production changes, or security-sensitive decisions.
 
 ## Source of Truth
 
-| Topic | Canonical file now | Old/detail reference |
+| Topic | Canonical file |
+| --- | --- |
+| AI usage | `standards/ai-usage-standard.md` |
+| AI-ready repository | `standards/ai-ready-repository-standard.md` |
+| Secure coding | `standards/secure-coding-standard.md` |
+| Testing | `standards/testing-standard.md` |
+| Documentation | `standards/documentation-standard.md` |
+| Commits | `standards/commit-standard.md` |
+| Pull requests | `standards/pull-request-standard.md` |
+| Human review | `standards/human-review-standard.md` |
+| Workflow routing | `docs/ai-workflows.md`, `docs/prompt-library.md`, `guides/README.md` |
+| Roadmap history | `docs/roadmap/` |
+
+## Cleanup Plan
+
+Legacy archive folders have been removed from the active tree to reduce noise. Future cleanup should focus on:
+
+| Priority | Action | Result |
 | --- | --- | --- |
-| AI usage | `standards/ai-usage-standard.md` | `docs/ARCHIVE/security/ai-assisted-development-standard.md` |
-| AI-ready repository | `standards/ai-ready-repository-standard.md` | `docs/ARCHIVE/ai-agent-ready-repository-standard.md` |
-| Secure coding | `standards/secure-coding-standard.md` | `docs/ARCHIVE/security/secure-coding-checklist.md` |
-| Testing | `standards/testing-standard.md` | `docs/ARCHIVE/verification-guide.md`, `docs/ARCHIVE/qa/automation-testing-standard.md` |
-| Documentation | `standards/documentation-standard.md` | `docs/ARCHIVE/documentation-guide.md` |
-| Commits | `standards/commit-standard.md` | `docs/ARCHIVE/commit-guide.md` |
-| Pull requests | `standards/pull-request-standard.md` | `docs/ARCHIVE/dev/pr-standard.md` |
-| Human review | `standards/human-review-standard.md` | `docs/definition-of-done.md` |
-| Workflow routing | `guides/README.md`, `skills/README.md` | `docs/ai-workflows.md`, `docs/prompt-library.md` |
-| Roadmap history | `docs/roadmap/` | None |
-
-## Cleanup Plan for Old Docs
-
-The repo still has useful but noisy legacy material under `docs/`, `prompts/`, and
-`templates/`. Cleanup should be staged so links do not break.
-
-| Priority | Action | Candidate paths | Result |
-| --- | --- | --- | --- |
-| P0 | Fix corrupted navigation files | `README.md`, `docs/prompt-library.md` | Remove duplicated line-number garbage and make current state clear. |
-| P1 | Convert duplicates to compatibility pointers | `docs/ARCHIVE/ai-agent-ready-repository-standard.md`, `docs/ARCHIVE/dev/pr-standard.md`, `docs/ARCHIVE/security/ai-assisted-development-standard.md`, selected old guides | New work uses `standards/`; old links still resolve. |
-| P1 | Map old prompt names to canonical prompt names | Uppercase files in `prompts/` versus planned short names | Keep detailed prompts only where useful; create short canonical prompts when missing. |
-| P2 | Archive roadmap/history that is no longer operational | Old Q3 roadmap/gap files after traceability is finalized | Move to `docs/archive/` or keep as historical references with clear status. |
-| P2 | Remove or merge low-value examples | `docs/ARCHIVE/examples/` if not referenced by guides | Keep only examples that teach current workflow. |
-| P3 | Tighten validation | `scripts/validate-docs.sh`, link checks, duplicate prompt checks | Fail on missing canonical files, broken links, and accidental secrets. |
-
-Do not delete old docs in the same step as navigation cleanup unless every reference has
-been checked. Prefer pointer files first, deletion later.
+| P1 | Tighten `scripts/validate-docs.sh` | Fail on missing canonical files, broken links, missing runnable prompts, and accidental secrets. |
+| P1 | Keep prompt/router indexes aligned | Guides point to prompts, and `docs/ai-workflows.md` routes daily work to canonical short prompts. |
+| P2 | Add missing workflows only when teams need them | Avoid recreating archive noise with unused prompts/templates. |
 
 ## Language Strategy
 
@@ -193,7 +183,6 @@ English is the primary source of truth unless a file explicitly says otherwise.
 Indonesian files currently maintained:
 
 - `README.id.md`
-- `docs/ARCHIVE/ai-agent-guide.id.md`
 - `templates/AGENTS.template.id.md`
 
 When English source files change, translated files should either be updated or marked as
