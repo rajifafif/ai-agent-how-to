@@ -1,5 +1,11 @@
 # Make a Legacy Project AI-Ready
 
+## Use This Prompt
+
+For agent execution, use `../prompts/bootstrap-existing-project.md` from the target project root.
+
+This guide explains the setup policy. The prompt is the runnable checklist.
+
 Use when preparing an existing repository without changing production behavior.
 
 ## Rules

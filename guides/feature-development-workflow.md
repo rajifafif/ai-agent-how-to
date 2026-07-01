@@ -2,6 +2,17 @@
 
 Use this guide for non-trivial feature work by developers or AI agents.
 
+## Use These Prompts
+
+For agent execution, use prompts in this order:
+
+1. `../prompts/plan-feature.md` to create the plan, impact check, confirmations, and task breakdown.
+2. `../prompts/implement-feature.md` after the plan or phase is approved.
+3. `../prompts/review-security.md` for security-sensitive work.
+4. `../prompts/create-pull-request.md` only when PR creation or PR preparation is explicitly authorized.
+
+This guide explains the standard. The prompts are the runnable checklists.
+
 ```text
 Understand -> Plan -> Impact Check -> Confirm -> Task -> Implement -> Update -> Verify -> Review/Secure -> PR
 ```

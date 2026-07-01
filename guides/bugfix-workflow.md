@@ -1,5 +1,11 @@
 # Bugfix Workflow
 
+## Use This Prompt
+
+For agent execution, use `../prompts/fix-bug.md`.
+
+This guide explains the bugfix standard. The prompt is the runnable checklist.
+
 1. Reproduce or understand evidence.
 2. Inspect relevant code and history.
 3. Identify likely root cause.

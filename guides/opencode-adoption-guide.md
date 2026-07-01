@@ -1,5 +1,12 @@
 # OpenCode Adoption Guide
 
+## Use These Prompts
+
+For pilot project setup, use `../prompts/bootstrap-existing-project.md` from the target project root.
+For daily work, use the task prompts routed by `../docs/ai-workflows.md`.
+
+This guide explains rollout. The prompts are the runnable entry points.
+
 Use this guide to roll out the toolkit to developers using OpenCode.
 
 ## Simple Explanation
