@@ -22,6 +22,7 @@ Every skill should:
 | `plan-feature` | Plan this feature. |
 | `implement-feature` | Implement this feature. |
 | `review-security` | Review this change for security issues. |
+| `verify-changes` | Verify this / check current changes / review diff. |
 | `create-commits` | Make commits / commits / create commits. |
 | `make-release` | Make release / prepare release and changelog before tagging. |
 | `create-pull-request` | Create PR / prepare PR / open PR from the current branch. |
@@ -40,3 +41,20 @@ Create commits for the completed work.
 ```text
 Create a pull request from this branch.
 ```
+
+## Project Skill Sync Policy
+
+Canonical toolkit skills live under `skills/*/SKILL.md`.
+
+Project-local installed skills live under `.agents/skills/*/SKILL.md` and must stay exact
+synced copies of the canonical toolkit skills. Do not customize project-local skill files
+per developer. If a developer wants additional or personalized skills, install those at
+the agent/user level instead of inside the project repository.
+
+Use local validation before commit or PR:
+
+```sh
+./scripts/validate-skills.sh
+```
+
+Any hash drift between `skills/*` and `.agents/skills/*` is a validation issue.

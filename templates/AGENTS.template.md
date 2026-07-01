@@ -128,7 +128,7 @@ short-prompt behavior.
 | Create plan from ..., plan larger work, break task into phases | `.agents/skills/plan-feature/SKILL.md` and `prompts/plan-feature.md` if present |
 | Implement, build, add, or change behavior | Approved plan under `docs/plans/`, then repository instructions and implementation skill if present |
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` if present |
-| Check current changes, verify, review diff | `checklists/pre-commit-checklist.md` if present |
+| Check current changes, verify, verify this, review diff | `.agents/skills/verify-changes/SKILL.md` and `checklists/pre-commit-checklist.md` if present |
 | Security review, auth/permission review | `prompts/review-security.md` if present |
 | Update docs | `standards/documentation-standard.md` if present |
 | Make commits, commits, create commits | `.agents/skills/create-commits/SKILL.md` and `prompts/create-commits.md` if present |

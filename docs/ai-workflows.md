@@ -24,7 +24,7 @@ prompts during daily work.
 | “implement”, “build”, “add feature”, “change behavior” | Start from an approved plan in `docs/plans/` or `.agents/skills/plan-feature/SKILL.md`, then follow repository instructions and relevant implementation skill if present | No standalone prompt; use the approved plan |
 | “fix bug”, “debug”, “error”, “regression” | `../prompts/fix-bug.md` | `../prompts/fix-bug.md` |
 | “Analisis Jam ini: https://jam.dev/c/<id>”, “Fix bug dari Jam ini”, “Jam.dev report” | `../docs/roadmap/jam-dev-mcp-integration-plan.md` first, then `../guides/feature-development-workflow.md` | `../prompts/fix-bug.md` or `../prompts/plan-feature.md` after Jam context is understood |
-| “check current changes”, “verify”, “review diff”, “did this pass?” | `../checklists/pre-commit-checklist.md` | `../checklists/pre-commit-checklist.md` |
+| “check current changes”, “verify”, “verify this”, “review diff”, “did this pass?”, “pre-commit check” | `.agents/skills/verify-changes/SKILL.md` and `../checklists/pre-commit-checklist.md` when present | `../checklists/pre-commit-checklist.md` |
 | “security review”, “check vulnerabilities”, “review auth/permissions” | `../prompts/review-security.md` | `../prompts/review-security.md` |
 | “update docs”, “sync documentation” | `../standards/documentation-standard.md` | `../standards/documentation-standard.md` |
 | “make commits”, “commits”, “create commits”, “commit this” | `.agents/skills/create-commits/SKILL.md` and `../prompts/create-commits.md` when present | `../prompts/create-commits.md` |

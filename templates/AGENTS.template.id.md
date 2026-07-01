@@ -127,7 +127,7 @@ dan short-prompt behavior.
 | Create plan from ..., plan larger work, pecah task jadi phases | `.agents/skills/plan-feature/SKILL.md` dan `prompts/plan-feature.md` jika ada |
 | Implement, build, add, atau change behavior | Approved plan di `docs/plans/`, lalu instruksi repository dan implementation skill jika ada |
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` jika ada |
-| Check current changes, verify, review diff | `checklists/pre-commit-checklist.md` jika ada |
+| Check current changes, verify, verify this, review diff | `.agents/skills/verify-changes/SKILL.md` dan `checklists/pre-commit-checklist.md` jika ada |
 | Security review, auth/permission review | `prompts/review-security.md` jika ada |
 | Update docs | `standards/documentation-standard.md` jika ada |
 | Make commits, commits, create commits | `.agents/skills/create-commits/SKILL.md` dan `prompts/create-commits.md` jika ada |
