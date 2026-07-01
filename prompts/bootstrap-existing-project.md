@@ -261,6 +261,7 @@ If no relevant skill or workflow exists, proceed using AGENTS.md and repository 
 | Task type | Use |
 | --- | --- |
 | New feature / behavior change | Implementation workflow or feature skill |
+| "Create plan from ...", "make a plan", "plan this feature", "create implementation plan", "break this down into tasks" | Planning Shortcut below |
 | Bug / regression | Debugging workflow or bugfix skill |
 | Security-sensitive change | Security review workflow before finishing |
 | "Do the security review", "security review", "review security", "check OWASP", "review auth/permissions" | Security Review Shortcut below |
@@ -270,6 +271,50 @@ If no relevant skill or workflow exists, proceed using AGENTS.md and repository 
 | Tests | Testing workflow and existing project test conventions |
 | Commit requested | Commit workflow; verify first; do not push unless asked |
 | Unfinished work / resume | Handoff workflow |
+
+## Planning Shortcut
+
+When the user asks for a plan in plain language, do not wait for a tool-specific command. Run the local planning workflow automatically.
+
+Trigger phrases include:
+- Create plan from ...
+- Make a plan for ...
+- Plan this feature
+- Create implementation plan
+- Break this down into tasks
+- Analyze this ticket/design/spec and plan it
+- Plan before coding
+
+Required source order:
+1. Read `AGENTS.md`.
+2. Read project context docs if present: `docs/project-context.md`, `docs/testing.md`, `docs/repository-readiness-checklist.md`, `docs/security-review.md`, and relevant module docs under `docs/`.
+3. If the agent supports skills, workflows, reusable prompts, slash commands, or built-in procedures, load the relevant planning workflow if present.
+4. If `.agents/skills/plan-feature/SKILL.md` exists, read it as the repository-local planning workflow.
+5. If `.agents/skills/owasp-top-10/` exists and the plan touches auth, authorization, tenant scope, PII, payments, patient/health data, secrets, external integrations, file handling, dependencies, config, or production infrastructure, read the relevant OWASP references.
+6. If toolkit folders such as `guides/`, `standards/`, `checklists/`, `templates/`, or `prompts/` exist, use their planning files only as supporting references after project-local docs.
+
+Target selection:
+- If the user provides a URL, ticket, pasted requirement, design note, PRD, screenshot, module name, or file path, treat that as the planning source.
+- If the user does not provide a clear source, inspect repository context and current branch/status, then ask one concise clarification question.
+- Do not invent requirements.
+
+Planning rules:
+- Inspect actual code, docs, tests, configs, and existing plans before writing the plan.
+- Identify objective, scope, out-of-scope items, assumptions, dependencies, risks, unknowns, and acceptance criteria.
+- Run an impact check for auth, permissions, tenant scope, data/migrations, APIs, UI/UX, integrations, rollout, tests, logging, security, and sensitive data.
+- Save or update a durable plan under `docs/plans/` when repository convention allows it.
+- Do not implement until the human approves the plan or names the phase to start.
+- Mark missing evidence as `Needs confirmation` or `Blocked`.
+
+Planning output must include:
+- Plan path if a plan file was created or updated.
+- Proposed plan summary.
+- Acceptance criteria.
+- Impact/risk summary.
+- Affected files/modules.
+- Verification strategy.
+- Human decisions needed.
+- Clear statement that implementation is waiting for approval unless the user explicitly asked to start a phase.
 
 ## Security Review Shortcut
 

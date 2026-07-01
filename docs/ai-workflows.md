@@ -20,7 +20,7 @@ prompts during daily work.
 | User asks for | Follow first | Detailed legacy prompt |
 | --- | --- | --- |
 | “make this project AI Agent Ready”, “setup agent docs” | `../prompts/initialize-project.md` | `../prompts/initialize-project.md` |
-| “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `../prompts/plan-feature.md` | `../prompts/plan-feature.md` |
+| “Create plan from ...”, “make a plan”, “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `../prompts/plan-feature.md` and `.agents/skills/plan-feature/SKILL.md` when present | `../prompts/plan-feature.md` |
 | “implement”, “build”, “add feature”, “change behavior” | `../prompts/implement-feature.md` | `../prompts/implement-feature.md` |
 | “fix bug”, “debug”, “error”, “regression” | `../prompts/fix-bug.md` | `../prompts/fix-bug.md` |
 | “Analisis Jam ini: https://jam.dev/c/<id>”, “Fix bug dari Jam ini”, “Jam.dev report” | `../docs/roadmap/jam-dev-mcp-integration-plan.md` first, then `../guides/feature-development-workflow.md` | `../prompts/fix-bug.md` or `../prompts/plan-feature.md` after Jam context is understood |
