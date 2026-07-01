@@ -23,6 +23,7 @@ prompts during daily work.
 | “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `../prompts/plan-feature.md` | `../prompts/plan-feature.md` |
 | “implement”, “build”, “add feature”, “change behavior” | `../prompts/implement-feature.md` | `../prompts/implement-feature.md` |
 | “fix bug”, “debug”, “error”, “regression” | `../prompts/fix-bug.md` | `../prompts/fix-bug.md` |
+| “Analisis Jam ini: https://jam.dev/c/<id>”, “Fix bug dari Jam ini”, “Jam.dev report” | `../docs/roadmap/jam-dev-mcp-integration-plan.md` first, then `../guides/feature-development-workflow.md` | `../prompts/fix-bug.md` or `../prompts/plan-feature.md` after Jam context is understood |
 | “check current changes”, “verify”, “review diff”, “did this pass?” | `../checklists/pre-commit-checklist.md` | `../checklists/pre-commit-checklist.md` |
 | “security review”, “check vulnerabilities”, “review auth/permissions” | `../prompts/review-security.md` | `../prompts/review-security.md` |
 | “update docs”, “sync documentation” | `../standards/documentation-standard.md` | `../standards/documentation-standard.md` |
@@ -112,6 +113,10 @@ Read AGENTS.md first. Implement: [feature].
 
 ```text
 Read AGENTS.md first. Fix bug: [symptom or reproduction].
+```
+
+```text
+Analisis Jam ini: https://jam.dev/c/<id>
 ```
 
 ```text

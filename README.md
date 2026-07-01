@@ -165,6 +165,7 @@ production changes, or security-sensitive decisions.
 | Human review | `standards/human-review-standard.md` |
 | Workflow routing | `docs/ai-workflows.md`, `docs/prompt-library.md`, `guides/README.md` |
 | Roadmap history | `docs/roadmap/` |
+| Jam.dev MCP integration plan | `docs/roadmap/jam-dev-mcp-integration-plan.md` |
 
 ## Cleanup Plan
 
