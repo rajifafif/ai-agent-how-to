@@ -302,8 +302,11 @@ Planning rules:
 - Inspect actual code, docs, tests, configs, and existing plans before writing the plan.
 - Identify objective, scope, out-of-scope items, assumptions, dependencies, risks, unknowns, and acceptance criteria.
 - Run an impact check for auth, permissions, tenant scope, data/migrations, APIs, UI/UX, integrations, rollout, tests, logging, security, and sensitive data.
+- Ask the user for blocking details before finalizing the plan, or record unclear details in the plan under `Needs confirmation`.
+- Split unclear details into blocking and non-blocking items.
+- If unclear details affect behavior, security, data, APIs, rollout, verification, or acceptance criteria, mark the plan `Blocked - needs confirmation`.
 - Save or update a durable plan under `docs/plans/` when repository convention allows it.
-- Do not implement until the human approves the plan or names the phase to start.
+- Do not implement or run the plan until blocking questions are answered and the human explicitly approves the plan or names the phase to start.
 - Mark missing evidence as `Needs confirmation` or `Blocked`.
 
 Planning output must include:

@@ -26,9 +26,9 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 | Task | Use first | Detailed/legacy prompt |
 | --- | --- | --- |
 | Bootstrap an existing project without this toolkit installed | `prompts/bootstrap-existing-project.md` | Self-contained single prompt |
-| Prepare a repository for AI agents with toolkit access | `guides/make-new-project-ai-ready.md` or `guides/make-legacy-project-ai-ready.md` | `prompts/initialize-project.md` |
+| Prepare a repository for AI agents with toolkit access | `prompts/bootstrap-existing-project.md` | Self-contained single prompt |
 | Plan larger work | `guides/feature-development-workflow.md` | `prompts/plan-feature.md` |
-| Implement a feature | `skills/implement-feature/SKILL.md` | `prompts/implement-feature.md` |
+| Implement a feature | Approved plan under `docs/plans/`, then repository instructions and `skills/implement-feature/SKILL.md` if present | No standalone prompt; implementation must follow an approved plan |
 | Fix a bug | `guides/bugfix-workflow.md` | `prompts/fix-bug.md` |
 | Verify changes | `checklists/pre-commit-checklist.md` | `checklists/pre-commit-checklist.md` |
 | Review security | `guides/security-review-workflow.md` | `prompts/review-security.md` |
@@ -75,9 +75,7 @@ The active prompt set now includes one self-contained bootstrap prompt plus shor
 
 ```text
 prompts/bootstrap-existing-project.md
-prompts/initialize-project.md
 prompts/plan-feature.md
-prompts/implement-feature.md
 prompts/fix-bug.md
 prompts/review-security.md
 prompts/create-commits.md

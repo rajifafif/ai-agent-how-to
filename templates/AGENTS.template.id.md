@@ -123,9 +123,9 @@ dan short-prompt behavior.
 
 | User asks for | Follow |
 | --- | --- |
-| Make project AI Agent Ready | `guides/opencode-adoption-guide.md` dan `prompts/initialize-project.md` jika ada |
-| Plan larger work, pecah task jadi phases | `prompts/plan-feature.md` dan `prompts/plan-feature.md` jika ada |
-| Implement, build, add, atau change behavior | `prompts/implement-feature.md` jika ada |
+| Make project AI Agent Ready | `prompts/bootstrap-existing-project.md` jika ada |
+| Create plan from ..., plan larger work, pecah task jadi phases | `.agents/skills/plan-feature/SKILL.md` dan `prompts/plan-feature.md` jika ada |
+| Implement, build, add, atau change behavior | Approved plan di `docs/plans/`, lalu instruksi repository dan implementation skill jika ada |
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` jika ada |
 | Check current changes, verify, review diff | `checklists/pre-commit-checklist.md` jika ada |
 | Security review, auth/permission review | `prompts/review-security.md` jika ada |

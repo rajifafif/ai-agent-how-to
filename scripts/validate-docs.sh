@@ -57,9 +57,7 @@ extra_required=(
   templates/STARTER_PACK/README.md
   templates/AI_AGENT_READY_REPOSITORY/README.md
   prompts/bootstrap-existing-project.md
-  prompts/initialize-project.md
   prompts/plan-feature.md
-  prompts/implement-feature.md
   prompts/fix-bug.md
   prompts/review-security.md
   prompts/create-commits.md

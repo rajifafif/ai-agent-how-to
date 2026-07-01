@@ -19,9 +19,9 @@ prompts during daily work.
 
 | User asks for | Follow first | Detailed legacy prompt |
 | --- | --- | --- |
-| “make this project AI Agent Ready”, “setup agent docs” | `../prompts/initialize-project.md` | `../prompts/initialize-project.md` |
+| “make this project AI Agent Ready”, “setup agent docs” | `../prompts/bootstrap-existing-project.md` | `../prompts/bootstrap-existing-project.md` |
 | “Create plan from ...”, “make a plan”, “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `../prompts/plan-feature.md` and `.agents/skills/plan-feature/SKILL.md` when present | `../prompts/plan-feature.md` |
-| “implement”, “build”, “add feature”, “change behavior” | `../prompts/implement-feature.md` | `../prompts/implement-feature.md` |
+| “implement”, “build”, “add feature”, “change behavior” | Start from an approved plan in `docs/plans/` or `.agents/skills/plan-feature/SKILL.md`, then follow repository instructions and relevant implementation skill if present | No standalone prompt; use the approved plan |
 | “fix bug”, “debug”, “error”, “regression” | `../prompts/fix-bug.md` | `../prompts/fix-bug.md` |
 | “Analisis Jam ini: https://jam.dev/c/<id>”, “Fix bug dari Jam ini”, “Jam.dev report” | `../docs/roadmap/jam-dev-mcp-integration-plan.md` first, then `../guides/feature-development-workflow.md` | `../prompts/fix-bug.md` or `../prompts/plan-feature.md` after Jam context is understood |
 | “check current changes”, “verify”, “review diff”, “did this pass?” | `../checklists/pre-commit-checklist.md` | `../checklists/pre-commit-checklist.md` |
@@ -60,7 +60,7 @@ For non-trivial feature or bugfix work, use repository files as durable task mem
 
 - Store implementation or investigation plans under `docs/plans/`.
 - Use `templates/IMPLEMENTATION_PLAN.template.md` when available.
-- Read `../guides/feature-development-workflow.md` for the active planning lifecycle.
+- Read `.agents/skills/plan-feature/SKILL.md` or `../prompts/plan-feature.md` for the active planning lifecycle.
 - Store unfinished-work handoffs under `docs/handoffs/`.
 - Use `templates/HANDOFF.template.md` when available.
 - Update plans and handoffs as work changes.
@@ -68,7 +68,7 @@ For non-trivial feature or bugfix work, use repository files as durable task mem
 Do not rely on chat history as the only record of current status.
 
 When a user asks for a larger task, plan first. Do not immediately implement all phases
-unless the user explicitly asks and the plan has no unresolved approval points.
+unless the user explicitly asks, the plan is approved, and the plan has no unresolved blocking `Needs confirmation` items.
 
 ## Default Feature Lifecycle
 

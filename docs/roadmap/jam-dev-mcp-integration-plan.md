@@ -25,8 +25,8 @@ Understand -> Plan -> Impact Check -> Confirm -> Task -> Implement -> Update -> 
 
 For clear bugs, route implementation through `../prompts/fix-bug.md` after the plan is
 understood. For product or behavior changes discovered from the Jam, route through
-`../prompts/plan-feature.md` or `../prompts/implement-feature.md` only after the impact
-check and human confirmation.
+`../prompts/plan-feature.md`. Execute only an approved plan or approved phase after the impact
+check, all blocking `Needs confirmation` items are resolved, and human confirmation is recorded.
 
 ## What The Integration Should Contain
 

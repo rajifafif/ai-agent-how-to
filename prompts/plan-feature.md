@@ -48,9 +48,10 @@ Process:
    - logging/monitoring
    - security and sensitive data
 5. Create or update a durable plan under docs/plans/ when repository convention allows it.
-6. Use an existing implementation plan template if present; otherwise include title, source request, objective, scope, affected files/modules, impact check, phases, detailed tasks, acceptance criteria, verification, security notes, rollback/release notes if relevant, open questions, and status.
-7. Ask concise clarification questions for decisions that affect behavior, security, data, APIs, rollout, or acceptance criteria.
-8. Do not implement until the human approves the plan or names the phase to start.
+6. Use an existing implementation plan template if present; otherwise include title, source request, objective, scope, affected files/modules, impact check, phases, detailed tasks, acceptance criteria, verification, security notes, rollback/release notes if relevant, open questions/Needs confirmation split into blocking and non-blocking, recommended questions to ask the user, and status.
+7. For unclear details, either ask the user before finalizing the plan or put them in the plan under `Needs confirmation`. Split them into blocking and non-blocking items.
+8. If unclear details affect behavior, security, data, APIs, rollout, verification, or acceptance criteria, mark the plan `Blocked - needs confirmation`.
+9. Do not implement or run the plan until blocking questions are answered and the human explicitly approves the plan or names the phase to start.
 
 Constraints:
 - Do not modify implementation code during plan-only work.
@@ -66,7 +67,7 @@ Output:
 - Affected files/modules.
 - Verification strategy.
 - Human decisions needed.
-- Statement that implementation is waiting for approval unless the user explicitly asked to start a phase.
+- Statement that implementation is waiting for approval. If any blocking detail is unclear, state that the plan must not be run yet.
 ```
 
 Detailed legacy prompt: `PLANNING_LOOP_PROMPT.md`.

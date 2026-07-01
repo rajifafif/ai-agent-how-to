@@ -124,9 +124,9 @@ short-prompt behavior.
 
 | User asks for | Follow |
 | --- | --- |
-| Make project AI Agent Ready | `guides/opencode-adoption-guide.md` and `prompts/initialize-project.md` if present |
-| Plan larger work, break task into phases | `prompts/plan-feature.md` and `prompts/plan-feature.md` if present |
-| Implement, build, add, or change behavior | `prompts/implement-feature.md` if present |
+| Make project AI Agent Ready | `prompts/bootstrap-existing-project.md` if present |
+| Create plan from ..., plan larger work, break task into phases | `.agents/skills/plan-feature/SKILL.md` and `prompts/plan-feature.md` if present |
+| Implement, build, add, or change behavior | Approved plan under `docs/plans/`, then repository instructions and implementation skill if present |
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` if present |
 | Check current changes, verify, review diff | `checklists/pre-commit-checklist.md` if present |
 | Security review, auth/permission review | `prompts/review-security.md` if present |

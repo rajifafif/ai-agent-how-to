@@ -55,9 +55,13 @@ If the user says only `Create plan` or the target is unclear:
    - testing and verification
    - logging/monitoring
    - security and sensitive data
-5. Ask or mark unknown decisions that affect behavior, data, security, APIs, rollout, or acceptance criteria.
+5. Decide how to handle unclear details:
+   - If a missing detail blocks safe planning, ask the user before writing the final plan.
+   - If a missing detail can be isolated, write it into the plan under `Needs confirmation` with a recommended default or option set.
+   - Never silently choose behavior, data, security, API, rollout, or acceptance criteria.
 6. Save or update a durable plan under `docs/plans/` when the repository convention allows it.
-7. Do not implement until the human approves the plan or names the phase to start.
+7. Set plan status to `Blocked - needs confirmation` when unclear details affect implementation safety or correctness.
+8. Do not implement or run the plan until every blocking `Needs confirmation` item is answered and the human explicitly approves the plan or names the phase to start.
 
 ## Plan File Guidance
 
@@ -79,8 +83,9 @@ If an implementation plan template exists, use it. Otherwise include:
 - Verification strategy
 - Security review notes
 - Rollback / release notes if relevant
-- Open questions / Needs confirmation
-- Status
+- Open questions / Needs confirmation, split into blocking and non-blocking
+- Recommended questions to ask the user
+- Status: Draft, Ready for approval, Approved, or Blocked - needs confirmation
 
 ## Expected Output
 
@@ -90,11 +95,11 @@ If an implementation plan template exists, use it. Otherwise include:
 - Key affected files/modules.
 - Verification strategy.
 - Human decisions needed.
-- Clear statement: implementation is waiting for approval unless the user explicitly asked to start a phase.
+- Clear statement: implementation is waiting for approval. If any blocking detail is unclear, state that the plan must not be run yet.
 
 ## Human Confirmation Required
 
-Ask for confirmation before implementation when any of these are unclear or changing:
+Ask for confirmation before implementation when any of these are unclear or changing. If any item below is unresolved, mark the plan `Blocked - needs confirmation` and do not run it:
 - behavior or acceptance criteria
 - API contract
 - data model or migration
@@ -105,6 +110,7 @@ Ask for confirmation before implementation when any of these are unclear or chan
 ## Pitfalls
 
 - Do not implement during plan-only work.
+- Do not run the plan when blocking details remain unclear.
 - Do not invent project commands, architecture, owners, deadlines, or acceptance criteria.
 - Do not create giant speculative plans without inspecting the codebase.
 - Do not expose secrets or personal data.

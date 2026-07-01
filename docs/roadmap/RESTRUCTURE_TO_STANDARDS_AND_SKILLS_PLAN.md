@@ -141,9 +141,8 @@ ai-agent-how-to/
 │   ├── pull-request-checklist.md
 │   └── release-readiness-checklist.md
 ├── prompts/
-│   ├── initialize-project.md
+│   ├── bootstrap-existing-project.md
 │   ├── plan-feature.md
-│   ├── implement-feature.md
 │   ├── fix-bug.md
 │   ├── review-security.md
 │   ├── create-commits.md
@@ -319,9 +318,8 @@ Acceptance criteria:
 
 Create short canonical prompt files:
 
-- `prompts/initialize-project.md`;
+- `prompts/bootstrap-existing-project.md`;
 - `prompts/plan-feature.md`;
-- `prompts/implement-feature.md`;
 - `prompts/fix-bug.md`;
 - `prompts/review-security.md`;
 - `prompts/create-commits.md`;
