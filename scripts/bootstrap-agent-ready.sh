@@ -119,6 +119,8 @@ printf 'Toolkit: %s\n' "$TOOLKIT_DIR"
 printf 'Target:  %s\n' "$TARGET_DIR"
 if [ "$DRY_RUN" -eq 1 ]; then
   printf 'Mode:    dry-run\n\n'
+  printf 'Dry-run preview only. No files or directories will be created.\n'
+  printf 'Use --apply to create files in the target repository.\n\n'
 else
   printf 'Mode:    apply\n\n'
 fi
@@ -144,4 +146,9 @@ printf '%s\n' '- Existing files are skipped, not overwritten.'
 printf '%s\n' '- Project .agents/skills/* should stay exact copies of toolkit skills/*.'
 printf '%s\n' '- Developer-specific extra skills belong at agent/user level, not project level.'
 printf '%s\n' '- Unknown project-specific values must remain Needs confirmation.'
-printf '%s\n' '- Run local validation after apply.'
+if [ "$DRY_RUN" -eq 1 ]; then
+  printf '%s\n' '- Dry-run complete. No files were changed.'
+  printf '%s\n' "- To apply: $0 --apply --target $TARGET_DIR"
+else
+  printf '%s\n' '- Apply complete. Run local validation in the target repository.'
+fi
