@@ -16,6 +16,11 @@ company structure, CI system, framework, or release calendar.
 - AI agents must inspect the target repository and discover real commands before writing
   project-specific instructions.
 
+## Q3 Dev-QA Output Checklist
+
+Use `docs/roadmap/devqa-q3-output-checklist.md` to see which Q3 action-item outputs
+already exist, which references to use, and which outputs are still missing.
+
 ## Phase 1 — Minimum Foundation
 
 | Field | Content |
