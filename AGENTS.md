@@ -25,9 +25,25 @@ examples, and lightweight validation scripts.
 - Definition of Done: `docs/definition-of-done.md`.
 - Terminology: `docs/glossary.md`.
 - AI workflow routing: `docs/ai-workflows.md` and `docs/prompt-library.md`.
+- Feature development lifecycle: `guides/feature-development-workflow.md`.
 
 Do not duplicate long rules across many prompt files. Update the canonical guide and link
 to it.
+
+## Default Feature Workflow
+
+For non-trivial feature work, developers and agents must follow
+`guides/feature-development-workflow.md`:
+
+```text
+Understand -> Plan -> Impact Check -> Confirm -> Task -> Implement -> Update -> Verify -> Review/Secure -> PR
+```
+
+Do not implement before the plan is clear and approved. The impact check must surface
+auth, permission, tenant scope, data/migration, API, UI/UX, integration, rollout, test,
+and security concerns before coding. If implementation changes the plan, update the plan
+before continuing and ask for renewed confirmation when behavior, data, security, APIs,
+rollout, or acceptance criteria change.
 
 ## Editing Rules
 

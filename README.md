@@ -117,6 +117,15 @@ SLAs, environments, or approval roles.
 After a target project has `AGENTS.md` and project docs, developers should use short
 commands such as:
 
+For feature work, the default lifecycle is `guides/feature-development-workflow.md`:
+
+```text
+Understand -> Plan -> Impact Check -> Confirm -> Task -> Implement -> Update -> Verify -> Review/Secure -> PR
+```
+
+Use planning first for non-trivial features. Implementation starts after the plan is clear,
+impact is checked, and required human confirmations are resolved.
+
 ```text
 Prepare this repository for AI-assisted development.
 ```

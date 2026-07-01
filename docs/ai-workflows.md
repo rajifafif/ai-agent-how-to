@@ -69,6 +69,20 @@ Do not rely on chat history as the only record of current status.
 When a user asks for a larger task, plan first. Do not immediately implement all phases
 unless the user explicitly asks and the plan has no unresolved approval points.
 
+## Default Feature Lifecycle
+
+For non-trivial feature development, use `../guides/feature-development-workflow.md` as
+the default lifecycle:
+
+```text
+Understand -> Plan -> Impact Check -> Confirm -> Task -> Implement -> Update -> Verify -> Review/Secure -> PR
+```
+
+This means agents should create or update a plan, run an impact check, ask for required
+human confirmation, break approved work into tasks, implement only approved scope,
+update the plan/tasks at the end, run verification, run review/security checks, and only
+prepare or create a PR when explicitly authorized.
+
 ## Commit Intent Rules
 
 | User wording | Meaning |

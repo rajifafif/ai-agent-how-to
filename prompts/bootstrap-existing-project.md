@@ -270,6 +270,18 @@ If no relevant skill or workflow exists, proceed using AGENTS.md and repository 
 | Commit requested | Commit workflow; verify first; do not push unless asked |
 | Unfinished work / resume | Handoff workflow |
 
+## Default Feature Workflow
+
+For non-trivial feature work, use this lifecycle by default:
+
+```text
+Understand -> Plan -> Impact Check -> Confirm -> Task -> Implement -> Update -> Verify -> Review/Secure -> PR
+```
+
+Do not implement before the plan is clear and approved. The impact check must surface auth, permission, tenant scope, data/migration, API, UI/UX, integration, rollout, test, and security concerns before coding. If implementation changes the plan, update the plan before continuing and ask for renewed confirmation when behavior, data, security, APIs, rollout, or acceptance criteria change.
+
+High-risk features require security review before implementation and again after the diff exists.
+
 ## Documentation Consolidation Rules
 
 Before creating or updating docs, check for existing docs with the same purpose.
