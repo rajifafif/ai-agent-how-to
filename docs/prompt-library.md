@@ -27,6 +27,7 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 | --- | --- | --- |
 | Bootstrap an existing project without this toolkit installed | `prompts/bootstrap-existing-project.md` | Self-contained single prompt |
 | Prepare a repository for AI agents with toolkit access | `prompts/bootstrap-existing-project.md` | Self-contained single prompt |
+| Update README.md and AGENTS.md after bootstrap | `prompts/update-readme-agents-after-bootstrap.md` | Standard and stricter cleanup variants |
 | Plan larger work | `guides/feature-development-workflow.md` | `prompts/plan-feature.md` |
 | Implement a feature | Approved plan under `docs/plans/`, then repository instructions and `skills/implement-feature/SKILL.md` if present | No standalone prompt; implementation must follow an approved plan |
 | Fix a bug | `guides/bugfix-workflow.md` | `prompts/fix-bug.md` |
@@ -52,6 +53,8 @@ Read AGENTS.md first. Plan this feature: [feature].
 Read AGENTS.md first. Implement this feature: [feature].
 ```
 
+After running `scripts/bootstrap-agent-ready.sh --apply --target /path/to/project`, use `prompts/update-readme-agents-after-bootstrap.md` to update project-local `README.md` and `AGENTS.md`.
+
 QA:
 
 ```text
@@ -76,6 +79,7 @@ The active prompt set now includes one self-contained bootstrap prompt plus shor
 
 ```text
 prompts/bootstrap-existing-project.md
+prompts/update-readme-agents-after-bootstrap.md
 prompts/plan-feature.md
 prompts/fix-bug.md
 prompts/review-security.md
