@@ -42,36 +42,119 @@ Do not duplicate full standards in every prompt. Link to `standards/`, `guides/`
 | Prepare QA handover | `guides/qa-handover-workflow.md` | `skills/qa-handover/SKILL.md` |
 | Check release readiness | `checklists/release-readiness-checklist.md` | `checklists/release-readiness-checklist.md` |
 
+## Skill Utilization Prompt Templates
+
+Use these short prompts from the target project root after `AGENTS.md` and `.agents/skills/*` are installed. Start with `Read AGENTS.md first` so agents use project-local rules before central toolkit assumptions.
+
+| Skill/workflow | Use when | Copy-paste prompt |
+| --- | --- | --- |
+| `prepare-repository` | Make a repository AI-agent ready. | `Read AGENTS.md first if present. Prepare this repository for AI-assisted development. Inspect real project files, mark unknowns as Needs confirmation, and do not commit.` |
+| `plan-feature` | Turn a request, ticket, PRD, design, module, bug report, or discussion into an implementation plan. | `Read AGENTS.md first. Plan this feature: [feature/request]. Create or update a plan under docs/plans/ if appropriate. Do not implement.` |
+| `implement-feature` | Implement an approved plan or clearly approved small change. | `Read AGENTS.md first. Implement the approved plan in docs/plans/[plan-file]. Keep scope limited, update tests/docs, and report verification.` |
+| `verify-changes` | Check current changes before commit, PR, release, or handoff. | `Read AGENTS.md first. Verify current changes. Inspect git status and diff, run available checks, and report exact results. Do not commit.` |
+| `review-security` | Review auth, permissions, OWASP, sensitive data, secrets, migrations, or external integration risk. | `Read AGENTS.md first. Perform a security review of the current diff. Do not modify code. Report severity, evidence, and recommendations.` |
+| `cleanup-docs` | Update, sync, consolidate, or remove obsolete docs. | `Read AGENTS.md first. Clean up documentation for [scope]. Preserve source-of-truth docs, remove duplication only when safe, validate links, and do not commit.` |
+| `create-commits` | Create focused commits after explicit authorization. | `Read AGENTS.md first. Check current changes, apply commit rules, and make focused commits. Stage explicit files only. Do not push.` |
+| `create-commits` prepare-only | Review commit boundaries without committing. | `Read AGENTS.md first. Prepare commit groups and commit messages for current changes. Do not stage or commit.` |
+| `create-pull-request` prepare-only | Draft PR title/body without pushing or opening a PR. | `Read AGENTS.md first. Prepare a PR description for this branch. Inspect diff, commits, tests, risks, and templates. Do not push or create the PR.` |
+| `create-pull-request` | Create/open a PR after explicit authorization. | `Read AGENTS.md first. Create a pull request for this branch after checking status, remotes, base branch, commits, PR template, and verification. Do not merge.` |
+| `make-release` prepare-only | Prepare release notes/changelog/version proposal. | `Read AGENTS.md first. Prepare release notes and a version/tag proposal from changes since the previous release. Do not tag or publish.` |
+| `make-release` tag/publish | Tag or publish only after exact approval. | `Read AGENTS.md first. Prepare the release, confirm exact version/tag/changelog with me, then proceed only with the approved release action.` |
+| `qa-handover` | Prepare QA handover for a branch/change. | `Read AGENTS.md first. Prepare QA handover for [change/branch/PR]. Include changed behavior, test focus, evidence, risks, config/data notes, and open questions.` |
+| `continue-unfinished-work` | Resume from repository state, plans, or handoff docs. | `Read AGENTS.md first. Continue from [handoff file / plan file / current repo state]. Summarize current state, blockers, next safe step, then proceed only within scope.` |
+
 ## Short Prompt Examples
 
-Developer:
+Use these when you want the agent to route itself through `AGENTS.md` and the installed skill set without pasting a long prompt.
+
+Bootstrap after toolkit apply:
 
 ```text
-Read AGENTS.md first. Plan this feature: [feature].
+Read AGENTS.md first if present. After bootstrap, update README.md and AGENTS.md for this project. Use project evidence only, mark unknowns as Needs confirmation, and do not commit.
 ```
 
+Prepare repository:
+
 ```text
-Read AGENTS.md first. Implement this feature: [feature].
+Read AGENTS.md first if present. Prepare this repository for AI-assisted development. Inspect real project files, mark unknowns as Needs confirmation, and do not commit.
 ```
 
-After running `scripts/bootstrap-agent-ready.sh --apply --target /path/to/project`, use `prompts/update-readme-agents-after-bootstrap.md` to update project-local `README.md` and `AGENTS.md`.
-
-QA:
+Plan feature:
 
 ```text
-Read AGENTS.md first. Review this change for QA readiness: [change or PR].
+Read AGENTS.md first. Plan this feature: [feature/request]. Create or update a plan under docs/plans/ if appropriate. Do not implement.
 ```
 
-Security:
+Implement approved plan:
 
 ```text
-Read AGENTS.md first. Perform a security review of the current diff. Do not modify code.
+Read AGENTS.md first. Implement the approved plan in docs/plans/[plan-file]. Keep scope limited, update tests/docs, and report verification.
 ```
 
-DevOps:
+Fix bug:
 
 ```text
-Read AGENTS.md first. Validate environment readiness for [environment]. Mark unknowns as Needs confirmation.
+Read AGENTS.md first. Fix this bug: [bug/reproduction]. First reproduce or explain why reproduction is not possible, then make the smallest safe fix and verify it.
+```
+
+Verify changes:
+
+```text
+Read AGENTS.md first. Verify current changes. Inspect git status and diff, run available checks, and report exact results. Do not commit.
+```
+
+Security review:
+
+```text
+Read AGENTS.md first. Perform a security review of the current diff. Do not modify code. Report severity, evidence, and recommendations.
+```
+
+Documentation cleanup:
+
+```text
+Read AGENTS.md first. Clean up documentation for [scope]. Preserve source-of-truth docs, remove duplication only when safe, validate links, and do not commit.
+```
+
+Prepare commits only:
+
+```text
+Read AGENTS.md first. Prepare commit groups and commit messages for current changes. Do not stage or commit.
+```
+
+Make commits:
+
+```text
+Read AGENTS.md first. Check current changes, apply commit rules, and make focused commits. Stage explicit files only. Do not push.
+```
+
+Prepare PR only:
+
+```text
+Read AGENTS.md first. Prepare a PR description for this branch. Inspect diff, commits, tests, risks, and templates. Do not push or create the PR.
+```
+
+Create PR:
+
+```text
+Read AGENTS.md first. Create a pull request for this branch after checking status, remotes, base branch, commits, PR template, and verification. Do not merge.
+```
+
+Prepare release:
+
+```text
+Read AGENTS.md first. Prepare release notes and a version/tag proposal from changes since the previous release. Do not tag or publish.
+```
+
+QA handover:
+
+```text
+Read AGENTS.md first. Prepare QA handover for [change/branch/PR]. Include changed behavior, test focus, evidence, risks, config/data notes, and open questions.
+```
+
+Continue unfinished work:
+
+```text
+Read AGENTS.md first. Continue from [handoff file / plan file / current repo state]. Summarize current state, blockers, next safe step, then proceed only within scope.
 ```
 
 ## Canonical Short Prompts
