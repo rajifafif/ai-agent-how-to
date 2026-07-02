@@ -1,115 +1,88 @@
 # AI Agent How-To
 
-Practical, reusable operating model for safe AI-assisted development.
+Practical toolkit for making software projects safe and easy to use with AI coding agents.
 
-This repository is the company-wide source of truth for AI usage standards, project
-readiness, reusable prompts, templates, checklists, and installable/copyable AI-agent
-skills. It is not meant to be copied wholesale into every project.
+Use this repository for:
 
-## Start Here
+- project-local `AGENTS.md` setup;
+- reusable AI-agent prompts;
+- standards for testing, security, commits, PRs, and documentation;
+- templates for plans, handoffs, PR checks, security reviews, and repository readiness;
+- lightweight validation scripts.
 
-| Need | Use |
-| --- | --- |
-| Understand the operating model | This README, then `guides/opencode-adoption-guide.md` |
-| Bootstrap an existing project | `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>` or `prompts/bootstrap-existing-project.md` |
-| Prepare a new project with toolkit access | `guides/make-new-project-ai-ready.md` and `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>` |
-| Prepare a legacy project with toolkit access | `guides/make-legacy-project-ai-ready.md` |
-| Find company-wide rules | `standards/README.md` |
-| Run a task with an AI agent | `skills/README.md` or `prompts/` |
-| Use a review/check gate | `checklists/README.md` |
+Do not copy this whole repository into every project. Install only the small set of files each project needs.
 
-## Simple Operating Model
+## Quick Start: Make an Existing Project AI-Agent Ready
 
-Use three layers. Do not mix them.
-
-| Layer | Lives where | Purpose |
-| --- | --- | --- |
-| Organization standard | This repository: `standards/`, `guides/`, `checklists/`, `skills/` | Shared rules and reusable workflows. |
-| Project instructions | Each project repository: `AGENTS.md`, `README.md`, project docs | Real commands, architecture, conventions, boundaries. |
-| Task context | Issue, user request, plan, bug report, handoff | Objective, acceptance criteria, risks, expected output. |
-
-Rule of thumb:
-
-1. Keep organization rules here.
-2. Put project facts in the project.
-3. Put task facts in the ticket/request/plan.
-4. Install or copy only the default bootstrap files a project actually needs.
-
-## Current Structure State
-
-The active top-level operating model is now simplified:
-
-| Area | State |
-| --- | --- |
-| `standards/` | Canonical short standards. |
-| `guides/` | Adoption and workflow guides that point to runnable prompts. |
-| `checklists/` | Review/readiness gates. |
-| `skills/` | Initial workflow wrappers. |
-| `prompts/` | Canonical short runnable prompts. |
-| Validation scripts | Local docs/readiness/skill-sync checks. |
-
-## Canonical Navigation
-
-| Area | Purpose |
-| --- | --- |
-| `standards/README.md` | Company-wide rules. |
-| `guides/README.md` | How to apply the rules in real repositories and workflows. |
-| `checklists/README.md` | Short gates for setup, implementation, review, PR, release. |
-| `skills/README.md` | AI-agent workflow wrappers for OpenCode or similar harnesses. |
-| `docs/` | Active getting-started, workflow router, prompt catalog, roadmap, glossary, and supporting references. |
-| `prompts/` | Canonical short runnable prompts. |
-| `scripts/` | Local documentation/readiness validation scripts. |
-
-## Fastest Path for Existing Projects
-
-Most developers do not need this whole toolkit in their application repository.
-
-For an existing application with local access to this toolkit, preview the install first:
+From this toolkit repository, preview what will be copied:
 
 ```sh
 scripts/bootstrap-agent-ready.sh --dry-run --target /path/to/project
 ```
 
-Apply only after reviewing the dry-run output:
+If the dry-run looks correct, apply it:
 
 ```sh
 scripts/bootstrap-agent-ready.sh --apply --target /path/to/project
 ```
 
-If the target project cannot run the script, open the target repository in the AI coding
-agent and use the bootstrap prompt fallback:
+Then open the target project in your AI coding agent and run:
 
 ```text
-prompts/bootstrap-existing-project.md
+Read AGENTS.md first. Use the full prompt from prompts/update-readme-agents-after-bootstrap.md in the AI-agent toolkit, then update this project's README.md and AGENTS.md. Do not commit.
 ```
 
-That prompt tells the agent to download/open the canonical bootstrap Markdown when
-possible instead of pasting a very long prompt inline. It tells the agent to inspect the
-existing repo, then create or update the default local files:
+The second step is important. The script installs starter files; the prompt makes `README.md` and `AGENTS.md` match the real project.
 
-```text
-AGENTS.md
-README.md, only if missing or incomplete
-docs/project-context.md
-docs/repository-readiness-checklist.md
-docs/testing.md, only if testing instructions are unclear
-.agents/skills/*, synced from canonical skills/*
-templates/*, selected workflow templates
-docs/plans/README.md, only if needed
-docs/handoffs/README.md, only if needed
-```
+## Which Prompt Should I Use?
 
-The developer must review every `Needs confirmation` item before considering the project
-AI-agent ready.
+| Situation | Use |
+| --- | --- |
+| First-time setup for an existing project | `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>` then `--apply` |
+| Cannot run the script | `prompts/bootstrap-existing-project.md` |
+| Just ran the script and need project-specific README.md + AGENTS.md | `prompts/update-readme-agents-after-bootstrap.md` |
+| Plan a feature or larger task | `prompts/plan-feature.md` |
+| Fix a bug | `prompts/fix-bug.md` |
+| Security review | `prompts/review-security.md` |
+| Create commits after explicit approval | `prompts/create-commits.md` |
+| Create or prepare a PR | `prompts/create-pull-request.md` |
+| Continue unfinished work | `prompts/continue-unfinished-work.md` |
 
-## What to Copy Into a Project
+Full prompt catalog: `docs/prompt-library.md`.
 
-Start small. Do not copy every file.
+## Standard Setup Flow for Projects
 
-If the target project can access this toolkit, use `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>`.
-If it cannot run the script, use `prompts/bootstrap-existing-project.md` instead.
+Use this as the default rollout flow for each application repository.
 
-Default project-local files are usually:
+1. Preview bootstrap.
+
+   ```sh
+   scripts/bootstrap-agent-ready.sh --dry-run --target /path/to/project
+   ```
+
+2. Apply bootstrap.
+
+   ```sh
+   scripts/bootstrap-agent-ready.sh --apply --target /path/to/project
+   ```
+
+3. Open the target project in an AI coding agent.
+
+4. Run the post-bootstrap prompt.
+
+   ```text
+   Read AGENTS.md first. Use the full prompt from prompts/update-readme-agents-after-bootstrap.md in the AI-agent toolkit, then update this project's README.md and AGENTS.md. Do not commit.
+   ```
+
+5. Review all `Needs confirmation` items.
+
+6. Run the target project's available validation commands.
+
+7. Commit only after human review and explicit approval.
+
+## What Gets Installed in a Target Project?
+
+The bootstrap flow keeps projects lean. It usually creates or updates:
 
 ```text
 AGENTS.md
@@ -117,54 +90,83 @@ README.md
 docs/project-context.md
 docs/repository-readiness-checklist.md
 docs/testing.md
+docs/security-review.md
+docs/plans/README.md
+docs/handoffs/README.md
 .agents/skills/*
 templates/*
 ```
 
-Replace unknown project facts with `Needs confirmation`; do not invent commands, owners,
-SLAs, environments, or approval roles.
+The target project's `AGENTS.md` becomes the daily operating guide for AI agents. It should contain real project facts, not generic guesses.
 
-## OpenCode / AI-Agent Usage
+Unknown commands, owners, environments, SLAs, KPIs, contacts, approvals, or architecture details must stay marked as:
 
-After a target project has `AGENTS.md` and project docs, developers should use short
-commands such as:
+```text
+Needs confirmation
+```
 
-For feature work, the default lifecycle is `guides/feature-development-workflow.md`:
+## Daily AI-Agent Prompts
+
+After a project has `AGENTS.md`, developers can use short prompts like these from the target project root.
+
+```text
+Read AGENTS.md first. Plan this feature: [feature].
+```
+
+```text
+Read AGENTS.md first. Implement the approved plan in docs/plans/[file].
+```
+
+```text
+Read AGENTS.md first. Fix this bug: [bug or reproduction].
+```
+
+```text
+Read AGENTS.md first. Verify current changes.
+```
+
+```text
+Read AGENTS.md first. Review current changes for security issues. Do not modify code.
+```
+
+```text
+Read AGENTS.md first. Check current changes, apply commit rules, and make focused commits.
+```
+
+```text
+Read AGENTS.md first. Prepare a PR description for this branch. Do not push or create the PR.
+```
+
+## Feature Work Lifecycle
+
+For non-trivial features, use the plan-first lifecycle from `guides/feature-development-workflow.md`:
 
 ```text
 Understand -> Plan -> Impact Check -> Confirm -> Task -> Implement -> Update -> Verify -> Review/Secure -> PR
 ```
 
-Use planning first for non-trivial features. Implementation starts after the plan is clear,
-impact is checked, and required human confirmations are resolved.
+Important rules:
 
-```text
-Prepare this repository for AI-assisted development.
-```
+- do not implement before the plan is clear and approved;
+- check impact on auth, permissions, tenant scope, data/migrations, APIs, UI/UX, integrations, rollout, tests, and security;
+- update the plan if behavior, data, security, APIs, rollout, or acceptance criteria change;
+- create commits, push, or open PRs only when explicitly authorized.
 
-```text
-Plan this feature: [feature].
-```
+## Repository Map
 
-```text
-Implement this feature: [feature].
-```
-
-```text
-Review this change for security issues.
-```
-
-```text
-Create commits for the completed work.
-```
-
-```text
-Create a pull request from this branch.
-```
-
-The agent must read project `AGENTS.md` first, inspect real repository state, use actual
-project commands, and ask before commits, PR creation, push, destructive actions,
-production changes, or security-sensitive decisions.
+| Path | Purpose |
+| --- | --- |
+| `AGENTS.md` | Rules for AI agents working in this toolkit repository. |
+| `docs/getting-started.md` | Role-based entry guide. |
+| `docs/ai-workflows.md` | Natural-language workflow router. |
+| `docs/prompt-library.md` | Prompt catalog. |
+| `standards/README.md` | Company-wide standards index. |
+| `guides/README.md` | Workflow and adoption guides. |
+| `checklists/README.md` | Review/readiness checklists. |
+| `skills/README.md` | Reusable workflow wrappers. |
+| `prompts/` | Copy-paste or reference prompts. |
+| `templates/` | Reusable project templates. |
+| `scripts/` | Bootstrap and validation scripts. |
 
 ## Source of Truth
 
@@ -178,43 +180,18 @@ production changes, or security-sensitive decisions.
 | Commits | `standards/commit-standard.md` |
 | Pull requests | `standards/pull-request-standard.md` |
 | Human review | `standards/human-review-standard.md` |
-| Workflow routing | `docs/ai-workflows.md`, `docs/prompt-library.md`, `guides/README.md` |
-| Roadmap history | `docs/roadmap/` |
-| Q3 Dev-QA output checklist | `docs/roadmap/devqa-q3-output-checklist.md` |
-| Jam.dev MCP integration plan | `docs/roadmap/jam-dev-mcp-integration-plan.md` |
+| Workflow routing | `docs/ai-workflows.md` and `docs/prompt-library.md` |
+| Feature lifecycle | `guides/feature-development-workflow.md` |
 
-## Cleanup Plan
+## Validate This Toolkit
 
-Legacy archive folders have been removed from the active tree to reduce noise. Future cleanup should focus on:
-
-| Priority | Action | Result |
-| --- | --- | --- |
-| P1 | Tighten `scripts/validate-docs.sh` | Fail on missing canonical files, broken links, missing runnable prompts, and accidental secrets. |
-| P1 | Keep prompt/router indexes aligned | Guides point to prompts, and `docs/ai-workflows.md` routes daily work to canonical short prompts. |
-| P2 | Add missing workflows only when teams need them | Avoid recreating archive noise with unused prompts/templates. |
-
-## Language Strategy
-
-English is the primary source of truth unless a file explicitly says otherwise.
-
-Indonesian files currently maintained:
-
-- `README.id.md`
-- `templates/AGENTS.template.id.md`
-
-When English source files change, translated files should either be updated or marked as
-outdated. Do not maintain two diverging full document sets without an owner and review
-cadence.
-
-## Validate This Repository
-
-Run local checks before claiming the toolkit is ready:
+Run local checks before claiming toolkit changes are ready:
 
 ```sh
 scripts/validate-docs.sh
 ```
 
-Also review the working tree:
+Review git state:
 
 ```sh
 git status --short --branch
@@ -222,8 +199,7 @@ git status --short --branch
 
 ## Human Confirmation Needed
 
-The following organization-specific values must remain `Needs confirmation` until an owner
-sets them:
+These organization-specific values must stay `Needs confirmation` until an owner defines them:
 
 - policy owner;
 - security approval roles;
@@ -231,3 +207,14 @@ sets them:
 - SLA/KPI targets;
 - escalation contacts;
 - translation owner and cadence.
+
+## Language Strategy
+
+English is the primary source of truth unless a file explicitly says otherwise.
+
+Maintained Indonesian files:
+
+- `README.id.md`
+- `templates/AGENTS.template.id.md`
+
+When English source files change, translated files should either be updated or marked as outdated.
