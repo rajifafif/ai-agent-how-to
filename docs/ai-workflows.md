@@ -20,6 +20,7 @@ prompts during daily work.
 | User asks for | Follow first | Detailed legacy prompt |
 | --- | --- | --- |
 | “make this project AI Agent Ready”, “setup agent docs” | `../prompts/bootstrap-existing-project.md` | `../prompts/bootstrap-existing-project.md` |
+| “make this HISv2 module agent ready”, “module uses root project rules”, “setup module README” | `../prompts/hisv2-module-ai-ready.md` | `../prompts/hisv2-module-ai-ready.md` |
 | “Create plan from ...”, “make a plan”, “plan this task”, “break this into phases”, “larger task”, “implementation plan” | `../prompts/plan-feature.md` and `.agents/skills/plan-feature/SKILL.md` when present | `../prompts/plan-feature.md` |
 | “implement”, “build”, “add feature”, “change behavior” | Start from an approved plan in `docs/plans/` or `.agents/skills/plan-feature/SKILL.md`, then follow repository instructions and relevant implementation skill if present | No standalone prompt; use the approved plan |
 | “fix bug”, “debug”, “error”, “regression” | `../prompts/fix-bug.md` | `../prompts/fix-bug.md` |

@@ -55,6 +55,7 @@ extra_required=(
   templates/SECURITY_REVIEW.template.md
   templates/REPOSITORY_READINESS_CHECKLIST.template.md
   prompts/bootstrap-existing-project.md
+  prompts/hisv2-module-ai-ready.md
   prompts/plan-feature.md
   prompts/fix-bug.md
   prompts/review-security.md

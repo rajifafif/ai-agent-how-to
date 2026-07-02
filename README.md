@@ -39,6 +39,7 @@ The second step is important. The script installs starter files; the prompt make
 | Situation | Use |
 | --- | --- |
 | First-time setup for an existing project | `scripts/bootstrap-agent-ready.sh --dry-run --target <repo>` then `--apply` |
+| Make a HISv2 module agent-ready while reusing root project rules | `prompts/hisv2-module-ai-ready.md` |
 | Cannot run the script | `prompts/bootstrap-existing-project.md` |
 | Just ran the script and need project-specific README.md + AGENTS.md | `prompts/update-readme-agents-after-bootstrap.md` |
 | Plan a feature or larger task | `prompts/plan-feature.md` |
@@ -79,6 +80,16 @@ Use this as the default rollout flow for each application repository.
 6. Run the target project's available validation commands.
 
 7. Commit only after human review and explicit approval.
+
+## Nested Module Setup
+
+Use this when a root project has the toolkit, but developers open module repositories or subfolders directly in their agent.
+
+```text
+Paste `prompts/hisv2-module-ai-ready.md` into an AI coding agent opened inside the HISv2 module folder.
+```
+
+The module should keep only small local instructions in `AGENTS.md` and module-specific description in `README.md`. Shared rules, skills, prompts, security, commit, release, PR, and documentation standards should stay in the root project.
 
 ## What Gets Installed in a Target Project?
 

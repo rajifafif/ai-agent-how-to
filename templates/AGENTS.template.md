@@ -124,7 +124,8 @@ short-prompt behavior.
 
 | User asks for | Follow |
 | --- | --- |
-| Make project AI Agent Ready | `prompts/bootstrap-existing-project.md` if present |
+| Make project AI Agent Ready, setup agent docs | `prompts/bootstrap-existing-project.md` if present |
+| Make HISv2 module agent ready, setup module README, module uses root project rules | `prompts/hisv2-module-ai-ready.md` if present |
 | Create plan from ..., plan larger work, break task into phases | `.agents/skills/plan-feature/SKILL.md` and `prompts/plan-feature.md` if present |
 | Implement, build, add, or change behavior | Approved plan under `docs/plans/`, then repository instructions and implementation skill if present |
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` if present |

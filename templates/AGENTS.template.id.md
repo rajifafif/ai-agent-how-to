@@ -123,7 +123,8 @@ dan short-prompt behavior.
 
 | User asks for | Follow |
 | --- | --- |
-| Make project AI Agent Ready | `prompts/bootstrap-existing-project.md` jika ada |
+| Make project AI Agent Ready, setup agent docs | `prompts/bootstrap-existing-project.md` jika ada |
+| Make HISv2 module agent ready, setup module README, module uses root project rules | `prompts/hisv2-module-ai-ready.md` jika ada |
 | Create plan from ..., plan larger work, pecah task jadi phases | `.agents/skills/plan-feature/SKILL.md` dan `prompts/plan-feature.md` jika ada |
 | Implement, build, add, atau change behavior | Approved plan di `docs/plans/`, lalu instruksi repository dan implementation skill jika ada |
 | Fix bug, debug, error, regression | `prompts/fix-bug.md` jika ada |
